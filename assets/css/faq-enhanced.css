@@ -1,0 +1,678 @@
+/* Service Section Background */
+.bg-services-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 30px 0;
+    min-height: 500px;
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    position: relative;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, #00B9AD 0%, #008B82 100%);
+    border-radius: 2px;
+}
+
+/* Services Grid */
+.our-services-option {
+    width: 100%;
+}
+
+.our-services-box {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 185, 173, 0.1);
+    overflow: hidden;
+}
+
+.our-services-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 185, 173, 0.3);
+}
+
+.our-services-items {
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+}
+
+.our-services-items::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #00B9AD 0%, #008B82 100%);
+}
+
+.our-services-items i {
+    display: block;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.our-services-box:hover .our-services-items i {
+    transform: scale(1.1);
+    color: #00B9AD !important;
+}
+
+.our-services-content h4 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.our-services-content h4 a {
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.our-services-content h4 a:hover {
+    color: #00B9AD;
+    text-decoration: none;
+}
+
+.our-services-content p {
+    color: #6c757d;
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* FAQ Accordion Styles */
+.panel-group {
+    margin-top: 20px;
+}
+
+.panel {
+    border: none;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 15px;
+    overflow: hidden;
+    background: white;
+}
+
+.panel-default {
+    border-color: rgba(0, 185, 173, 0.2);
+}
+
+.panel-heading {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-bottom: 1px solid rgba(0, 185, 173, 0.1) !important;
+    border-radius: 10px 10px 0 0 !important;
+    padding: 0;
+    position: relative;
+}
+
+.panel-heading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #00B9AD 0%, #008B82 100%);
+}
+
+.panel-title {
+    margin: 0;
+}
+
+.panel-title a {
+    display: block;
+    padding: 20px 25px;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05em;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.panel-title a:hover,
+.panel-title a:focus {
+    background: rgba(0, 185, 173, 0.05);
+    color: #00B9AD;
+    text-decoration: none;
+}
+
+.panel-title a .glyphicon {
+    margin-right: 15px;
+    font-size: 0.9em;
+    transition: transform 0.3s ease;
+    color: #00B9AD;
+}
+
+.panel-title a[aria-expanded="true"] .glyphicon {
+    transform: rotate(90deg);
+}
+
+.panel-collapse {
+    border-top: none;
+}
+
+.panel-body {
+    padding: 25px;
+    background: white;
+    color: #495057;
+    line-height: 1.7;
+    font-size: 0.95em;
+    border-top: 1px solid rgba(0, 185, 173, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bg-services-section {
+        padding: 40px 0;
+    }
+
+    .section-header h2 {
+        font-size: 2em;
+    }
+
+    .our-services-items {
+        padding: 30px 20px;
+    }
+
+    .our-services-items i {
+        font-size: 3em !important;
+    }
+
+    .our-services-content h4 {
+        font-size: 1.2em;
+    }
+
+    .panel-title a {
+        padding: 15px 20px;
+        font-size: 1em;
+    }
+
+    .panel-body {
+        padding: 20px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header h2 {
+        font-size: 1.8em;
+        line-height: 1.3;
+    }
+
+    .our-services-items {
+        padding: 25px 15px;
+    }
+
+    .our-services-items i {
+        font-size: 2.5em !important;
+        margin-bottom: 20px;
+    }
+
+    .our-services-content h4 {
+        font-size: 1.1em;
+    }
+
+    .our-services-content p {
+        font-size: 0.9em;
+    }
+
+    .panel-title a {
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+
+    .panel-body {
+        padding: 15px;
+    }
+}
+
+/* Animation for accordion */
+.panel-collapse.collapsing {
+    transition: height 0.3s ease;
+}
+
+.panel-collapse.collapse.in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Focus states for accessibility */
+.panel-title a:focus {
+    outline: 3px solid #00B9AD;
+    outline-offset: 2px;
+}
+
+.our-services-content a:focus {
+    outline: 3px solid #00B9AD;
+    outline-offset: 2px;
+}
+
+/* Hover effects */
+.panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+}
+
+/* Loading state (optional) */
+.loading-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* FAQ Enhanced Styles */
+.faq-search-container {
+    max-width: 400px;
+    margin: 20px auto 0;
+}
+
+.faq-search-container .input-group {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.faq-search-container .form-control {
+    border: none;
+    padding: 12px 20px;
+    font-size: 0.95em;
+    border-radius: 25px 0 0 25px;
+}
+
+.faq-search-container .input-group-addon {
+    background: #00B9AD;
+    border: none;
+    color: white;
+    border-radius: 0 25px 25px 0;
+    padding: 12px 15px;
+}
+
+.search-results-count {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.accordion-controls {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 15px 0;
+}
+
+.accordion-controls .btn {
+    margin: 0 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.accordion-controls .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-match {
+    animation: highlightMatch 0.6s ease;
+}
+
+@keyframes highlightMatch {
+    0% {
+        background: rgba(0, 185, 173, 0.2);
+        transform: scale(1.02);
+    }
+
+    50% {
+        background: rgba(0, 185, 173, 0.1);
+    }
+
+    100% {
+        background: transparent;
+        transform: scale(1);
+    }
+}
+
+/* Accordion Controls */
+.accordion-controls {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 15px 0;
+}
+
+.accordion-controls .btn {
+    margin: 0 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.accordion-controls .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation Classes */
+.glyphicon.rotated {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+.panel-hover {
+    transform: translateY(-2px) !important;
+    transition: transform 0.2s ease !important;
+    box-shadow: 0 8px 25px rgba(0, 185, 173, 0.12) !important;
+}
+
+.search-match {
+    animation: highlightMatch 0.6s ease;
+}
+
+@keyframes highlightMatch {
+    0% {
+        background: rgba(0, 185, 173, 0.2);
+        transform: scale(1.02);
+    }
+
+    50% {
+        background: rgba(0, 185, 173, 0.1);
+    }
+
+    100% {
+        background: transparent;
+        transform: scale(1);
+    }
+}
+
+/* Smooth panel transitions */
+.panel-collapse {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panel-collapse.collapsing {
+    overflow: hidden;
+}
+
+/* Enhanced focus states */
+.panel-title a:focus {
+    outline: 3px solid #00B9AD;
+    outline-offset: 2px;
+    border-radius: 5px;
+}
+
+/* Loading state */
+.accordion-loading .panel {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* FAQ Accordion Styles - ENHANCED SMOOTH */
+.panel-group {
+    margin-top: 20px;
+}
+
+.panel {
+    border: none;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 15px;
+    overflow: hidden;
+    background: white;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.panel-default {
+    border-color: rgba(0, 185, 173, 0.2);
+}
+
+.panel-heading {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-bottom: 1px solid rgba(0, 185, 173, 0.1) !important;
+    border-radius: 12px 12px 0 0 !important;
+    padding: 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.panel-heading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #00B9AD 0%, #008B82 100%);
+    transition: height 0.3s ease;
+}
+
+.panel:hover .panel-heading::before {
+    height: 4px;
+}
+
+.panel-title {
+    margin: 0;
+}
+
+.panel-title a {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05em;
+    line-height: 1.4;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    border-radius: 12px 12px 0 0;
+}
+
+.panel-title a:hover,
+.panel-title a:focus {
+    background: rgba(0, 185, 173, 0.08);
+    color: #00B9AD;
+    text-decoration: none;
+    transform: translateX(5px);
+}
+
+/* Icon styling dengan smooth rotation */
+.panel-title a .fa,
+.panel-title a i {
+    margin-right: 15px;
+    font-size: 0.9em;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    color: #00B9AD;
+    transform-origin: center;
+    width: 16px;
+    text-align: center;
+}
+
+.panel-title a[aria-expanded="true"] .fa,
+.panel-title a[aria-expanded="true"] i {
+    transform: rotate(90deg) scale(1.1);
+    color: #008B82;
+}
+
+/* Panel collapse dengan smooth animation */
+.panel-collapse {
+    border-top: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: top;
+}
+
+.panel-collapse.collapsing {
+    overflow: hidden;
+    transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.panel-body {
+    padding: 25px;
+    background: white;
+    color: #495057;
+    line-height: 1.7;
+    font-size: 0.95em;
+    border-top: 1px solid rgba(0, 185, 173, 0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease 0.1s;
+}
+
+.panel-collapse.in .panel-body {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced hover effects */
+.panel:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 185, 173, 0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Active panel styling */
+.panel.panel-active {
+    border-color: rgba(0, 185, 173, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 185, 173, 0.12);
+}
+
+.panel.panel-active .panel-heading {
+    background: linear-gradient(135deg, rgba(0, 185, 173, 0.05) 0%, rgba(0, 139, 130, 0.05) 100%) !important;
+}
+
+/* Animation keyframes yang lebih smooth */
+@keyframes smoothFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px) scale(0.95);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translateY(-5px) scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes smoothSlideDown {
+    0% {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        max-height: 1000px;
+        opacity: 1;
+    }
+}
+
+.panel-collapse.collapse.in {
+    animation: smoothFadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Additional smooth effects */
+.accordion-icon {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.panel-title a[aria-expanded="true"] .accordion-icon {
+    transform: rotate(90deg);
+}
+
+/* Ripple effect untuk click feedback */
+.panel-title a {
+    position: relative;
+    overflow: hidden;
+}
+
+.panel-title a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 185, 173, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: 0;
+}
+
+.panel-title a:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.panel-title a>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* Loading state saat transitioning */
+.panel.transitioning {
+    pointer-events: none;
+}
+
+.panel.transitioning .panel-title a {
+    opacity: 0.7;
+}

@@ -1,0 +1,88 @@
+.google-translate-container {
+    position: relative;
+}
+
+/* Hide Google Translate branding */
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+.goog-te-menu-frame {
+    max-height: 400px !important;
+    overflow-y: auto !important;
+    background: white !important;
+    border: none !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 8px !important;
+}
+
+/* Style the translate element */
+#google_translate_element {
+    position: relative;
+}
+
+#google_translate_element .goog-te-combo {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
+    color: white !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
+    outline: none !important;
+    min-width: 120px !important;
+}
+
+#google_translate_element .goog-te-combo:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+#google_translate_element .goog-te-combo option {
+    background: #2c3e50 !important;
+    color: white !important;
+    padding: 8px !important;
+}
+
+/* Custom dropdown button */
+.custom-translate-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 120px;
+}
+
+.custom-translate-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.custom-translate-btn i {
+    font-size: 16px;
+}
+
+/* Hide default translate widget and show custom */
+#google_translate_element .skiptranslate {
+    display: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    #google_translate_element .goog-te-combo {
+        font-size: 12px !important;
+        padding: 6px 8px !important;
+        min-width: 100px !important;
+    }
+
+    .custom-translate-btn {
+        padding: 6px 8px;
+        font-size: 12px;
+        min-width: 100px;
+    }
+}

@@ -1,0 +1,26 @@
+Options -Indexes
+Options -ExecCGI
+
+# Blokir eksekusi script
+<Files *.php>
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files *.phtml>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Hanya izinkan download file tertentu
+<FilesMatch "\.(pdf|doc|docx|xls|xlsx|ppt|pptx|txt|zip|rar)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Download-Options "noopen"
+</IfModule>

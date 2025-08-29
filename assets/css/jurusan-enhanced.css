@@ -1,0 +1,679 @@
+/* =========================== RESPONSIVE DESIGN SYSTEM =========================== */
+
+/* Base responsive utilities */
+.container-fluid-responsive {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* =========================== HERO SECTION RESPONSIVE =========================== */
+.hero-section {
+    padding: 1rem 0 2rem;
+    min-height: auto;
+}
+
+.hero-content {
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Hero Actions Responsive */
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.hero-actions .btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.75rem 1.5rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* Feature highlights responsive */
+.feature-highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-highlight {
+    padding: 0.75rem;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* =========================== IMAGE CONTAINER RESPONSIVE =========================== */
+.hero-image-wrapper {
+    margin-top: 1rem;
+}
+
+.image-container {
+    height: clamp(250px, 50vw, 400px);
+    max-height: 400px;
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px !important;
+}
+
+/* =========================== FLOATING STATS RESPONSIVE =========================== */
+.floating-stats-container {
+    display: none;
+}
+
+.mobile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 0 1rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-card .stat-icon {
+    width: 35px;
+    height: 35px;
+    margin: 0 auto 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.stat-number {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-weight: 700;
+    margin: 0.25rem 0;
+}
+
+.stat-label {
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    color: #666;
+}
+
+/* =========================== TABS RESPONSIVE =========================== */
+.modern-tabs-wrapper {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 15px;
+}
+
+.modern-tabs .nav-pills {
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modern-tabs .nav-pills .nav-link {
+    margin: 0;
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.tab-content-wrapper {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.tab-icon {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+}
+
+.tab-title {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.tab-subtitle {
+    font-size: clamp(0.7rem, 2vw, 0.75rem);
+}
+
+.modern-tab-content {
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+/* =========================== PROGRAM STUDI CARDS RESPONSIVE =========================== */
+.program-details-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.program-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+}
+
+.program-card .card-body {
+    padding: 1.5rem;
+}
+
+.program-title {
+    font-size: clamp(1.1rem, 3vw, 1.25rem);
+    margin-bottom: 0.75rem;
+}
+
+.program-description {
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    line-height: 1.5;
+}
+
+/* Program features responsive */
+.program-features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-item {
+    padding: 0.5rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+}
+
+/* Career prospects responsive */
+.career-list {
+    gap: 0.75rem;
+}
+
+.career-item {
+    padding: 0.75rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    border-radius: 8px;
+}
+
+/* =========================== SDM CARDS RESPONSIVE =========================== */
+.sdm-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.sdm-card {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.sdm-card .card-img-top {
+    height: clamp(200px, 40vw, 250px);
+    object-fit: cover;
+}
+
+.sdm-card .card-body {
+    padding: 1rem;
+    text-align: center;
+}
+
+.sdm-card .card-title {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    margin-bottom: 0.5rem;
+}
+
+.sdm-card .card-text {
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+}
+
+/* SDM Stats responsive */
+.sdm-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.sdm-stat-item {
+    text-align: center;
+    padding: 1rem;
+}
+
+.sdm-stat-item i {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.sdm-stat-item h3 {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    margin: 0.5rem 0;
+}
+
+.sdm-stat-item p {
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+}
+
+/* =========================== TESTIMONIAL RESPONSIVE =========================== */
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-content {
+    margin-bottom: 1rem;
+}
+
+.testimonial-text {
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    line-height: 1.6;
+    font-style: italic;
+    color: #555;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.author-info h6 {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    margin-bottom: 0.25rem;
+}
+
+.author-info small {
+    font-size: clamp(0.75rem, 2vw, 0.8rem);
+}
+
+/* =========================== RESPONSIVE BREAKPOINTS =========================== */
+
+/* Small devices (576px and up) */
+@media (min-width: 576px) {
+    .container-fluid-responsive {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .hero-actions {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero-actions .btn {
+        width: auto;
+        min-width: 160px;
+    }
+
+    .feature-highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mobile-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .sdm-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Medium devices (768px and up) */
+@media (min-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+
+    .hero-content {
+        text-align: left;
+        margin-bottom: 0;
+        padding-right: 1rem;
+    }
+
+    .hero-actions {
+        justify-content: flex-start;
+    }
+
+    .feature-highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .feature-highlight {
+        text-align: left;
+    }
+
+    .mobile-stats-grid {
+        display: none;
+    }
+
+    .floating-stats-container {
+        display: block;
+    }
+
+    .modern-tabs .nav-pills {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .modern-tabs .nav-pills .nav-link {
+        margin: 0 0.25rem;
+        flex: 1;
+        max-width: 200px;
+    }
+
+    .program-details-grid {
+        grid-template-columns: 2fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .program-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sdm-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .testimonial-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large devices (992px and up) */
+@media (min-width: 992px) {
+    .hero-section {
+        min-height: 60vh;
+        padding: 3rem 0;
+    }
+
+    .hero-content {
+        padding-right: 2rem;
+    }
+
+    .image-container {
+        height: 500px;
+    }
+
+    .floating-stats {
+        position: absolute;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .stats-1 {
+        top: 10%;
+        right: -10px;
+    }
+
+    .stats-2 {
+        bottom: 30%;
+        left: -20px;
+    }
+
+    .stats-3 {
+        bottom: 10%;
+        right: 10px;
+    }
+
+    .stats-4 {
+        top: 50%;
+        right: -30px;
+    }
+
+    .modern-tabs .nav-pills .nav-link {
+        flex: none;
+        min-width: 180px;
+    }
+
+    .sdm-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .testimonial-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Extra large devices (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .hero-section {
+        padding: 4rem 0;
+    }
+
+    .modern-tabs-wrapper {
+        padding: 2rem;
+    }
+
+    .modern-tab-content {
+        padding: 2rem;
+    }
+}
+
+/* Extra extra large devices (1400px and up) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+}
+
+/* =========================== LANDSCAPE ORIENTATION =========================== */
+@media (orientation: landscape) and (max-height: 600px) {
+    .hero-section {
+        min-height: auto;
+        padding: 1rem 0;
+    }
+
+    .image-container {
+        height: 300px;
+    }
+
+    .floating-stats {
+        display: none;
+    }
+
+    .mobile-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+}
+
+/* =========================== HIGH DPI DISPLAYS =========================== */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 2dppx) {
+    .main-image {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* =========================== REDUCED MOTION =========================== */
+@media (prefers-reduced-motion: reduce) {
+
+    .floating-stats,
+    .hero-content,
+    .hero-image-wrapper,
+    .tab-pane {
+        animation: none;
+    }
+
+    .hover-lift:hover {
+        transform: none;
+    }
+
+    .main-image:hover {
+        transform: none;
+    }
+}
+
+/* =========================== DARK MODE SUPPORT =========================== */
+@media (prefers-color-scheme: dark) {
+    .stat-card {
+        background: rgba(33, 37, 41, 0.95);
+        color: #fff;
+    }
+
+    .testimonial-card {
+        background: rgba(33, 37, 41, 0.95);
+        color: #fff;
+    }
+
+    .modern-tabs-wrapper {
+        background: linear-gradient(135deg, #2c3034 0%, #1a1d20 100%);
+    }
+
+    .modern-tab-content {
+        background: #212529;
+        color: #fff;
+    }
+}
+
+/* =========================== UTILITY CLASSES =========================== */
+.text-responsive {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+.title-responsive {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+}
+
+.subtitle-responsive {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.padding-responsive {
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+.margin-responsive {
+    margin: clamp(0.5rem, 2vw, 1rem);
+}
+
+/* =========================== GRID SYSTEM ENHANCEMENTS =========================== */
+.row-responsive {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 576px) {
+    .row-responsive {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .row-responsive {
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .row-responsive {
+        gap: 2rem;
+    }
+}
+
+/* =========================== LOADING STATES =========================== */
+.skeleton-loader {
+    display: block;
+}
+
+.skeleton-card {
+    height: clamp(200px, 40vw, 300px);
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 15px;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* =========================== ACCESSIBILITY IMPROVEMENTS =========================== */
+.sr-only-responsive {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.focus-visible:focus {
+    outline: 2px solid #0d6efd;
+    outline-offset: 2px;
+}
+
+/* Touch targets for mobile */
+@media (max-width: 768px) {
+
+    .btn,
+    .nav-link,
+    .card {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}

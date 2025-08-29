@@ -1,0 +1,9 @@
+<?php
+include('slider.php');
+include('about.php');
+include('news.php');
+include('isc.php');
+include('video.php');
+include('agenda.php');
+include('partner.php');
+include('popup.php');

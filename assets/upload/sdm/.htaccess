@@ -1,0 +1,5 @@
+Options -Indexes
+Options -ExecCGI
+<Files *.php>
+    deny from all
+</Files>
