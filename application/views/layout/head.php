@@ -86,7 +86,6 @@ $site_info = $this->konfigurasi_model->listing();
     <link rel="stylesheet" href="<?= base_url('assets/css/blog-enhanced.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/open-accessibility.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/faq-enhanced.css') ?>">
-    <!-- <link rel="stylesheet" href="<?= base_url('assets/css/jurusan-enhanced.css') ?>"> -->
 
     <!-- jQuery (WAJIB untuk DataTables) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

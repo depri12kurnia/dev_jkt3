@@ -120,6 +120,7 @@
 <script src="<?= base_url('assets/js/video-enhanced.js?v=' . time()) ?>"></script>
 <script src="<?= base_url('assets/js/backtotop-enhanced.js') ?>"></script>
 <script src="<?= base_url('assets/js/faq-enhanced.js') ?>"></script>
+<script src="<?= base_url('assets/js/popup-enhanced.js') ?>"></script>
 
 <!-- Open-Accessibility - Load AFTER jQuery and Bootstrap -->
 <script src="<?= base_url('assets/js/open-accessibility.js?v=' . time()) ?>"></script>

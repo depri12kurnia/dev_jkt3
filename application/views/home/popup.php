@@ -18,6 +18,22 @@
                                 <div class="sparkle sparkle-3"></div>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <div class="d-flex flex-wrap justify-content-center gap-2 w-100">
+                                <a class="btn btn-success btn-sm" target="_blank" href="https://sipadu.poltekkesjakarta3.ac.id">
+                                    SIPADU (Layanan Pengaduan Terpadu)
+                                </a>
+                                <a class="btn btn-primary btn-sm" target="_blank" href="https://drive.google.com/file/d/1x7Nl5nK7dfESTDMwUELCk2ZH9jIIntvR/view?usp=sharing">
+                                    Daftar Biaya UKT
+                                </a>
+                                <a class="btn btn-warning btn-sm" target="_blank" href="https://jakarta3.pusilkom.com/">
+                                    Siakad EUIS
+                                </a>
+                                <a class="btn btn-warning btn-sm" target="_blank" href="https://alumnijkt3.pusilkom.com/">
+                                    Portal Alumni
+                                </a>
+                            </div>
+                        </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
