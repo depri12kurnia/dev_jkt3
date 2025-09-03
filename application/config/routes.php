@@ -69,11 +69,6 @@ $route['sitemap/custom\.xml'] = 'sitemap/custom';
 $route['kategori/(:any)'] = 'berita/kategori/$1';
 $route['kategori/(:any)/(:num)'] = 'berita/kategori/$1/$s2';
 
-// Route SDM
-$route['sdm'] = 'staff';
-$route['sdm/(:any)'] = 'staff/detail/$1';
-$route['sdm/(:any)/(:num)'] = 'staff/detail/$1/$s2';
-
 // route controller dokumen ke seafile
 $route['admin/dokumen/(:any)'] = 'admin/dokumen/detail/$1';
 

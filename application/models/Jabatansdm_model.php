@@ -38,7 +38,7 @@ class Jabatansdm_model extends CI_Model
     // Listing untuk homepage
     public function home()
     {
-        $this->db->select('jabatan_sdm.*, sdm.nama as nama_sdm, sdm.nip, sdm.foto_url,
+        $this->db->select('jabatan_sdm.*, sdm.nama as nama_sdm, sdm.nip, sdm.foto_url, sdm.slug,
                           jurusan.nama as nama_jurusan, prodi.nama as nama_prodi, pusat.nama as nama_pusat, unit.nama as nama_unit');
         $this->db->from('jabatan_sdm');
         $this->db->join('sdm', 'sdm.id = jabatan_sdm.sdm_id', 'LEFT');
@@ -517,6 +517,65 @@ class Jabatansdm_model extends CI_Model
         $this->db->join('prodi', 'prodi.id = jabatan_sdm.prodi_id', 'LEFT');
         $this->db->where('jabatan_sdm.sdm_id', $sdm_id);
         $this->db->order_by('jabatan_sdm.periode_mulai', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // Menampilkan SDM dengan jabatan Direktur yang aktif pada tahun tertentu
+    public function direktur_aktif($year = null)
+    {
+        if ($year === null) {
+            $year = date('Y');
+        }
+        $this->db->select('jabatan_sdm.*, sdm.nama as nama_sdm, sdm.nip, sdm.email, sdm.no_hp, sdm.foto_url, sdm.slug');
+        $this->db->from('jabatan_sdm');
+        $this->db->join('sdm', 'sdm.id = jabatan_sdm.sdm_id', 'LEFT');
+        $this->db->where('jabatan_sdm.jabatan', 'Direktur');
+        $this->db->where('jabatan_sdm.periode_mulai <=', $year);
+        $this->db->where('jabatan_sdm.periode_akhir >=', $year);
+        $this->db->order_by('jabatan_sdm.periode_mulai', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function wakil_direktur_aktif($year = null)
+    {
+        if ($year === null) {
+            $year = date('Y');
+        }
+        $this->db->select('jabatan_sdm.*, sdm.nama as nama_sdm, sdm.nip, sdm.email, sdm.no_hp, sdm.foto_url, sdm.slug');
+        $this->db->from('jabatan_sdm');
+        $this->db->join('sdm', 'sdm.id = jabatan_sdm.sdm_id', 'LEFT');
+        $this->db->where_in('jabatan_sdm.jabatan', [
+            'Wakil Direktur I',
+            'Wakil Direktur II',
+            'Wakil Direktur III'
+        ]);
+        $this->db->where('jabatan_sdm.periode_mulai <=', $year);
+        $this->db->where('jabatan_sdm.periode_akhir >=', $year);
+        $this->db->order_by('jabatan_sdm.periode_mulai', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // Semua data SDM Kecuali Direktur dan Wakil Direktur
+    public function all($year = null)
+    {
+        if ($year === null) {
+            $year = date('Y');
+        }
+        $this->db->select('jabatan_sdm.*, sdm.nama as nama_sdm, sdm.nip, sdm.email, sdm.no_hp, sdm.foto_url, sdm.slug');
+        $this->db->from('jabatan_sdm');
+        $this->db->join('sdm', 'sdm.id = jabatan_sdm.sdm_id', 'LEFT');
+        $this->db->where_not_in('jabatan_sdm.jabatan', [
+            'Direktur',
+            'Wakil Direktur I',
+            'Wakil Direktur II',
+            'Wakil Direktur III'
+        ]);
+        $this->db->where('jabatan_sdm.periode_mulai <=', $year);
+        $this->db->where('jabatan_sdm.periode_akhir >=', $year);
+        $this->db->order_by('jabatan_sdm.periode_mulai', 'ASC');
         $query = $this->db->get();
         return $query->result();
     }

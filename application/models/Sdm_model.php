@@ -15,7 +15,7 @@ class Sdm_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('sdm');
-        $this->db->order_by('id', 'DESC');
+        $this->db->order_by('id', 'ASC');
         $query = $this->db->get();
         return $query->result();
     }
