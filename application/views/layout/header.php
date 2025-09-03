@@ -81,10 +81,10 @@
                              </li>
                          </ul>
                          <ul class="list-inline mt-2 d-flex flex-wrap gap-2 justify-content-end d-none d-lg-flex">
-                             <li class="nav-item"><a href="#">SPMB Prestasi</a></li> |
-                             <li class="nav-item"><a href="#">SPMB Bersama</a></li> |
-                             <li class="nav-item"><a href="#">SPMB Mandiri</a></li> |
-                             <li class="nav-item"><a href="<?php echo base_url('helpdesk') ?>">Faq&Helpdesk</a></li>
+                             <li class="nav-item"><a href="https://sipenmaru.poltekkesjakarta3.ac.id/" target="_blank">SPMB Prestasi</a></li> |
+                             <li class="nav-item"><a href="https://spmb-poltekkes.kemkes.go.id/" target="_blank">SPMB Bersama</a></li> |
+                             <li class="nav-item"><a href="https://sipenmaru.poltekkesjakarta3.ac.id/" target="_blank">SPMB Mandiri</a></li> |
+                             <li class="nav-item"><a href="<?php echo base_url('helpdesk') ?>" target="_blank">Faq&Helpdesk</a></li>
                          </ul>
                      </div>
                  </div>
