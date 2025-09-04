@@ -94,6 +94,54 @@
 </footer>
 <!-- End Footer -->
 </div>
+<div id="cookie-banner" style="
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #2c3e50; color: white; padding: 15px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 9999; font-size: 14px;">
+
+    <span>
+        Kami menghargai privasi Anda. Situs web ini menyimpan cookies di komputer Anda
+        untuk meningkatkan pengalaman, analitik, dan metrik.
+        Lihat <a href="/kebijakan-cookie" style="color: #f1c40f;">Kebijakan Cookie</a>.
+    </span>
+
+    <div>
+        <button onclick="acceptAllCookies()" style="background: #27ae60; color: white; border: none; padding: 8px 12px; border-radius: 5px; margin-left: 10px;">
+            Terima Semua Cookie
+        </button>
+        <button onclick="openCookieModal()" style="background: #c0392b; color: white; border: none; padding: 8px 12px; border-radius: 5px; margin-left: 10px;">
+            Kelola Cookie
+        </button>
+    </div>
+</div>
+<!-- Cookies Modal -->
+<div id="cookie-modal" style="
+    display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center;">
+
+    <div style="background: white; padding: 20px; border-radius: 10px; width: 400px; color: black;">
+        <h3>Pengaturan Cookie</h3>
+        <p>Pilih jenis cookie yang ingin Anda izinkan:</p>
+
+        <label>
+            <input type="checkbox" checked disabled> Essential (Wajib)
+        </label><br>
+        <label>
+            <input type="checkbox" id="cookie-analytics"> Analytics
+        </label><br>
+        <label>
+            <input type="checkbox" id="cookie-marketing"> Marketing
+        </label><br><br>
+
+        <button onclick="saveCookiePreferences()" style="background:#27ae60; color:white; padding:8px 12px; border:none; border-radius:5px;">
+            Simpan Pilihan
+        </button>
+        <button onclick="closeCookieModal()" style="background:#c0392b; color:white; padding:8px 12px; border:none; border-radius:5px;">
+            Batal
+        </button>
+    </div>
+</div>
 
 <!-- Bootstrap 5 JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -112,26 +160,37 @@
 <!-- Swiper JS untuk carousel -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
+<!-- Custom JS From jsDeliver Load BEFORE open-accessibility -->
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/slider-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/pendidikan-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/staff-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/partners-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/video-enhanced.js?v=<?php echo time(); ?>"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/backtotop-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/faq-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/popup-enhanced.js"></script>
+
+
 <!-- Custom JS - Load BEFORE open-accessibility -->
-<script src="<?php echo base_url('assets/js/slider-enhanced.js'); ?>"></script>
-<script src="<?php echo base_url('assets/js/pendidikan-enhanced.js'); ?>"></script>
-<script src="<?= base_url('assets/js/staff-enhanced.js') ?>"></script>
-<script src="<?= base_url('assets/js/partners-enhanced.js') ?>"></script>
-<script src="<?= base_url('assets/js/video-enhanced.js?v=' . time()) ?>"></script>
-<script src="<?= base_url('assets/js/backtotop-enhanced.js') ?>"></script>
-<script src="<?= base_url('assets/js/faq-enhanced.js') ?>"></script>
-<script src="<?= base_url('assets/js/popup-enhanced.js') ?>"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/slider-enhanced.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/pendidikan-enhanced.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/staff-enhanced.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/partners-enhanced.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/video-enhanced.js?v=<?php echo time(); ?>"></script>
+<script src="<?php echo base_url(); ?>assets/js/backtotop-enhanced.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/faq-enhanced.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/popup-enhanced.js"></script> -->
 
 <!-- Open-Accessibility - Load AFTER jQuery and Bootstrap -->
-<script src="<?= base_url('assets/js/open-accessibility.js?v=' . time()) ?>"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/open-accessibility.js?v=<?php echo time(); ?>"></script>
 
 <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-77QD9RNNKJ"></script> -->
-<!-- <script src="<?= base_url('assets/js/ga4.js') ?>"></script> -->
+<!-- <script src="<?php echo base_url(); ?>assets/js/ga4.js"></script> -->
 
 <script>
-    const base_url = '<?= base_url() ?>';
+    const base_url = '<?php echo base_url(); ?>';
 </script>
-<script src="<?php echo base_url('assets/js/google-translate-custom.js'); ?>"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/google-translate-custom.js"></script>
 
 <!-- DataTables initialization -->
 <script>
@@ -147,6 +206,45 @@
         $("#example8").DataTable();
         $("#example9").DataTable();
     });
+</script>
+
+<!-- Accept Cookies -->
+<script>
+    function acceptAllCookies() {
+        let prefs = {
+            essential: true,
+            analytics: true,
+            marketing: true
+        };
+        document.cookie = "cookie_consent=" + JSON.stringify(prefs) + "; path=/; max-age=" + 60 * 60 * 24 * 365;
+        document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    function openCookieModal() {
+        document.getElementById("cookie-modal").style.display = "flex";
+    }
+
+    function closeCookieModal() {
+        document.getElementById("cookie-modal").style.display = "none";
+    }
+
+    function saveCookiePreferences() {
+        let prefs = {
+            essential: true,
+            analytics: document.getElementById("cookie-analytics").checked,
+            marketing: document.getElementById("cookie-marketing").checked
+        };
+        document.cookie = "cookie_consent=" + JSON.stringify(prefs) + "; path=/; max-age=" + 60 * 60 * 24 * 365;
+        document.getElementById("cookie-modal").style.display = "none";
+        document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    // Cek status cookie saat load
+    window.onload = function() {
+        if (document.cookie.includes("cookie_consent")) {
+            document.getElementById("cookie-banner").style.display = "none";
+        }
+    };
 </script>
 
 </body>

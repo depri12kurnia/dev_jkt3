@@ -77,6 +77,17 @@ class Home extends CI_Controller
 		$page 		= ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) * $config['per_page'] : 0;
 		$berita 	= $this->berita_model->berita($config['per_page'], $page);
 
+		// Cek cookie consent
+		$cookie_consent = $this->input->cookie('cookie_consent');
+		if ($cookie_consent) {
+			$prefs = json_decode($cookie_consent, true);
+
+			if (!empty($prefs['analytics']) && $prefs['analytics'] === true) {
+				// Load Google Analytics
+				$data['load_analytics'] = true;
+			}
+		}
+
 		$data = array(
 			'title'				=> $site->namaweb . ' - ' . $site->tagline,
 			'deskripsi'			=> $site->deskripsi,
