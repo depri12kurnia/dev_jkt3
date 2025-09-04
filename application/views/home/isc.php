@@ -46,7 +46,7 @@
                                             <i class="fa fa-globe"></i>
                                         </div>
                                         <h5>Siakad EUIS</h5>
-                                        <p>Sistem Informasi Akademik untuk mahasiswa dan dosen</p>
+                                        <p>Sistem informasi akademik untuk mahasiswa pengisian KRS, Pembayaran, Pengajuan Surat, Monitoring Orangtua dan Dosen</p>
                                     </div>
                                 </a>
                             </div>
@@ -57,7 +57,7 @@
                                             <i class="fa fa-laptop"></i>
                                         </div>
                                         <h5>E-Learning VILC</h5>
-                                        <p>Platform pembelajaran online untuk mendukung perkuliahan</p>
+                                        <p>Virtual Learning Center dengan Platform pembelajaran online untuk mendukung perkuliahan Mahasiswa dan Dosen</p>
                                     </div>
                                 </a>
                             </div>
@@ -68,7 +68,7 @@
                                             <i class="fa fa-book"></i>
                                         </div>
                                         <h5>E-Library</h5>
-                                        <p>Perpustakaan digital dengan koleksi lengkap</p>
+                                        <p>Perpustakaan digital dengan koleksi lengkap repository, buku dan media lainnya yang bisa diakses secara online</p>
                                     </div>
                                 </a>
                             </div>
@@ -79,7 +79,7 @@
                                             <i class="fa fa-book"></i>
                                         </div>
                                         <h5>Portal Alumni</h5>
-                                        <p>Portal informasi dan layanan untuk alumni dan legalisir ijazah</p>
+                                        <p>Portal informasi berita, lowongan pekerjaan dan layanan untuk alumni e-legalisir ijazah dan transkrip nilai akademik</p>
                                     </div>
                                 </a>
                             </div>
@@ -90,7 +90,29 @@
                                             <i class="fa fa-building"></i>
                                         </div>
                                         <h5>Siruang</h5>
-                                        <p>Portal informasi dan layanan pengelolaan ruangan kelas Terintegrasi</p>
+                                        <p>Portal informasi layanan pengelolaan peminjaman ruangan dan kelas terintegrasi di Poltekkes Kemenkes Jakarta III</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="https://ejurnal.poltekkesjakarta3.ac.id/index.php/jitek/" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="bi bi-journal"></i>
+                                        </div>
+                                        <h5>Jitek</h5>
+                                        <p>Jitek presenting timely research on all aspects of vocational health that has not been published by other media </p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="https://ejurnal.poltekkesjakarta3.ac.id/index.php/jkep/" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="bi bi-journal"></i>
+                                        </div>
+                                        <h5>JKep</h5>
+                                        <p>JKep presenting timely research on all aspects of vocational health that has not been published by other media </p>
                                     </div>
                                 </a>
                             </div>
@@ -150,40 +172,59 @@
                     <div class="tab-pane fade" id="public" role="tabpanel">
                         <div class="row g-3">
                             <div class="col-md-4">
-                                <div class="service-card">
-                                    <div class="icon">
-                                        <i class="fa fa-user-plus"></i>
+                                <a href="https://sipenmaru.poltekkesjakarta3.ac.id/" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="fa fa-user-plus"></i>
+                                        </div>
+                                        <h5>Informasi SPMB</h5>
+                                        <p>Sistem Informasi Penerimaan Mahasiswa Baru Jalur Prestasi/Bersama/Mandiri</p>
                                     </div>
-                                    <h5>Informasi SPMB</h5>
-                                    <p>Sistem Informasi Penerimaan Mahasiswa Baru Jalur Prestasi/Bersama/Mandiri</p>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md-4">
-                                <div class="service-card">
-                                    <div class="icon">
-                                        <i class="fa fa-certificate"></i>
+                                <a href="https://jakarta3.pusilkom.com/site/index" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                        <h5>Pengajuan Surat Keterangan</h5>
+                                        <p>Layanan pengajuan surat keterangan secara online dan terintegrasi layanan tanda tangan elektronik</p>
                                     </div>
-                                    <h5>E-Legalisir</h5>
-                                    <p>Layanan legalisir dokumen akademik secara online dan terintegrasi layanan tanda tangan elektronik</p>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md-4">
-                                <div class="service-card">
-                                    <div class="icon">
-                                        <i class="fa fa-comments"></i>
+                                <a href="https://sipadu.poltekkesjakarta3.ac.id/" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="fa fa-comments"></i>
+                                        </div>
+                                        <h5>Sipadu</h5>
+                                        <p>Layanan pengaduan pengaduan dari masyarakat, secara terpusat</p>
                                     </div>
-                                    <h5>Sipadu</h5>
-                                    <p>Layanan pengaduan pengaduan dari masyarakat, secara terpusat</p>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md-4">
-                                <div class="service-card">
-                                    <div class="icon">
-                                        <i class="fa fa-comments"></i>
+                                <a href="https://alumnijkt3.pusilkom.com/" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="fa fa-certificate"></i>
+                                        </div>
+                                        <h5>E-Legalisir</h5>
+                                        <p>Layanan legalisir dokumen akademik secara online dan terintegrasi layanan tanda tangan elektronik</p>
                                     </div>
-                                    <h5>PPID</h5>
-                                    <p>Layanan pengaduan pengaduan dari masyarakat, secara terpusat</p>
-                                </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="https://ppid.poltekkesjakarta3.ac.id/" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="fa fa-comments"></i>
+                                        </div>
+                                        <h5>PPID</h5>
+                                        <p>Layanan pengaduan pengaduan dari masyarakat, secara terpusat</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -191,31 +232,37 @@
                     <div class="tab-pane fade" id="information" role="tabpanel">
                         <div class="row g-3">
                             <div class="col-md-4">
-                                <div class="service-card">
-                                    <div class="icon">
-                                        <i class="fa fa-newspaper-o"></i>
+                                <a href="<?php echo base_url('berita'); ?>" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="fa fa-newspaper-o"></i>
+                                        </div>
+                                        <h5>Berita Terkini</h5>
+                                        <p>Update informasi dan berita terbaru kampus</p>
                                     </div>
-                                    <h5>Berita Terkini</h5>
-                                    <p>Update informasi dan berita terbaru kampus</p>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md-4">
-                                <div class="service-card">
-                                    <div class="icon">
-                                        <i class="fa fa-bullhorn"></i>
+                                <a href="<?php echo base_url('kategori/pengumuman'); ?>" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="fa fa-bullhorn"></i>
+                                        </div>
+                                        <h5>Pengumuman</h5>
+                                        <p>Pengumuman resmi dari institusi</p>
                                     </div>
-                                    <h5>Pengumuman</h5>
-                                    <p>Pengumuman resmi dari institusi</p>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md-4">
-                                <div class="service-card">
-                                    <div class="icon">
-                                        <i class="fa fa-question-circle"></i>
+                                <a href="<?php echo base_url('helpdesk'); ?>" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="fa fa-question-circle"></i>
+                                        </div>
+                                        <h5>FAQ & Help</h5>
+                                        <p>Bantuan dan pertanyaan yang sering diajukan</p>
                                     </div>
-                                    <h5>FAQ & Help</h5>
-                                    <p>Bantuan dan pertanyaan yang sering diajukan</p>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>

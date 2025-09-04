@@ -9,7 +9,6 @@
                 </div>
                 <!-- .section-header -->
                 <div class="row">
-
                     <style type="text/css" media="screen">
                         th,
                         td {
@@ -21,7 +20,6 @@
                     </style>
 
                     <div class="col-md-12">
-
                         <div class="table-responsive mailbox-messages">
                             <h5 class="contact-title">Layanan Akademik</h5>
                             <!-- Custom Filter -->
@@ -43,7 +41,7 @@
                                             <td><?php echo $dokumen->judul_download ?></td>
                                             <td><?php echo $dokumen->nama_jenis_download ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('unduhan/unduh/' . $dokumen->id_download) ?>" class="btn btn-primary btn-xs" target="_blank">
+                                                <a href="<?php echo base_url('unduhan/unduh/' . $dokumen->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo $dokumen->judul_download ?>">
                                                     <i class="fa fa-download"></i> Unduh</a>
                                             </td>
                                         </tr>

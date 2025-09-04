@@ -101,10 +101,10 @@ class Berita extends CI_Controller
 		$config['total_rows'] 		= $this->berita_model->get_count();
 
 		$config['use_page_numbers'] = TRUE;
-		$config['num_links'] 		= 3;
+		$config['num_links'] 		= 2;
 		$config['uri_segment'] 		= 3;
 
-		$config['per_page'] 		= 2;
+		$config['per_page'] 		= 8;
 		$config['first_url'] 		= base_url() . 'kategori/' . $slug_kategori;
 
 		$config['full_tag_open'] 	= '<nav aria-label="Page navigation"><ul class="pagination justify-content-center">';
@@ -180,6 +180,7 @@ class Berita extends CI_Controller
 		$listing 	= $this->berita_model->listing_read();
 		$populer	= $this->berita_model->populer();
 		$pengumuman	= $this->berita_model->pengumuman();
+		$berita_lainnya 	= $this->berita_model->berita_lainnya();
 		$list_side	= $this->kategori_model->list_side();
 
 		if (count(array($berita)) < 1) {
@@ -207,6 +208,7 @@ class Berita extends CI_Controller
 			'populer'	=> $populer,
 			'pengumuman' => $pengumuman,
 			'site'		=> $site,
+			'berita_lainnya' => $berita_lainnya,
 			'isi'		=> 'berita/read'
 		);
 		$this->load->view('layout/wrapper', $data, FALSE);

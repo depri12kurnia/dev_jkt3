@@ -160,6 +160,7 @@ class Pages extends CI_Controller
 		$pages 		= $this->pages_model->read($slug_pages);
 		$alumni 	= $this->nav_model->nav_alumni();
 		$pengumuman	= $this->berita_model->pengumuman();
+		$berita_lainnya 	= $this->berita_model->berita_lainnya();
 
 		if (count(array($pages)) < 1) {
 			redirect(base_url('oops'), 'refresh');
@@ -186,6 +187,7 @@ class Pages extends CI_Controller
 			'site'		=> $site,
 			'pengumuman' => $pengumuman,
 			'listing'	=> $alumni,
+			'berita_lainnya' => $berita_lainnya,
 			'isi'		=> 'pages/alumni'
 		);
 		$this->load->view('layout/wrapper', $data, FALSE);
@@ -201,6 +203,9 @@ class Pages extends CI_Controller
 		$pa 	= $this->download_model->listingPA();
 		$ka 	= $this->download_model->listingKA();
 		$pengumuman	= $this->berita_model->pengumuman();
+		$berita_lainnya 	= $this->berita_model->berita_lainnya();
+		$download = $this->download_model->listingAkademik();
+
 
 		if (count(array($pages)) < 1) {
 			redirect(base_url('oops'), 'refresh');
@@ -229,6 +234,8 @@ class Pages extends CI_Controller
 			'pengumuman' => $pengumuman,
 			'site'		=> $site,
 			'listing'	=> $profil,
+			'berita_lainnya' => $berita_lainnya,
+			'dokumen' => $download,
 			'isi'		=> 'pages/pendidikan'
 		);
 		$this->load->view('layout/wrapper', $data, FALSE);

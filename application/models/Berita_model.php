@@ -24,6 +24,20 @@ class Berita_model extends CI_Model
 		return $query->result();
 	}
 
+	public function berita_lainnya()
+	{
+		$this->db->select('berita.*, users.nama, kategori.nama_kategori, kategori.slug_kategori');
+		$this->db->from('berita');
+		// Join dg 2 tabel
+		$this->db->join('kategori', 'kategori.id_kategori = berita.id_kategori', 'LEFT');
+		$this->db->join('users', 'users.id_user = berita.id_user', 'LEFT');
+		// End join
+		$this->db->order_by('id_berita', 'DESC');
+		$this->db->limit(4); // hanya ambil 4 berita terakhir
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	// Listing data
 	public function dasbor()
 	{

@@ -44,7 +44,7 @@
                                                  <div class="col-6">
                                                      <div class="feature-item d-flex align-items-center">
                                                          <i class="fa fa-users text-info me-2"></i>
-                                                         <small class="text-muted">2500+ Mahasiswa</small>
+                                                         <small class="text-muted">3000+ Mahasiswa</small>
                                                      </div>
                                                  </div>
                                                  <div class="col-6">

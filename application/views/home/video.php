@@ -18,7 +18,7 @@
                          </div>
                          <div class="col-4">
                              <div class="stat-item text-center">
-                                 <h3 class="fw-bold text-primary mb-1" data-target="2500" data-suffix="+">0+</h3>
+                                 <h3 class="fw-bold text-primary mb-1" data-target="3000" data-suffix="+">0+</h3>
                                  <p class="small text-muted mb-0">Mahasiswa Aktif</p>
                              </div>
                          </div>
@@ -30,10 +30,10 @@
                          </div>
                      </div>
                      <div class="video-actions d-flex gap-3 flex-wrap">
-                         <a href="#" class="btn btn-primary btn-lg px-4">
+                         <a href="https://sipenmaru.poltekkesjakarta3.ac.id/" target="_blank" class="btn btn-primary btn-lg px-4">
                              <i class="fa fa-graduation-cap me-2"></i>Daftar Sekarang
                          </a>
-                         <a href="https://www.youtube.com/@officialpoltekkesjakarta3" class="btn btn-primary btn-lg px-4">
+                         <a href="https://www.youtube.com/@officialpoltekkesjakarta3" target="_blank" class="btn btn-primary btn-lg px-4">
                              <i class="fa fa-play-circle me-2"></i>Lihat Semua Video
                          </a>
                      </div>
