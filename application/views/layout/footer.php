@@ -94,11 +94,17 @@
 </footer>
 <!-- End Footer -->
 </div>
+
+<!-- cookies settings -->
+<?php
+$cookie_consent = isset($_COOKIE['cookie_consent']) ? $_COOKIE['cookie_consent'] : '';
+$hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
+?>
 <div id="cookie-banner" style="
     position: fixed; bottom: 0; left: 0; right: 0;
     background: #2c3e50; color: white; padding: 15px;
     display: flex; justify-content: space-between; align-items: center;
-    z-index: 9999; font-size: 14px;">
+    z-index: 9999; font-size: 14px; <?php echo $hide_cookie_banner; ?>">
 
     <span>
         Kami menghargai privasi Anda. Situs web ini menyimpan cookies di komputer Anda
@@ -115,10 +121,9 @@
         </button>
     </div>
 </div>
-<!-- Cookies Modal -->
 <div id="cookie-modal" style="
     display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center;">
+    background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center; <?php echo $hide_cookie_banner; ?>">
 
     <div style="background: white; padding: 20px; border-radius: 10px; width: 400px; color: black;">
         <h3>Pengaturan Cookie</h3>
@@ -130,9 +135,7 @@
         <label>
             <input type="checkbox" id="cookie-analytics"> Analytics
         </label><br>
-        <label>
-            <input type="checkbox" id="cookie-marketing"> Marketing
-        </label><br><br>
+        <br>
 
         <button onclick="saveCookiePreferences()" style="background:#27ae60; color:white; padding:8px 12px; border:none; border-radius:5px;">
             Simpan Pilihan
@@ -142,6 +145,51 @@
         </button>
     </div>
 </div>
+
+<!-- Accept Cookies -->
+<script>
+    function getCookie(name) {
+        let value = "; " + document.cookie;
+        let parts = value.split("; " + name + "=");
+        if (parts.length === 2) return parts.pop().split(";").shift();
+        return null;
+    }
+
+    function acceptAllCookies() {
+        let prefs = {
+            essential: true,
+            analytics: true
+        };
+        document.cookie = "cookie_consent=" + encodeURIComponent(JSON.stringify(prefs)) + "; path=/; max-age=" + (60 * 60 * 24 * 365);
+        document.getElementById("cookie-banner").style.display = "none";
+        document.getElementById("cookie-modal").style.display = "none";
+    }
+
+    function openCookieModal() {
+        document.getElementById("cookie-modal").style.display = "flex";
+    }
+
+    function closeCookieModal() {
+        document.getElementById("cookie-modal").style.display = "none";
+    }
+
+    function saveCookiePreferences() {
+        let prefs = {
+            essential: true,
+            analytics: document.getElementById("cookie-analytics").checked
+        };
+        document.cookie = "cookie_consent=" + encodeURIComponent(JSON.stringify(prefs)) + "; path=/; max-age=" + (60 * 60 * 24 * 365);
+        document.getElementById("cookie-modal").style.display = "none";
+        document.getElementById("cookie-banner").style.display = "none";
+    }
+
+    window.onload = function() {
+        if (getCookie("cookie_consent")) {
+            document.getElementById("cookie-banner").style.display = "none";
+            document.getElementById("cookie-modal").style.display = "none";
+        }
+    };
+</script>
 
 <!-- Bootstrap 5 JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -208,44 +256,6 @@
     });
 </script>
 
-<!-- Accept Cookies -->
-<script>
-    function acceptAllCookies() {
-        let prefs = {
-            essential: true,
-            analytics: true,
-            marketing: true
-        };
-        document.cookie = "cookie_consent=" + JSON.stringify(prefs) + "; path=/; max-age=" + 60 * 60 * 24 * 365;
-        document.getElementById("cookie-banner").style.display = "none";
-    }
-
-    function openCookieModal() {
-        document.getElementById("cookie-modal").style.display = "flex";
-    }
-
-    function closeCookieModal() {
-        document.getElementById("cookie-modal").style.display = "none";
-    }
-
-    function saveCookiePreferences() {
-        let prefs = {
-            essential: true,
-            analytics: document.getElementById("cookie-analytics").checked,
-            marketing: document.getElementById("cookie-marketing").checked
-        };
-        document.cookie = "cookie_consent=" + JSON.stringify(prefs) + "; path=/; max-age=" + 60 * 60 * 24 * 365;
-        document.getElementById("cookie-modal").style.display = "none";
-        document.getElementById("cookie-banner").style.display = "none";
-    }
-
-    // Cek status cookie saat load
-    window.onload = function() {
-        if (document.cookie.includes("cookie_consent")) {
-            document.getElementById("cookie-banner").style.display = "none";
-        }
-    };
-</script>
 
 </body>
 
