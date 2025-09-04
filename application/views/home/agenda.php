@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="section-header text-center mb-4">
                     <h2 class="fw-bold">Agenda</h2>
-                    <!-- <p class="text-muted">Ikuti update terbaru agenda akademik dan non-akademik di website ini.</p> -->
+                    <p class="text-muted">Ikuti update terbaru agenda akademik dan non-akademik di website ini.</p>
                 </div>
             </div>
             <!-- Agenda Grid -->

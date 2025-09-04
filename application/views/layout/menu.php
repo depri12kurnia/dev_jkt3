@@ -110,8 +110,6 @@ $nav_unit = $this->nav_model->nav_unit();
                     </ul>
                 </li>
 
-
-
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="pelayananPublikDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pelayanan Publik</a>
                     <ul class="dropdown-menu dropdown-menu-3col p-0" aria-labelledby="pelayananPublikDropdown">
@@ -187,8 +185,9 @@ $nav_unit = $this->nav_model->nav_unit();
                                     <li><a class="dropdown-item" href="#" target="_blank">Bios Feeder BLU</a></li>
                                 </div>
                                 <div class="col-6">
-                                    <div class="dropdown-header fw-bold text-default">Aplikasi</div>
-                                    <li><a class="dropdown-item" href="#" target="_blank">#</a></li>
+                                    <div class="dropdown-header fw-bold text-default">Aplikasi Keuangan</div>
+                                    <li><a class="dropdown-item" href="https://bios.kemenkeu.go.id/login" target="_blank">Bios Kemenkeu</a></li>
+                                    <li><a class="dropdown-item" href="https://simasku.poltekkesjakarta3.ac.id/auth" target="_blank">Simasku</a></li>
                                 </div>
                             </div>
                         </div>
