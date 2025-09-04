@@ -68,7 +68,7 @@ $site_info = $this->konfigurasi_model->listing();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
 
     <!-- Custom CSS From jsDeliver -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/style.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/responsive.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/css/google-translate.css">
@@ -85,10 +85,10 @@ $site_info = $this->konfigurasi_model->listing();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/css/popup-enhanced.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/css/blog-enhanced.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/css/open-accessibility.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/css/faq-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/css/faq-enhanced.css"> -->
 
     <!-- Custom CSS -->
-    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/style.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/style.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/responsive.css">
 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/google-translate.css">
@@ -105,7 +105,7 @@ $site_info = $this->konfigurasi_model->listing();
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/popup-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/blog-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/open-accessibility.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/faq-enhanced.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/faq-enhanced.css">
 
     <!-- jQuery (WAJIB untuk DataTables) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
