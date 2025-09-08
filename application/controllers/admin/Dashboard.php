@@ -1,35 +1,40 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-require_once APPPATH . 'third_party/PHPExcel.php';
-
 class Dashboard extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
+
+        $url_pengalihan = str_replace('index.php/', '', current_url());
+        $pengalihan     = $this->session->set_userdata('pengalihan', $url_pengalihan);
+        $this->simple_login->check_login($pengalihan);
         $this->load->model('Dashboard_model');
         $this->load->library('session');
     }
 
-    public function import_excel()
+    public function index()
+    {
+        $data = array(
+            'title'                  => 'Halaman Dashboard Mahasiswa & Dosen',
+            'isi'                    => 'admin/dashboard/list'
+        );
+        $this->load->view('admin/layout/wrapper', $data, FALSE);
+    }
+
+    public function import_mahasiswa()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['excel_file']['name'])) {
-            $file = $_FILES['excel_file']['tmp_name'];
-            $objPHPExcel = PHPExcel_IOFactory::load($file);
+            require_once APPPATH . 'third_party/vendor/autoload.php'; // pastikan path autoload benar
 
-            $sheet = $objPHPExcel->getActiveSheet();
-            $data = [];
-            foreach ($sheet->getRowIterator() as $row) {
-                $cellIterator = $row->getCellIterator();
-                $cellIterator->setIterateOnlyExistingCells(false);
-                $rowData = [];
-                foreach ($cellIterator as $cell) {
-                    $rowData[] = $cell->getValue();
-                }
-                $data[] = $rowData;
-            }
+            use PhpOffice\PhpSpreadsheet\IOFactory;
+
+            $file = $_FILES['excel_file']['tmp_name'];
+            $spreadsheet = IOFactory::load($file);
+            $sheet = $spreadsheet->getActiveSheet();
+            $data = $sheet->toArray();
 
             // Mulai dari baris ke-1 (skip header)
             for ($i = 1; $i < count($data); $i++) {
@@ -46,7 +51,7 @@ class Dashboard extends CI_Controller
                 $this->Dashboard_model->insert_import_data($insert);
             }
 
-            $this->session->set_flashdata('success', 'Import berhasil!');
+            $this->session->set_flashdata('success', 'Import mahasiswa berhasil!');
             redirect('admin/dashboard');
         } else {
             $this->load->view('admin/import_dashboard');

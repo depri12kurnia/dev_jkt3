@@ -64,6 +64,30 @@
                                      </div>
                                  </div>
                              </div>
+                             <div class="accreditation-section py-4">
+                                 <div class="container">
+                                     <div class="row align-items-center">
+                                         <div class="col-md-8">
+                                             <h6 class="mb-2">Terakreditasi & Diakui:</h6>
+                                             <div class="d-flex gap-3 align-items-center">
+                                                 <img src="<?php echo base_url('assets/images/logos/ban-pt.png'); ?>" alt="BAN-PT" height="40">
+                                                 <img src="<?php echo base_url('assets/images/logos/dikti-saintek.png'); ?>" alt="Dikti Saintek" height="40">
+                                                 <span class="badge bg-success">Akreditasi Unggul+</span>
+                                             </div>
+                                         </div>
+                                         <div class="col-md-4 text-end">
+                                             <div class="trust-indicators">
+                                                 <span class="badge bg-warning text-dark me-2">
+                                                     <i class="bi bi-shield-check me-1"></i>Terpercaya
+                                                 </span>
+                                                 <span class="badge bg-info text-white">
+                                                     <i class="bi bi-award me-1"></i>Bersertifikat
+                                                 </span>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
                          </div>
                      </div>
              <?php }

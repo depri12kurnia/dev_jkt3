@@ -116,19 +116,23 @@ $nav_unit = $this->nav_model->nav_unit();
                         <div class="container">
                             <div class="row">
                                 <div class="col-4">
+                                    <div class="dropdown-header fw-bold text-default">Layanan Publik</div>
+                                    <li><a class="dropdown-item" href="#">PPID</a></li>
+                                    <li><a class="dropdown-item" href="https://sipadu.poltekkesjakarta3.ac.id/" target="_blank">Sistem Pengaduan Terpadu</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('unduhan/akademik') ?>">Layanan Akademik</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('unduhan/kemahasiswaan') ?>">Layanan Kemahasiswaan</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('unduhan/layananpelanggan') ?>">Layanan Pelanggan</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('unduhan/layananperpustakaan') ?>">Layanan Perpustakaan</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('helpdesk') ?>">Faq & Helpdesk</a></li>
+                                </div>
+                                <div class="col-4">
                                     <div class="dropdown-header fw-bold text-default">Informasi Publik</div>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/dokumen') ?>">Dokumen</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/akuntabilitas') ?>">Akuntabilitas</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/standardpelayanan') ?>">Standard Pelayanan</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/prestasi') ?>">Prestasi & Penghargaan</a></li>
                                 </div>
-                                <div class="col-4">
-                                    <div class="dropdown-header fw-bold text-default">Layanan Publik</div>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('unduhan/akademik') ?>">Akademik</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('unduhan/kemahasiswaan') ?>">Kemahasiswaan</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('unduhan/layananpelanggan') ?>">Layanan Pelanggan</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('unduhan/layananperpustakaan') ?>">Layanan Perpustakaan</a></li>
-                                </div>
+
                                 <div class="col-4">
                                     <div class="dropdown-header fw-bold text-default">Standar Layanan</div>
                                     <?php foreach ($nav_layanan as $nav_layanan) { ?>

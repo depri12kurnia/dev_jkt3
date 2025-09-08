@@ -319,8 +319,9 @@
     .navbar-nav {
         flex-direction: column;
         gap: 0;
-        align-items: flex-start;
+        align-items: flex-start !important;
         width: 100%;
+        text-align: left !important;
     }
 
     .navbar-nav>li {
@@ -742,6 +743,7 @@
         min-height: 44px;
         display: flex;
         align-items: center;
+        text-align: left !important;
     }
 
     .header-contact li {
