@@ -140,7 +140,7 @@
                             <label for="visi">Visi Program Studi</label>
                             <textarea id="visi"
                                 name="visi"
-                                class="form-control"
+                                class="form-control tinymce-editor"
                                 rows="4"
                                 placeholder="Masukkan visi program studi (opsional)"
                                 maxlength="1000"><?php echo set_value('visi', $prodi->visi) ?></textarea>
@@ -154,7 +154,7 @@
                             <label for="misi">Misi Program Studi</label>
                             <textarea id="misi"
                                 name="misi"
-                                class="form-control"
+                                class="form-control tinymce-editor"
                                 rows="4"
                                 placeholder="Masukkan misi program studi (opsional)"
                                 maxlength="2000"><?php echo set_value('misi', $prodi->misi) ?></textarea>
@@ -185,7 +185,7 @@
                             <label for="akreditasi">Akreditasi</label>
                             <select id="akreditasi" name="akreditasi" class="form-control">
                                 <option value="">Belum Terakreditasi</option>
-                                <option value="A" <?php echo set_select('akreditasi', 'A', ($prodi->akreditasi == 'A')) ?>>A (Unggul)</option>
+                                <option value="A (Unggul)" <?php echo set_select('akreditasi', 'A (Unggul)', ($prodi->akreditasi == 'A (Unggul)')) ?>>A (Unggul)</option>
                                 <option value="B" <?php echo set_select('akreditasi', 'B', ($prodi->akreditasi == 'B')) ?>>B (Baik Sekali)</option>
                                 <option value="C" <?php echo set_select('akreditasi', 'C', ($prodi->akreditasi == 'C')) ?>>C (Baik)</option>
                                 <option value="Baik Sekali" <?php echo set_select('akreditasi', 'Baik Sekali', ($prodi->akreditasi == 'Baik Sekali')) ?>>Baik Sekali</option>

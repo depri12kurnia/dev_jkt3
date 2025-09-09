@@ -655,10 +655,20 @@
                                                     </span>
                                                 </div>
                                             </div>
+                                            <div class="single-blog">
+                                                <div class="blog-items">
+                                                    <div class="blog-content-box">
+                                                        <div class="blog-content">
+                                                            <?php echo !empty($prodi->deskripsi) ? $prodi->deskripsi : 'Program studi yang mempersiapkan lulusan dengan kompetensi tinggi dan keahlian profesional.'; ?>
+                                                            <h5 class="card-title mb-4">Visi</h5>
+                                                            <?php echo !empty($prodi->visi) ? $prodi->visi : 'Visi Program Studi'; ?>
+                                                            <h5 class="card-title mb-4">Misi</h5>
+                                                            <?php echo !empty($prodi->misi) ? $prodi->misi : 'Misi Program Studi'; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                            <p class="text-muted mb-4">
-                                                <?php echo !empty($prodi->deskripsi) ? $prodi->deskripsi : 'Program studi yang mempersiapkan lulusan dengan kompetensi tinggi dan keahlian profesional.'; ?>
-                                            </p>
 
                                             <div class="row g-3 mb-4">
                                                 <?php
@@ -777,7 +787,7 @@
                                                 <div class="d-flex gap-3 align-items-center">
                                                     <img src="<?php echo base_url('assets/images/logos/ban-pt.png'); ?>" alt="BAN-PT" height="40">
                                                     <img src="<?php echo base_url('assets/images/logos/dikti-saintek.png'); ?>" alt="Dikti Saintek" height="40">
-                                                    <span class="badge bg-success">Akreditasi A</span>
+                                                    <span class="badge bg-success">Akreditasi <?php echo $prodi->akreditasi; ?></span>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 text-end">
