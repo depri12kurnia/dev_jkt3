@@ -8,8 +8,8 @@
                     </div>
                     <div class="page-header-content">
                         <ol class="breadcrumb">
-                            <li><a href="<?php echo base_url('/'); ?>">Home</a></li>
-                            <li>SDM</li>
+                            <li><a href="<?php echo base_url('/'); ?>">Home ></a></li>
+                            <li>Data SDM</li>
                         </ol>
                     </div>
                 </div>
@@ -27,14 +27,14 @@
                         <div class="card shadow border-0 h-100">
                             <img src="<?php echo !empty($sdm->foto_url) ? base_url('assets/upload/sdm/' . $sdm->foto_url) : base_url('assets/images/staff/default-avatar.jpg'); ?>"
                                 alt="<?php echo htmlspecialchars($sdm->nama_sdm); ?>"
-                                class="card-img-top" style="height:280px;object-fit:cover;">
+                                class="card-img-top" style="height:100%;object-fit:cover;">
                             <div class="card-body text-center">
                                 <h5 class="card-title fw-bold mb-2"><?php echo $sdm->nama_sdm; ?></h5>
                                 <span class="badge bg-primary mb-2"><?php echo !empty($sdm->jabatan) ? $sdm->jabatan : 'Staff'; ?></span>
-                                <?php if (!empty($sdm->nip)): ?>
+                                <!-- <?php if (!empty($sdm->nip)): ?>
                                     <div class="mb-2"><small class="text-muted">NIP: <?php echo $sdm->nip; ?></small></div>
                                 <?php endif; ?>
-                                <a href="<?php echo base_url('sdm/detail/' . $sdm->slug); ?>" class="btn btn-outline-primary btn-sm mt-2">Lihat Profil</a>
+                                <a href="<?php echo base_url('sdm/detail/' . $sdm->slug); ?>" class="btn btn-outline-primary btn-sm mt-2">Lihat Profil</a> -->
                             </div>
                         </div>
                     </div>
@@ -58,14 +58,14 @@
                         <div class="card shadow border-0 h-100">
                             <img src="<?php echo !empty($sdm->foto_url) ? base_url('assets/upload/sdm/' . $sdm->foto_url) : base_url('assets/images/staff/default-avatar.jpg'); ?>"
                                 alt="<?php echo htmlspecialchars($sdm->nama_sdm); ?>"
-                                class="card-img-top" style="height:280px;object-fit:cover;">
+                                class="card-img-top" style="height:100%;object-fit:cover;">
                             <div class="card-body text-center">
                                 <h5 class="card-title fw-bold mb-2"><?php echo $sdm->nama_sdm; ?></h5>
                                 <span class="badge bg-primary mb-2"><?php echo !empty($sdm->jabatan) ? $sdm->jabatan : 'Staff'; ?></span>
-                                <?php if (!empty($sdm->nip)): ?>
+                                <!-- <?php if (!empty($sdm->nip)): ?>
                                     <div class="mb-2"><small class="text-muted">NIP: <?php echo $sdm->nip; ?></small></div>
                                 <?php endif; ?>
-                                <a href="<?php echo base_url('sdm/detail/' . $sdm->slug); ?>" class="btn btn-outline-primary btn-sm mt-2">Lihat Profil</a>
+                                <a href="<?php echo base_url('sdm/detail/' . $sdm->slug); ?>" class="btn btn-outline-primary btn-sm mt-2">Lihat Profil</a> -->
                             </div>
                         </div>
                     </div>
@@ -85,15 +85,15 @@
             <?php
             if (!empty($sdm_list)) {
                 foreach ($sdm_list as $sdm) { ?>
-                    <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="col-md-3 col-sm-6 mb-4">
                         <div class="card shadow border-0 h-100">
                             <img src="<?php echo !empty($sdm->foto_url) ? base_url('assets/upload/sdm/' . $sdm->foto_url) : base_url('assets/images/staff/default-avatar.jpg'); ?>"
                                 alt="<?php echo htmlspecialchars($sdm->nama_sdm); ?>"
-                                class="card-img-top" style="height:280px;object-fit:cover;">
+                                class="card-img-top" style="height:100%;object-fit:cover;">
                             <div class="card-body text-center">
                                 <h5 class="card-title fw-bold mb-2"><?php echo $sdm->nama_sdm; ?></h5>
                                 <span class="badge bg-primary mb-2"><?php echo !empty($sdm->jabatan) ? $sdm->jabatan : 'Staff'; ?></span>
-                                <?php if (!empty($sdm->nip)): ?>
+                                <!-- <?php if (!empty($sdm->nip)): ?>
                                     <div class="mb-2"><small class="text-muted">NIP: <?php echo $sdm->nip; ?></small></div>
                                 <?php endif; ?>
                                 <?php if (!empty($sdm->email)): ?>
@@ -102,7 +102,7 @@
                                 <?php if (!empty($sdm->no_hp)): ?>
                                     <div class="mb-2"><small class="text-muted"><i class="bi bi-telephone"></i> <?php echo $sdm->no_hp; ?></small></div>
                                 <?php endif; ?>
-                                <a href="<?php echo base_url('sdm/detail/' . $sdm->slug); ?>" class="btn btn-outline-primary btn-sm mt-2">Lihat Profil</a>
+                                <a href="<?php echo base_url('sdm/detail/' . $sdm->slug); ?>" class="btn btn-outline-primary btn-sm mt-2">Lihat Profil</a> -->
                             </div>
                         </div>
                     </div>
