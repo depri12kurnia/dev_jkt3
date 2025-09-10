@@ -1193,7 +1193,7 @@
                         gtag('event', 'sdm_interaction', {
                             'event_category': 'SDM Section',
                             'event_label': this.textContent.trim() || this.className,
-                            'page_title': 'Unit <?php echo $unit_data->nama; ?>',
+                            'page_title': '<?php echo $pusat_data->nama; ?>',
                             'total_sdm': <?php echo !empty($sdm_list) ? count($sdm_list) : 0; ?>
                         });
                     }
