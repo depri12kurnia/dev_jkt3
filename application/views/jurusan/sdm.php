@@ -1,7 +1,7 @@
 <div class="b-example-divider"></div>
 <div class="container px-4 py-5" id="custom-cards">
     <div class="text-center mb-5">
-        <h2 class="pb-2 border-bottom fw-bold text-primary">SDM Jurusan <?php echo $jurusan_data->nama; ?></h2>
+        <h2 class="pb-2 border-bottom fw-bold" style="color: #00B9AD;">SDM Jurusan <?php echo $jurusan_data->nama; ?></h2>
         <p class="text-muted">Tim Profesional yang Berpengalaman dan Berdedikasi</p>
     </div>
 

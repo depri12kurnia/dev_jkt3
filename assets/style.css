@@ -398,7 +398,7 @@ ol {
   border-radius: 2px;
 }
 
-.navbar-nav {
+/* .navbar-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
@@ -406,10 +406,17 @@ ol {
   list-style: none;
   margin: 0;
   padding: 0;
+} */
+.navbar-nav {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
 }
 
 .navbar-nav>li {
-  position: relative;
+  position: static;
   text-align: left !important;
 }
 

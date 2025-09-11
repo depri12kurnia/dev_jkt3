@@ -47,7 +47,7 @@
 
                         <!-- Dynamic Subtitle -->
                         <div class="hero-subtitle mb-4">
-                            <span class="text-<?php echo !empty($unit_data->color) ? $unit_data->color : 'primary'; ?> fw-semibold fs-4">
+                            <span class="text-<?php echo !empty($unit_data->color) ? $unit_data->color : '#00B9AD'; ?> fw-semibold fs-4">
                                 <?php echo !empty($unit_data->tagline) ? $unit_data->tagline : 'Melayani dengan Profesional'; ?>
                             </span>
                             <span class="text-muted fs-4"> untuk Kemajuan Institusi</span>
@@ -201,7 +201,7 @@
         }
 
         .hero-title {
-            background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+            background: linear-gradient(135deg, #00B9AD 100%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -523,7 +523,7 @@
     <!-- SDM Section -->
     <div class="container px-0 py-5">
         <div class="text-center mb-5">
-            <h2 class="pb-2 border-bottom fw-bold text-primary">SDM <?php echo $unit_data->nama; ?></h2>
+            <h2 class="pb-2 border-bottom fw-bold" style="color: #00B9AD;">SDM <?php echo $unit_data->nama; ?></h2>
             <p class="text-muted">Tim Profesional dan Berdedikasi</p>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-3" id="sdm-container">

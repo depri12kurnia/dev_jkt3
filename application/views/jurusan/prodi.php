@@ -1,6 +1,6 @@
 <div class="container-fluid px-3 px-lg-5 py-4 py-lg-5">
     <div class="text-center mb-5">
-        <h2 class="pb-2 border-bottom fw-bold text-primary">Program Studi</h2>
+        <h2 class="pb-2 border-bottom fw-bold" style="color: #00B9AD;">Program Studi</h2>
         <p class="text-muted fs-6">Pilihan Program Pendidikan di Jurusan <?php echo $jurusan_data->nama; ?></p>
     </div>
 

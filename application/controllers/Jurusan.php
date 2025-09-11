@@ -10,7 +10,8 @@ class Jurusan extends CI_Controller
         $this->load->model('konfigurasi_model');
         $this->load->model('jurusan_model');
         $this->load->model('prodi_model');
-        $this->load->model('sdm_model'); // Aktifkan model SDM
+        $this->load->model('sdm_model');
+        $this->load->model('sdm_jurusan_model');
     }
 
     public function index($slug = null)
@@ -37,11 +38,11 @@ class Jurusan extends CI_Controller
         // Get all prodi untuk keperluan lain (jika diperlukan)
         $prodi = $this->prodi_model->listing();
 
-        // Get SDM berdasarkan jurusan - PERBAIKAN UTAMA
-        $sdm_list = $this->get_sdm_by_jurusan($jurusan_data->id);
+        // Get SDM berdasarkan jurusan menggunakan model
+        $sdm_list = $this->sdm_jurusan_model->get_sdm_by_jurusan($jurusan_data->id);
 
         // Get statistik SDM untuk jurusan ini
-        $sdm_statistics = $this->get_sdm_statistics($jurusan_data->id);
+        $sdm_statistics = $this->sdm_jurusan_model->get_sdm_statistics($jurusan_data->id);
 
         $data = array(
             'title'              => $site->namaweb . ' - ' . $jurusan_data->nama,
@@ -57,234 +58,6 @@ class Jurusan extends CI_Controller
             'isi'                => 'jurusan/list'
         );
         $this->load->view('layout/wrapper', $data);
-    }
-
-    /**
-     * Method untuk mendapatkan SDM berdasarkan jurusan
-     * Menampilkan SDM dengan level: institusi, jurusan tertentu, dan prodi dalam jurusan
-     */
-    private function get_sdm_by_jurusan($jurusan_id)
-    {
-        try {
-            // Cek apakah tabel sdm dan jabatan_sdm ada
-            if (!$this->db->table_exists('sdm') || !$this->db->table_exists('jabatan_sdm')) {
-                log_message('error', 'Tabel sdm atau jabatan_sdm tidak ditemukan');
-                return array();
-            }
-
-            $this->db->select('
-                s.id, 
-                s.nama, 
-                s.nip, 
-                s.jenis_kelamin, 
-                s.email, 
-                s.no_hp, 
-                s.foto_url, 
-                s.deskripsi,
-                js.level,
-                js.jabatan,
-                js.periode_mulai,
-                js.periode_akhir,
-                js.jurusan_id,
-                js.prodi_id
-            ');
-
-            $this->db->from('sdm s');
-            $this->db->join('jabatan_sdm js', 's.id = js.sdm_id', 'left');
-
-            // Dapatkan prodi IDs terlebih dahulu
-            $prodi_ids = $this->get_prodi_ids_by_jurusan($jurusan_id);
-
-            // Filter berdasarkan jurusan
-            $this->db->group_start();
-            // Level institusi (tampil di semua jurusan)
-            $this->db->where('js.level', 'institusi');
-
-            // ATAU level jurusan dengan jurusan_id yang sesuai
-            $this->db->or_group_start();
-            $this->db->where('js.level', 'jurusan');
-            $this->db->where('js.jurusan_id', $jurusan_id);
-            $this->db->group_end();
-
-            // ATAU level prodi yang berada di bawah jurusan ini
-            if (!empty($prodi_ids) && $prodi_ids[0] != 0) {
-                $this->db->or_group_start();
-                $this->db->where('js.level', 'prodi');
-                $this->db->where_in('js.prodi_id', $prodi_ids);
-                $this->db->group_end();
-            }
-            $this->db->group_end();
-
-            // Urutkan berdasarkan prioritas level dan nama
-            $this->db->order_by('
-                CASE js.level 
-                    WHEN "institusi" THEN 1 
-                    WHEN "jurusan" THEN 2 
-                    WHEN "prodi" THEN 3 
-                    ELSE 4 
-                END
-            ');
-            $this->db->order_by('s.nama', 'ASC');
-
-            $query = $this->db->get();
-
-            if ($query === FALSE) {
-                log_message('error', 'Query SDM by jurusan gagal: ' . $this->db->error()['message']);
-                return array();
-            }
-
-            return $query->result();
-        } catch (Exception $e) {
-            log_message('error', 'Error dalam get_sdm_by_jurusan: ' . $e->getMessage());
-            return array();
-        }
-    }
-
-    /**
-     * Helper method untuk mendapatkan ID prodi berdasarkan jurusan
-     */
-    private function get_prodi_ids_by_jurusan($jurusan_id)
-    {
-        try {
-            // Cek apakah tabel prodi ada
-            if (!$this->db->table_exists('prodi')) {
-                log_message('error', 'Tabel prodi tidak ditemukan');
-                return array(0);
-            }
-
-            $this->db->select('id');
-            $this->db->where('jurusan_id', $jurusan_id);
-            $query = $this->db->get('prodi');
-
-            if ($query === FALSE) {
-                log_message('error', 'Query prodi by jurusan gagal: ' . $this->db->error()['message']);
-                return array(0);
-            }
-
-            $prodi_ids = array();
-            if ($query->num_rows() > 0) {
-                foreach ($query->result() as $prodi) {
-                    $prodi_ids[] = $prodi->id;
-                }
-            }
-
-            return !empty($prodi_ids) ? $prodi_ids : array(0);
-        } catch (Exception $e) {
-            log_message('error', 'Error dalam get_prodi_ids_by_jurusan: ' . $e->getMessage());
-            return array(0);
-        }
-    }
-
-    /**
-     * Method untuk mendapatkan statistik SDM berdasarkan jurusan
-     */
-    private function get_sdm_statistics($jurusan_id)
-    {
-        $sdm_list = $this->get_sdm_by_jurusan($jurusan_id);
-
-        $statistics = array(
-            'total_sdm' => 0,
-            'total_asn' => 0,
-            'total_non_asn' => 0,
-            'total_institusi' => 0,
-            'total_jurusan' => 0,
-            'total_prodi' => 0,
-            'total_laki' => 0,
-            'total_perempuan' => 0,
-            'by_level' => array(),
-            'by_gender' => array()
-        );
-
-        if (!empty($sdm_list)) {
-            $statistics['total_sdm'] = count($sdm_list);
-
-            foreach ($sdm_list as $sdm) {
-                // Hitung berdasarkan status ASN
-                if (!empty($sdm->nip)) {
-                    $statistics['total_asn']++;
-                } else {
-                    $statistics['total_non_asn']++;
-                }
-
-                // Hitung berdasarkan level jabatan
-                switch ($sdm->level) {
-                    case 'institusi':
-                        $statistics['total_institusi']++;
-                        break;
-                    case 'jurusan':
-                        $statistics['total_jurusan']++;
-                        break;
-                    case 'prodi':
-                        $statistics['total_prodi']++;
-                        break;
-                }
-
-                // Hitung berdasarkan jenis kelamin
-                if ($sdm->jenis_kelamin == 'L') {
-                    $statistics['total_laki']++;
-                } else {
-                    $statistics['total_perempuan']++;
-                }
-            }
-        }
-
-        return $statistics;
-    }
-
-    /**
-     * Method untuk mendapatkan SDM berdasarkan prodi
-     */
-    private function get_sdm_by_prodi($prodi_id)
-    {
-        try {
-            // Cek apakah tabel ada
-            if (!$this->db->table_exists('sdm') || !$this->db->table_exists('jabatan_sdm')) {
-                log_message('error', 'Tabel sdm atau jabatan_sdm tidak ditemukan');
-                return array();
-            }
-
-            $this->db->select('
-                s.id, 
-                s.nama, 
-                s.nip, 
-                s.jenis_kelamin, 
-                s.email, 
-                s.no_hp, 
-                s.foto_url, 
-                s.deskripsi,
-                js.level,
-                js.jabatan,
-                js.periode_mulai,
-                js.periode_akhir
-            ');
-
-            $this->db->from('sdm s');
-            $this->db->join('jabatan_sdm js', 's.id = js.sdm_id', 'left');
-
-            // Filter untuk prodi tertentu
-            $this->db->group_start();
-            $this->db->where('js.level', 'institusi');
-            $this->db->or_group_start();
-            $this->db->where('js.level', 'prodi');
-            $this->db->where('js.prodi_id', $prodi_id);
-            $this->db->group_end();
-            $this->db->group_end();
-
-            $this->db->order_by('js.level', 'ASC');
-            $this->db->order_by('s.nama', 'ASC');
-
-            $query = $this->db->get();
-
-            if ($query === FALSE) {
-                log_message('error', 'Query SDM by prodi gagal: ' . $this->db->error()['message']);
-                return array();
-            }
-
-            return $query->result();
-        } catch (Exception $e) {
-            log_message('error', 'Error dalam get_sdm_by_prodi: ' . $e->getMessage());
-            return array();
-        }
     }
 
     // Method untuk listing semua jurusan

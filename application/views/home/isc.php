@@ -226,6 +226,17 @@
                                     </div>
                                 </a>
                             </div>
+                            <div class="col-md-4">
+                                <a href="https://ppid.poltekkesjakarta3.ac.id/" target="_blank" class="text-decoration-none">
+                                    <div class="service-card">
+                                        <div class="icon">
+                                            <i class="fa fa-rent"></i>
+                                        </div>
+                                        <h5>Sewa Properti & Kendaraan</h5>
+                                        <p>Layanan sewa properti dan kendaraan secara online dengan seperti aula gedung, asrama dan kendaraan</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <!-- Information Tab -->

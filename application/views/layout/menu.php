@@ -117,8 +117,9 @@ $nav_unit = $this->nav_model->nav_unit();
                             <div class="row">
                                 <div class="col-4">
                                     <div class="dropdown-header fw-bold text-default">Layanan Publik</div>
-                                    <li><a class="dropdown-item" href="#">PPID</a></li>
-                                    <li><a class="dropdown-item" href="https://sipadu.poltekkesjakarta3.ac.id/" target="_blank">Sistem Pengaduan Terpadu</a></li>
+                                    <li><a class="dropdown-item" href="https://ppid.poltekkesjakarta3.ac.id/">PPID</a></li>
+                                    <li><a class="dropdown-item" href="https://sipadu.poltekkesjakarta3.ac.id/" target="_blank">Layanan Pengaduan Terpadu</a></li>
+                                    <li><a class="dropdown-item" href="https://rent.poltekkesjakarta3.ac.id/" target="_blank">Layanan Sewa Properti dan Kendaraan</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/akademik') ?>">Layanan Akademik</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/kemahasiswaan') ?>">Layanan Kemahasiswaan</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/layananpelanggan') ?>">Layanan Pelanggan</a></li>

@@ -3,6 +3,7 @@ class CustomGoogleTranslate {
     constructor() {
         this.currentLang = 'id';
         this.baseUrl = this.getBaseUrl();
+        this.isMobile = window.innerWidth <= 768;
         this.init();
     }
 
@@ -19,6 +20,11 @@ class CustomGoogleTranslate {
         this.createCustomInterface();
         this.loadGoogleTranslate();
 
+        // Add resize listener for mobile detection
+        window.addEventListener('resize', () => {
+            this.isMobile = window.innerWidth <= 768;
+        });
+
         // Delay handlers until Google Translate is loaded
         setTimeout(() => {
             this.handleLanguageChange();
@@ -28,25 +34,25 @@ class CustomGoogleTranslate {
     createCustomInterface() {
         const container = document.querySelector('.google-translate-container');
         if (!container) {
-            // console.error('Google translate container not found');
             return;
         }
 
         container.innerHTML = `
             <div class="custom-language-switcher">
-                <button class="custom-translate-btn" id="translateBtn" type="button">
+                <button class="custom-translate-btn" id="translateBtn" type="button" 
+                        aria-expanded="false" aria-haspopup="true">
                     <img src="${this.baseUrl}assets/flag/idn.png" alt="ID" class="flag-icon" id="currentFlag" 
                          onerror="this.style.display='none'">
                     <span id="currentLang">ID</span>
                     <i class="fa fa-chevron-down" style="font-size: 12px; margin-left: 8px;"></i>
                 </button>
-                <div class="translate-dropdown" id="translateDropdown">
-                    <a href="#" class="translate-option active" data-lang="id" data-google-lang="/id/id">
+                <div class="translate-dropdown" id="translateDropdown" role="menu">
+                    <a href="#" class="translate-option active" data-lang="id" data-google-lang="/id/id" role="menuitem">
                         <img src="${this.baseUrl}assets/flag/idn.png" alt="ID" class="flag-icon" 
                              onerror="this.style.display='none'">
                         <span>Bahasa Indonesia</span>
                     </a>
-                    <a href="#" class="translate-option" data-lang="en" data-google-lang="/id/en">
+                    <a href="#" class="translate-option" data-lang="en" data-google-lang="/id/en" role="menuitem">
                         <img src="${this.baseUrl}assets/flag/eng.png" alt="EN" class="flag-icon" 
                              onerror="this.style.display='none'">
                         <span>English</span>
@@ -69,15 +75,13 @@ class CustomGoogleTranslate {
                     multilanguagePage: true
                 }, 'google_translate_element');
 
-                // console.log('Google Translate initialized successfully');
-
                 // Set up after initialization
                 setTimeout(() => {
                     this.setupGoogleTranslateEvents();
                 }, 500);
 
             } catch (error) {
-                // console.error('Error initializing Google Translate:', error);
+                console.error('Error initializing Google Translate:', error);
             }
         };
 
@@ -88,11 +92,10 @@ class CustomGoogleTranslate {
             script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
             script.async = true;
             script.onerror = () => {
-                // console.error('Failed to load Google Translate script');
+                console.error('Failed to load Google Translate script');
             };
             document.head.appendChild(script);
         } else {
-            // If already loaded, initialize
             window.googleTranslateElementInit();
         }
     }
@@ -115,27 +118,69 @@ class CustomGoogleTranslate {
         const options = document.querySelectorAll('.translate-option');
 
         if (!btn || !dropdown) {
-            // console.error('Translation UI elements not found');
+            console.error('Translation UI elements not found');
             return;
         }
 
-        // Toggle dropdown
-        btn.addEventListener('click', (e) => {
+        // Enhanced mobile touch support
+        const toggleDropdown = (e) => {
             e.preventDefault();
             e.stopPropagation();
+
+            const isOpen = dropdown.classList.contains('show');
+
+            // Close other dropdowns first
+            document.querySelectorAll('.translate-dropdown.show').forEach(dd => {
+                if (dd !== dropdown) {
+                    dd.classList.remove('show');
+                }
+            });
+
+            // Toggle current dropdown
             dropdown.classList.toggle('show');
+
+            // Update aria-expanded
+            btn.setAttribute('aria-expanded', dropdown.classList.contains('show'));
 
             // Update chevron icon
             const icon = btn.querySelector('i');
             if (icon) {
                 icon.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
             }
-        });
+        };
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
+        // Add both click and touchstart for better mobile support
+        btn.addEventListener('click', toggleDropdown);
+        btn.addEventListener('touchstart', (e) => {
+            // Prevent default to avoid double firing
+            if (this.isMobile) {
+                e.preventDefault();
+                toggleDropdown(e);
+            }
+        }, { passive: false });
+
+        // Enhanced close dropdown functionality
+        const closeDropdown = (e) => {
             if (!e.target.closest('.custom-language-switcher')) {
                 dropdown.classList.remove('show');
+                btn.setAttribute('aria-expanded', 'false');
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            }
+        };
+
+        // Add multiple event listeners for better compatibility
+        document.addEventListener('click', closeDropdown);
+        document.addEventListener('touchstart', closeDropdown);
+
+        // Add escape key support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+                btn.setAttribute('aria-expanded', 'false');
+                btn.focus(); // Return focus to button
                 const icon = btn.querySelector('i');
                 if (icon) {
                     icon.style.transform = 'rotate(0deg)';
@@ -143,22 +188,52 @@ class CustomGoogleTranslate {
             }
         });
 
-        // Handle language selection
+        // Enhanced language selection
         options.forEach(option => {
-            option.addEventListener('click', (e) => {
+            const selectLanguage = (e) => {
                 e.preventDefault();
+                e.stopPropagation();
+
                 const lang = option.dataset.lang;
                 const googleLang = option.dataset.googleLang;
 
                 this.translatePage(googleLang);
                 this.updateInterface(option);
+
+                // Close dropdown
                 dropdown.classList.remove('show');
+                btn.setAttribute('aria-expanded', 'false');
 
                 const icon = btn.querySelector('i');
                 if (icon) {
                     icon.style.transform = 'rotate(0deg)';
                 }
+            };
+
+            option.addEventListener('click', selectLanguage);
+            option.addEventListener('touchstart', (e) => {
+                if (this.isMobile) {
+                    e.preventDefault();
+                    selectLanguage(e);
+                }
+            }, { passive: false });
+
+            // Keyboard navigation support
+            option.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectLanguage(e);
+                }
             });
+        });
+
+        // Add keyboard navigation for dropdown items
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' && dropdown.classList.contains('show')) {
+                e.preventDefault();
+                const firstOption = dropdown.querySelector('.translate-option');
+                if (firstOption) firstOption.focus();
+            }
         });
     }
 
@@ -193,7 +268,7 @@ class CustomGoogleTranslate {
             }, 500);
 
         } catch (error) {
-            // console.error('Error translating page:', error);
+            console.error('Error translating page:', error);
         }
     }
 
@@ -268,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     } catch (error) {
-        // console.error('Error initializing CustomGoogleTranslate:', error);
+        console.error('Error initializing CustomGoogleTranslate:', error);
 
         // Fallback to simple Google Translate
         window.googleTranslateElementInit = function () {

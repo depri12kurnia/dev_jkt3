@@ -105,6 +105,157 @@
         </div>
     </div>
 </section>
+
+<!-- Enhanced Dynamic Statistics Section -->
+<div class="row mt-5 pt-4 border-top">
+    <div class="col-12">
+        <h4 class="text-center mb-4 text-muted">Statistik SDM</h4>
+    </div>
+
+    <?php
+    // Calculate dynamic statistics from real data
+    $total_sdm = !empty($sdm_list) ? count($sdm_list) : 0;
+    $total_asn = 0;
+    $total_non_asn = 0;
+    $total_institusi = 0;
+    $total_pusat = 0;
+    $total_prodi = 0;
+    $total_laki = 0;
+    $total_perempuan = 0;
+
+    if (!empty($sdm_list)) {
+        foreach ($sdm_list as $sdm) {
+            // Hitung berdasarkan status ASN
+            if (!empty($sdm->nip)) {
+                $total_asn++;
+            } else {
+                $total_non_asn++;
+            }
+
+            // Hitung berdasarkan level jabatan
+            switch ($sdm->level) {
+                case 'institusi':
+                    $total_institusi++;
+                    break;
+                case 'pusat':
+                    $total_pusat++;
+                    break;
+                case 'prodi':
+                    $total_prodi++;
+                    break;
+            }
+        }
+    }
+    ?>
+
+    <div class="col-md-3 text-center mb-3">
+        <div class="p-3 stat-item">
+            <i class="bi bi-people-fill text-primary" style="font-size: 2rem;"></i>
+            <h3 class="mt-2 mb-1 text-primary fw-bold counter-number" data-target="<?php echo $total_sdm; ?>">0</h3>
+            <p class="text-muted mb-0">Total SDM</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 text-center mb-3">
+        <div class="p-3 stat-item">
+            <i class="bi bi-award-fill text-success" style="font-size: 2rem;"></i>
+            <h3 class="mt-2 mb-1 text-success fw-bold counter-number" data-target="<?php echo $total_asn; ?>">0</h3>
+            <p class="text-muted mb-0">ASN</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 text-center mb-3">
+        <div class="p-3 stat-item">
+            <i class="bi bi-briefcase-fill text-info" style="font-size: 2rem;"></i>
+            <h3 class="mt-2 mb-1 text-info fw-bold counter-number" data-target="<?php echo $total_non_asn; ?>">0</h3>
+            <p class="text-muted mb-0">Non-ASN</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 text-center mb-3">
+        <div class="p-3 stat-item">
+            <i class="bi bi-building text-warning" style="font-size: 2rem;"></i>
+            <h3 class="mt-2 mb-1 text-warning fw-bold counter-number" data-target="<?php echo $total_pusat; ?>">0</h3>
+            <p class="text-muted mb-0">Level Pusat</p>
+        </div>
+    </div>
+</div>
+
+<!-- Additional Statistics Row -->
+<?php if ($total_sdm > 0): ?>
+    <div class="row mt-3">
+        <div class="col-md-4 text-center mb-3">
+            <div class="p-3 stat-item">
+                <i class="bi bi-diagram-3-fill text-danger" style="font-size: 1.5rem;"></i>
+                <h4 class="mt-2 mb-1 text-danger fw-bold counter-number" data-target="<?php echo $total_institusi; ?>">0</h4>
+                <p class="text-muted mb-0 small">Level Institusi</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 text-center mb-3">
+            <div class="p-3 stat-item">
+                <i class="bi bi-mortarboard-fill text-success" style="font-size: 1.5rem;"></i>
+                <h4 class="mt-2 mb-1 text-success fw-bold counter-number" data-target="<?php echo $total_prodi; ?>">0</h4>
+                <p class="text-muted mb-0 small">Level Prodi</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 text-center mb-3">
+            <div class="p-3 stat-item">
+                <div class="d-flex justify-content-center align-items-center gap-2">
+                    <div class="text-center">
+                        <i class="bi bi-person text-primary" style="font-size: 1.2rem;"></i>
+                        <small class="d-block text-primary fw-bold counter-number" data-target="<?php echo $total_laki; ?>">0</small>
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-person-dress text-pink" style="font-size: 1.2rem; color: #e91e63;"></i>
+                        <small class="d-block fw-bold counter-number" style="color: #e91e63;" data-target="<?php echo $total_perempuan; ?>">0</small>
+                    </div>
+                </div>
+                <p class="text-muted mb-0 small">Gender Ratio</p>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<!-- SDM Summary Cards -->
+<?php if (!empty($sdm_list)): ?>
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card border-0 bg-light">
+                <div class="card-body">
+                    <h6 class="card-title text-center mb-3">Ringkasan SDM Pusat</h6>
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-2">
+                            <span class="badge bg-primary-subtle text-primary px-3 py-2">
+                                <i class="bi bi-people me-1"></i>
+                                Total: <?php echo $total_sdm; ?> Orang
+                            </span>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <span class="badge bg-success-subtle text-success px-3 py-2">
+                                <i class="bi bi-shield-check me-1"></i>
+                                ASN: <?php echo $total_asn; ?> Orang
+                            </span>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <span class="badge bg-info-subtle text-info px-3 py-2">
+                                <i class="bi bi-briefcase me-1"></i>
+                                Non-ASN: <?php echo $total_non_asn; ?> Orang
+                            </span>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <span class="badge bg-warning-subtle text-warning px-3 py-2">
+                                <i class="bi bi-diagram-3 me-1"></i>
+                                Multi Level
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 <style>
     /* Responsive Profile Image Styling */
     .responsive-profile-img {
