@@ -30,7 +30,7 @@
         <!-- Hero Section with Dynamic Data -->
         <div class="hero-section mb-5">
             <div class="row align-items-center g-5">
-                <div class="col-lg-7">
+                <div class="col-lg-6">
                     <div class="hero-content">
                         <!-- Dynamic Badge with Unit Status -->
                         <div class="hero-badge mb-3">
@@ -55,7 +55,7 @@
 
                         <!-- Dynamic Description -->
                         <p class="lead text-muted mb-4 lh-lg">
-                            <?php echo !empty($unit_data->deskripsi) ? $unit_data->deskripsi : 'Unit ini berperan penting dalam mendukung visi dan misi institusi melalui layanan dan inovasi terbaik.'; ?>
+                            <?php echo !empty($unit_data->deskripsi) ? $unit_data->deskripsi : 'unit ini berperan penting dalam mendukung visi dan misi institusi melalui layanan dan inovasi terbaik.'; ?>
                         </p>
 
                         <!-- Dynamic Key Features from Unit Data -->
@@ -94,20 +94,14 @@
                             <?php if (!empty($unit_data->website)): ?>
                                 <a href="<?php echo $unit_data->website; ?>" class="btn btn-<?php echo !empty($unit_data->color) ? $unit_data->color : 'primary'; ?> btn-lg me-3" target="_blank">
                                     <i class="bi bi-globe me-2"></i>
-                                    Website Unit
-                                </a>
-                            <?php endif; ?>
-                            <?php if (!empty($unit_data->link_brosur)): ?>
-                                <a href="<?php echo $unit_data->link_brosur; ?>" class="btn btn-outline-<?php echo !empty($unit_data->color) ? $unit_data->color : 'primary'; ?> btn-lg">
-                                    <i class="bi bi-download me-2"></i>
-                                    Download Brosur
+                                    Website unit
                                 </a>
                             <?php endif; ?>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-5">
+                <div class="col-lg-6">
                     <div class="hero-image-wrapper">
                         <div class="image-container">
                             <!-- Dynamic Image -->
@@ -122,7 +116,7 @@
                                         }
                                         echo $image_path;
                                         ?>"
-                                alt="Unit <?php echo $unit_data->nama; ?>"
+                                alt="unit <?php echo $unit_data->nama; ?>"
                                 class="img-fluid rounded-4 shadow-lg main-image"
                                 loading="lazy"
                                 onerror="this.src='<?php echo base_url('assets/images/default-unit.png'); ?>'">
@@ -130,41 +124,6 @@
                             <!-- Add loading skeleton -->
                             <div class="skeleton-loader d-none">
                                 <div class="skeleton-card"></div>
-                            </div>
-
-                            <!-- Dynamic Floating Stats Cards from Database -->
-                            <div class="floating-stats stats-1">
-                                <div class="stat-card">
-                                    <div class="stat-icon bg-primary">
-                                        <i class="bi bi-people text-white"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <h6 class="stat-number"><?php echo $sdm_statistics['total_sdm'] ?? 0; ?>+</h6>
-                                        <small class="stat-label">SDM</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="floating-stats stats-2">
-                                <div class="stat-card">
-                                    <div class="stat-icon bg-success">
-                                        <i class="bi bi-award text-white"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <h6 class="stat-number"><?php echo $sdm_statistics['total_asn'] ?? 0; ?></h6>
-                                        <small class="stat-label">ASN</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="floating-stats stats-3">
-                                <div class="stat-card">
-                                    <div class="stat-icon bg-warning">
-                                        <i class="bi bi-person-fill text-white"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <h6 class="stat-number"><?php echo $sdm_statistics['total_laki'] ?? 0; ?>/<?php echo $sdm_statistics['total_perempuan'] ?? 0; ?></h6>
-                                        <small class="stat-label">L/P</small>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -529,7 +488,7 @@
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-3" id="sdm-container">
             <?php if (!empty($sdm_list)):
                 $displayed_count = 0;
-                $max_display = 6;
+                $max_display = 4;
                 foreach ($sdm_list as $index => $sdm):
                     $is_hidden = $index >= $max_display;
                     $displayed_count++;
@@ -545,47 +504,22 @@
                                                     echo $sdm->foto_url;
                                                 } else {
                                                     // Jika hanya nama file
-                                                    echo base_url('assets/images/staff/' . $sdm->foto_url);
+                                                    echo base_url('assets/upload/sdm/' . $sdm->foto_url);
                                                 }
                                             } else {
                                                 // Default avatar berdasarkan jenis kelamin
                                                 $default_avatar = ($sdm->jenis_kelamin == 'P')
                                                     ? 'default-female-avatar.jpg'
                                                     : 'default-male-avatar.jpg';
-                                                echo base_url('assets/images/staff/' . $default_avatar);
+                                                echo base_url('assets/upload/unit/' . $default_avatar);
                                             }
                                             ?>"
-                                    class="card-img-top"
+                                    class="card-img-top responsive-profile-img"
                                     alt="Foto <?php echo htmlspecialchars($sdm->nama); ?>"
-                                    style="height: 250px; object-fit: cover;"
                                     loading="lazy"
-                                    onerror="this.src='<?php echo base_url('assets/images/staff/default-avatar.jpg'); ?>'">
+                                    onerror="this.src='<?php echo base_url('assets/upload/sdm/default-avatar.jpg'); ?>'">
 
                                 <!-- Dynamic Role Badge -->
-                                <div class="position-absolute top-0 end-0 m-3">
-                                    <?php
-                                    // Tentukan warna badge berdasarkan level jabatan
-                                    $badge_color = 'primary';
-                                    $badge_text = 'Staff';
-
-                                    if (!empty($sdm->jabatan)) {
-                                        if ($sdm->level == 'institusi') {
-                                            $badge_color = 'danger';
-                                            $badge_text = 'Institusi';
-                                        } elseif ($sdm->level == 'unit') {
-                                            $badge_color = 'primary';
-                                            $badge_text = 'Unit';
-                                        } elseif ($sdm->level == 'prodi') {
-                                            $badge_color = 'success';
-                                            $badge_text = 'Prodi';
-                                        }
-                                    }
-                                    ?>
-                                    <span class="badge bg-<?php echo $badge_color; ?> rounded-pill">
-                                        <?php echo $badge_text; ?>
-                                    </span>
-                                </div>
-
                                 <?php if (!empty($sdm->nip)): ?>
                                     <!-- NIP Badge untuk yang memiliki NIP -->
                                     <div class="position-absolute top-0 start-0 m-3">
@@ -612,98 +546,9 @@
                                     }
                                     ?>
                                 </p>
-
-                                <?php if (!empty($sdm->nip)): ?>
-                                    <!-- NIP Info -->
-                                    <div class="mb-3">
-                                        <small class="text-primary">
-                                            <i class="bi bi-card-text me-1"></i>
-                                            NIP: <?php echo htmlspecialchars($sdm->nip); ?>
-                                        </small>
-                                    </div>
-                                <?php endif; ?>
-
-                                <?php if (!empty($sdm->deskripsi)): ?>
-                                    <!-- Description/Bio -->
-                                    <div class="mb-3">
-                                        <p class="text-muted small">
-                                            <?php
-                                            $deskripsi = strip_tags($sdm->deskripsi);
-                                            echo strlen($deskripsi) > 100
-                                                ? substr($deskripsi, 0, 100) . '...'
-                                                : $deskripsi;
-                                            ?>
-                                        </p>
-                                    </div>
-                                <?php endif; ?>
-
-                                <!-- Periode Jabatan jika ada -->
-                                <?php if (!empty($sdm->periode_mulai)): ?>
-                                    <div class="mb-3">
-                                        <small class="text-info">
-                                            <i class="bi bi-calendar me-1"></i>
-                                            Periode: <?php echo $sdm->periode_mulai; ?>
-                                            <?php if (!empty($sdm->periode_akhir)): ?>
-                                                - <?php echo $sdm->periode_akhir; ?>
-                                            <?php else: ?>
-                                                - Sekarang
-                                            <?php endif; ?>
-                                        </small>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-
-                            <!-- Dynamic Footer -->
-                            <div class="card-footer bg-transparent border-0 text-center pb-4">
-                                <!-- Info Grid -->
-                                <div class="row text-center mb-3">
-                                    <div class="col-4">
-                                        <small class="text-muted d-block">Status</small>
-                                        <strong class="text-<?php echo !empty($sdm->nip) ? 'success' : 'primary'; ?>">
-                                            <?php echo !empty($sdm->nip) ? 'ASN' : 'Non-ASN'; ?>
-                                        </strong>
-                                    </div>
-                                    <div class="col-4">
-                                        <small class="text-muted d-block">Level</small>
-                                        <strong class="text-info">
-                                            <?php echo ucfirst($sdm->level ?? 'Staff'); ?>
-                                        </strong>
-                                    </div>
-                                    <div class="col-4">
-                                        <small class="text-muted d-block">Gender</small>
-                                        <div class="text-secondary">
-                                            <i class="bi bi-<?php echo $sdm->jenis_kelamin == 'P' ? 'person-dress' : 'person'; ?>"></i>
-                                            <?php echo $sdm->jenis_kelamin == 'P' ? 'Perempuan' : 'Laki-laki'; ?>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr class="my-3">
-
                                 <!-- Action Buttons -->
                                 <div class="d-flex justify-content-center gap-2 flex-wrap">
-                                    <?php if (!empty($sdm->email)): ?>
-                                        <a href="mailto:<?php echo htmlspecialchars($sdm->email); ?>"
-                                            class="btn btn-sm btn-outline-primary"
-                                            title="Kirim Email">
-                                            <i class="bi bi-envelope me-1"></i>Email
-                                        </a>
-                                    <?php endif; ?>
-
-                                    <?php if (!empty($sdm->no_hp)): ?>
-                                        <a href="https://wa.me/<?php echo preg_replace('/[^0-9]/', '', $sdm->no_hp); ?>"
-                                            class="btn btn-sm btn-outline-success"
-                                            title="Hubungi via WhatsApp"
-                                            target="_blank">
-                                            <i class="bi bi-whatsapp me-1"></i>WA
-                                        </a>
-                                    <?php endif; ?>
-
-                                    <a href="<?php echo base_url('sdm/profile/' . $sdm->id); ?>"
-                                        class="btn btn-sm btn-outline-secondary"
-                                        title="Lihat Profile Lengkap">
-                                        <i class="bi bi-person-lines-fill me-1"></i>Profile
-                                    </a>
+                                    <a href="<?php echo base_url('sdm/detail/' . $sdm->sdm_slug); ?>" class="btn btn-outline-primary btn-sm mt-2"><i class="bi bi-info-circle-fill me-1"></i> Lihat Profil</a>
                                 </div>
                             </div>
                         </div>
@@ -731,164 +576,6 @@
                     <span class="btn-text">Tampilkan Lebih</span>
                     <span class="badge bg-primary ms-2"><?php echo count($sdm_list) - $max_display; ?> lainnya</span>
                 </button>
-            </div>
-        <?php endif; ?>
-
-        <!-- Enhanced Dynamic Statistics Section -->
-        <div class="row mt-5 pt-4 border-top">
-            <div class="col-12">
-                <h4 class="text-center mb-4 text-muted">Statistik SDM Unit</h4>
-            </div>
-
-            <?php
-            // Calculate dynamic statistics from real data
-            $total_sdm = !empty($sdm_list) ? count($sdm_list) : 0;
-            $total_asn = 0;
-            $total_non_asn = 0;
-            $total_institusi = 0;
-            $total_unit = 0;
-            $total_prodi = 0;
-            $total_laki = 0;
-            $total_perempuan = 0;
-
-            if (!empty($sdm_list)) {
-                foreach ($sdm_list as $sdm) {
-                    // Hitung berdasarkan status ASN
-                    if (!empty($sdm->nip)) {
-                        $total_asn++;
-                    } else {
-                        $total_non_asn++;
-                    }
-
-                    // Hitung berdasarkan level jabatan
-                    switch ($sdm->level) {
-                        case 'institusi':
-                            $total_institusi++;
-                            break;
-                        case 'unit':
-                            $total_unit++;
-                            break;
-                        case 'prodi':
-                            $total_prodi++;
-                            break;
-                    }
-
-                    // Hitung berdasarkan jenis kelamin
-                    if ($sdm->jenis_kelamin == 'L') {
-                        $total_laki++;
-                    } else {
-                        $total_perempuan++;
-                    }
-                }
-            }
-            ?>
-
-            <div class="col-md-3 text-center mb-3">
-                <div class="p-3 stat-item">
-                    <i class="bi bi-people-fill text-primary" style="font-size: 2rem;"></i>
-                    <h3 class="mt-2 mb-1 text-primary fw-bold counter-number" data-target="<?php echo $total_sdm; ?>">0</h3>
-                    <p class="text-muted mb-0">Total SDM</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 text-center mb-3">
-                <div class="p-3 stat-item">
-                    <i class="bi bi-award-fill text-success" style="font-size: 2rem;"></i>
-                    <h3 class="mt-2 mb-1 text-success fw-bold counter-number" data-target="<?php echo $total_asn; ?>">0</h3>
-                    <p class="text-muted mb-0">ASN</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 text-center mb-3">
-                <div class="p-3 stat-item">
-                    <i class="bi bi-briefcase-fill text-info" style="font-size: 2rem;"></i>
-                    <h3 class="mt-2 mb-1 text-info fw-bold counter-number" data-target="<?php echo $total_non_asn; ?>">0</h3>
-                    <p class="text-muted mb-0">Non-ASN</p>
-                </div>
-            </div>
-
-            <div class="col-md-3 text-center mb-3">
-                <div class="p-3 stat-item">
-                    <i class="bi bi-building text-warning" style="font-size: 2rem;"></i>
-                    <h3 class="mt-2 mb-1 text-warning fw-bold counter-number" data-target="<?php echo $total_unit; ?>">0</h3>
-                    <p class="text-muted mb-0">Level Unit</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Additional Statistics Row -->
-        <?php if ($total_sdm > 0): ?>
-            <div class="row mt-3">
-                <div class="col-md-4 text-center mb-3">
-                    <div class="p-3 stat-item">
-                        <i class="bi bi-diagram-3-fill text-danger" style="font-size: 1.5rem;"></i>
-                        <h4 class="mt-2 mb-1 text-danger fw-bold counter-number" data-target="<?php echo $total_institusi; ?>">0</h4>
-                        <p class="text-muted mb-0 small">Level Institusi</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 text-center mb-3">
-                    <div class="p-3 stat-item">
-                        <i class="bi bi-mortarboard-fill text-success" style="font-size: 1.5rem;"></i>
-                        <h4 class="mt-2 mb-1 text-success fw-bold counter-number" data-target="<?php echo $total_prodi; ?>">0</h4>
-                        <p class="text-muted mb-0 small">Level Prodi</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 text-center mb-3">
-                    <div class="p-3 stat-item">
-                        <div class="d-flex justify-content-center align-items-center gap-2">
-                            <div class="text-center">
-                                <i class="bi bi-person text-primary" style="font-size: 1.2rem;"></i>
-                                <small class="d-block text-primary fw-bold counter-number" data-target="<?php echo $total_laki; ?>">0</small>
-                            </div>
-                            <div class="text-center">
-                                <i class="bi bi-person-dress text-pink" style="font-size: 1.2rem; color: #e91e63;"></i>
-                                <small class="d-block fw-bold counter-number" style="color: #e91e63;" data-target="<?php echo $total_perempuan; ?>">0</small>
-                            </div>
-                        </div>
-                        <p class="text-muted mb-0 small">Gender Ratio</p>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
-
-        <!-- SDM Summary Cards -->
-        <?php if (!empty($sdm_list)): ?>
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="card border-0 bg-light">
-                        <div class="card-body">
-                            <h6 class="card-title text-center mb-3">Ringkasan SDM Unit</h6>
-                            <div class="row text-center">
-                                <div class="col-md-3 mb-2">
-                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">
-                                        <i class="bi bi-people me-1"></i>
-                                        Total: <?php echo $total_sdm; ?> Orang
-                                    </span>
-                                </div>
-                                <div class="col-md-3 mb-2">
-                                    <span class="badge bg-success-subtle text-success px-3 py-2">
-                                        <i class="bi bi-shield-check me-1"></i>
-                                        ASN: <?php echo $total_asn; ?> Orang
-                                    </span>
-                                </div>
-                                <div class="col-md-3 mb-2">
-                                    <span class="badge bg-info-subtle text-info px-3 py-2">
-                                        <i class="bi bi-briefcase me-1"></i>
-                                        Non-ASN: <?php echo $total_non_asn; ?> Orang
-                                    </span>
-                                </div>
-                                <div class="col-md-3 mb-2">
-                                    <span class="badge bg-warning-subtle text-warning px-3 py-2">
-                                        <i class="bi bi-diagram-3 me-1"></i>
-                                        Multi Level
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         <?php endif; ?>
     </div>
@@ -1076,6 +763,65 @@
         .bg-warning-subtle {
             background-color: rgba(255, 193, 7, 0.1) !important;
         }
+
+        /* Responsive Profile Image Styling */
+        .responsive-profile-img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Desktop - Large screens */
+        @media (min-width: 1200px) {
+            .responsive-profile-img {
+                height: 400px;
+            }
+        }
+
+        /* Desktop - Medium screens */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .responsive-profile-img {
+                height: 350px;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .responsive-profile-img {
+                height: 300px;
+            }
+        }
+
+        /* Mobile - Large */
+        @media (min-width: 576px) and (max-width: 767px) {
+            .responsive-profile-img {
+                height: 280px;
+            }
+        }
+
+        /* Mobile - Small */
+        @media (max-width: 575px) {
+            .responsive-profile-img {
+                height: 250px;
+            }
+        }
+
+        /* Hover effect for better interaction */
+        .card:hover .responsive-profile-img {
+            transform: scale(1.02);
+        }
+
+        /* Ensure card maintains proper aspect ratio */
+        .card {
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+        }
     </style>
 
     <script>
@@ -1193,7 +939,7 @@
                         gtag('event', 'sdm_interaction', {
                             'event_category': 'SDM Section',
                             'event_label': this.textContent.trim() || this.className,
-                            'page_title': 'Unit <?php echo $unit_data->nama; ?>',
+                            'page_title': '<?php echo $unit_data->nama; ?>',
                             'total_sdm': <?php echo !empty($sdm_list) ? count($sdm_list) : 0; ?>
                         });
                     }

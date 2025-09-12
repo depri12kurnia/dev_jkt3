@@ -21,6 +21,9 @@ class Sdm_jurusan_model extends CI_Model
                 return array();
             }
 
+            // Dapatkan ID prodi yang ada di jurusan ini
+            $prodi_ids = $this->get_prodi_ids_by_jurusan($jurusan_id);
+
             // Clear any previous queries
             $this->db->reset_query();
 
@@ -49,9 +52,6 @@ class Sdm_jurusan_model extends CI_Model
             $this->db->from('sdm s');
             $this->db->join('jabatan_sdm js', 's.id = js.sdm_id', 'inner');
 
-            // Dapatkan prodi IDs terlebih dahulu
-            $prodi_ids = $this->get_prodi_ids_by_jurusan($jurusan_id);
-
             // Filter berdasarkan level dan jurusan
             $this->db->group_start();
 
@@ -78,6 +78,13 @@ class Sdm_jurusan_model extends CI_Model
             $this->db->where('js.jurusan_id', $jurusan_id);
             $this->db->group_end();
 
+            $this->db->group_end();
+
+            // Filter jabatan yang masih aktif
+            $current_year = date('Y');
+            $this->db->group_start();
+            $this->db->where('js.periode_akhir IS NULL');
+            $this->db->or_where('js.periode_akhir >=', $current_year);
             $this->db->group_end();
 
             // Urutkan berdasarkan prioritas level dan nama
@@ -110,6 +117,81 @@ class Sdm_jurusan_model extends CI_Model
             return $result;
         } catch (Exception $e) {
             log_message('error', 'Error dalam get_sdm_by_jurusan: ' . $e->getMessage());
+            return array();
+        }
+    }
+
+    /**
+     * Method untuk mendapatkan SDM berdasarkan nama jurusan
+     * @param string $nama_jurusan - Nama jurusan yang ingin ditampilkan
+     */
+    public function get_sdm_by_jurusan_name($nama_jurusan)
+    {
+        try {
+            // Cek apakah tabel sdm, jabatan_sdm, dan jurusan ada
+            if (!$this->db->table_exists('sdm') || !$this->db->table_exists('jabatan_sdm') || !$this->db->table_exists('jurusan')) {
+                log_message('error', 'Tabel sdm, jabatan_sdm, atau jurusan tidak ditemukan');
+                return array();
+            }
+
+            // Clear any previous queries
+            $this->db->reset_query();
+
+            // Query untuk mendapatkan SDM berdasarkan nama jurusan
+            $this->db->select('
+                s.id as sdm_id,
+                s.nama,
+                s.nip,
+                s.jenis_kelamin,
+                s.email,
+                s.no_hp,
+                s.foto_url,
+                s.deskripsi,
+                s.slug as sdm_slug,
+                js.id as jabatan_id,
+                js.level,
+                js.jabatan,
+                js.periode_mulai,
+                js.periode_akhir,
+                js.jurusan_id,
+                j.nama AS nama_jurusan
+            ');
+
+            $this->db->from('sdm s');
+            $this->db->join('jabatan_sdm js', 's.id = js.sdm_id', 'inner');
+            $this->db->join('jurusan j', 'js.jurusan_id = j.id', 'inner');
+
+            // Filter berdasarkan level jurusan dan nama jurusan
+            $this->db->where('js.level', 'jurusan');
+            $this->db->where('j.nama', $nama_jurusan);
+
+            // Filter jabatan yang masih aktif
+            $current_year = date('Y');
+            $this->db->group_start();
+            $this->db->where('js.periode_akhir IS NULL');
+            $this->db->or_where('js.periode_akhir >=', $current_year);
+            $this->db->group_end();
+
+            // Urutkan berdasarkan nama
+            $this->db->order_by('s.nama', 'ASC');
+
+            $query = $this->db->get();
+
+            if ($query === FALSE) {
+                $error = $this->db->error();
+                log_message('error', 'Query SDM by jurusan name gagal: ' . $error['message']);
+                log_message('error', 'Last query: ' . $this->db->last_query());
+                return array();
+            }
+
+            $result = $query->result();
+
+            // Log untuk debugging
+            log_message('info', 'Query SDM berhasil untuk jurusan: ' . $nama_jurusan . ', Total: ' . count($result));
+
+            return $result;
+        } catch (Exception $e) {
+            log_message('error', 'Error dalam get_sdm_by_jurusan_name: ' . $e->getMessage());
             return array();
         }
     }
@@ -275,6 +357,13 @@ class Sdm_jurusan_model extends CI_Model
             $this->db->group_end();
             $this->db->group_end();
 
+            // Filter jabatan yang masih aktif
+            $current_year = date('Y');
+            $this->db->group_start();
+            $this->db->where('js.periode_akhir IS NULL');
+            $this->db->or_where('js.periode_akhir >=', $current_year);
+            $this->db->group_end();
+
             // Urutkan berdasarkan level dan nama
             $order_case = "CASE js.level 
                 WHEN 'institusi' THEN 1 
@@ -352,6 +441,99 @@ class Sdm_jurusan_model extends CI_Model
         } catch (Exception $e) {
             log_message('error', 'Error dalam get_all_active_sdm: ' . $e->getMessage());
             return array();
+        }
+    }
+
+    /**
+     * Method untuk mendapatkan semua daftar jurusan
+     */
+    public function get_all_jurusan()
+    {
+        try {
+            if (!$this->db->table_exists('jurusan')) {
+                log_message('error', 'Tabel jurusan tidak ditemukan');
+                return array();
+            }
+
+            $this->db->reset_query();
+            $this->db->select('id, nama, slug');
+            $this->db->from('jurusan');
+            $this->db->order_by('nama', 'ASC');
+
+            $query = $this->db->get();
+
+            if ($query === FALSE) {
+                $error = $this->db->error();
+                log_message('error', 'Query get all jurusan gagal: ' . $error['message']);
+                return array();
+            }
+
+            return $query->result();
+        } catch (Exception $e) {
+            log_message('error', 'Error dalam get_all_jurusan: ' . $e->getMessage());
+            return array();
+        }
+    }
+
+    /**
+     * Method untuk mendapatkan info jurusan berdasarkan slug
+     */
+    public function get_jurusan_by_slug($slug)
+    {
+        try {
+            if (!$this->db->table_exists('jurusan')) {
+                log_message('error', 'Tabel jurusan tidak ditemukan');
+                return null;
+            }
+
+            $this->db->reset_query();
+            $this->db->select('id, nama, slug');
+            $this->db->from('jurusan');
+            $this->db->where('slug', $slug);
+
+            $query = $this->db->get();
+
+            if ($query === FALSE) {
+                $error = $this->db->error();
+                log_message('error', 'Query get jurusan by slug gagal: ' . $error['message']);
+                return null;
+            }
+
+            return $query->row();
+        } catch (Exception $e) {
+            log_message('error', 'Error dalam get_jurusan_by_slug: ' . $e->getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Method untuk mendapatkan info jurusan berdasarkan ID
+     */
+    public function get_jurusan_by_id($jurusan_id)
+    {
+        try {
+            if (!$this->db->table_exists('jurusan')) {
+                log_message('error', 'Tabel jurusan tidak ditemukan');
+                return null;
+            }
+
+            $this->db->reset_query();
+            $this->db->select('id, nama, slug, deskripsi');
+            $this->db->from('jurusan');
+            $this->db->where('id', $jurusan_id);
+
+            $query = $this->db->get();
+
+            if ($query === FALSE) {
+                $error = $this->db->error();
+                log_message('error', 'Query get jurusan by id gagal: ' . $error['message']);
+                return null;
+            }
+
+            return $query->row();
+        } catch (Exception $e) {
+            log_message('error', 'Error dalam get_jurusan_by_id: ' . $e->getMessage());
+            return null;
         }
     }
 }

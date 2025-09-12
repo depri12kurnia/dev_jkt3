@@ -59,6 +59,56 @@ class Sdm_model extends CI_Model
         return $query->row();
     }
 
+    public function detail_by_slug($slug)
+    {
+        $this->db->select('
+        s.*,
+        js.id as jabatan_id,
+        js.level,
+        js.jabatan,
+        js.periode_mulai,
+        js.periode_akhir,
+        js.jurusan_id,
+        js.prodi_id,
+        js.unit_id,
+        js.pusat_id,
+        j.nama as nama_jurusan,
+        p.nama as nama_prodi,
+        u.nama as nama_unit,
+        pu.nama as nama_pusat
+    ');
+        $this->db->from('sdm s');
+        $this->db->join('jabatan_sdm js', 's.id = js.sdm_id', 'left');
+        $this->db->join('jurusan j', 'js.jurusan_id = j.id', 'left');
+        $this->db->join('prodi p', 'js.prodi_id = p.id', 'left');
+        $this->db->join('unit u', 'js.unit_id = u.id', 'left');
+        $this->db->join('pusat pu', 'js.pusat_id = pu.id', 'left');
+        $this->db->where('s.slug', $slug);
+
+        // Filter jabatan yang masih aktif
+        $current_year = date('Y');
+        $this->db->group_start();
+        $this->db->where('js.periode_akhir IS NULL');
+        $this->db->or_where('js.periode_akhir >=', $current_year);
+        $this->db->group_end();
+
+        // Urutkan berdasarkan prioritas level jabatan
+        $order_case = "CASE js.level 
+        WHEN 'institusi' THEN 1 
+        WHEN 'jurusan' THEN 2 
+        WHEN 'prodi' THEN 3 
+        WHEN 'unit' THEN 4 
+        WHEN 'pusat' THEN 5 
+        ELSE 6 
+    END";
+
+        $this->db->order_by($order_case, '', FALSE);
+        $this->db->limit(1); // Ambil jabatan dengan prioritas tertinggi
+
+        $query = $this->db->get();
+        return $query->row();
+    }
+
     // Check apakah NIP sudah ada (untuk validasi)
     public function check_nip($nip, $id = null)
     {

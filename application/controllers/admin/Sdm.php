@@ -137,6 +137,7 @@ class Sdm extends CI_Controller
                     $upload_data = array('uploads' => $this->upload->data());
 
                     $i = $this->input;
+                    $slug     = url_title($i->post('nama'), 'dash', TRUE);
 
                     $data = array(
                         'nama'           => $i->post('nama'),
@@ -146,6 +147,8 @@ class Sdm extends CI_Controller
                         'no_hp'          => $i->post('no_hp'),
                         'foto_url'       => $upload_data['uploads']['file_name'],
                         'deskripsi'      => $i->post('deskripsi'),
+                        'slug'           => $slug
+
                     );
                     $this->sdm_model->tambah($data);
                     $this->session->set_flashdata('sukses', 'Data telah ditambah');
@@ -153,7 +156,7 @@ class Sdm extends CI_Controller
                 }
             } else {
                 $i = $this->input;
-
+                $slug     = url_title($i->post('nama'), 'dash', TRUE);
                 $data = array(
                     'nama'           => $i->post('nama'),
                     'nip'            => $i->post('nip'),
@@ -162,6 +165,7 @@ class Sdm extends CI_Controller
                     'no_hp'          => $i->post('no_hp'),
                     'foto_url'       => '',
                     'deskripsi'      => $i->post('deskripsi'),
+                    'slug'           => $slug
                 );
                 $this->sdm_model->tambah($data);
                 $this->session->set_flashdata('sukses', 'Data telah ditambah');
@@ -233,7 +237,7 @@ class Sdm extends CI_Controller
                     // End hapus
 
                     $i = $this->input;
-
+                    $slug     = url_title($i->post('nama'), 'dash', TRUE);
                     $data = array(
                         'id'             => $id,
                         'nama'           => $i->post('nama'),
@@ -243,6 +247,7 @@ class Sdm extends CI_Controller
                         'no_hp'          => $i->post('no_hp'),
                         'foto_url'       => $upload_data['uploads']['file_name'],
                         'deskripsi'      => $i->post('deskripsi'),
+                        'slug'           => $slug
                     );
                     $this->sdm_model->edit($data);
                     $this->session->set_flashdata('sukses', 'Data telah diedit');
@@ -250,6 +255,7 @@ class Sdm extends CI_Controller
                 }
             } else {
                 $i = $this->input;
+                $slug     = url_title($i->post('nama'), 'dash', TRUE);
 
                 $data = array(
                     'id'             => $id,
@@ -258,7 +264,8 @@ class Sdm extends CI_Controller
                     'jenis_kelamin'  => $i->post('jenis_kelamin'),
                     'email'          => $i->post('email'),
                     'no_hp'          => $i->post('no_hp'),
-                    'deskripsi'      => $i->post('deskripsi')
+                    'deskripsi'      => $i->post('deskripsi'),
+                    'slug'           => $slug
                 );
                 $this->sdm_model->edit($data);
                 $this->session->set_flashdata('sukses', 'Data telah diedit');

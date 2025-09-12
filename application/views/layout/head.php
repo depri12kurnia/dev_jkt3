@@ -99,7 +99,7 @@ $site_info = $this->konfigurasi_model->listing();
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/staff-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/agenda-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/partners-enhanced.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/video-enhanced.css">
+    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/video-enhanced.css"> -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/berita-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/backtotop-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/popup-enhanced.css">

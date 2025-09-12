@@ -224,7 +224,7 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
 <script src="<?php echo base_url(); ?>assets/js/pendidikan-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/staff-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/partners-enhanced.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/video-enhanced.js?v=<?php echo time(); ?>"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/video-enhanced.js?v=<?php echo time(); ?>"></script> -->
 <script src="<?php echo base_url(); ?>assets/js/backtotop-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/faq-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/popup-enhanced.js"></script>

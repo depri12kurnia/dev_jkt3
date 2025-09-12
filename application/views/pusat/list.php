@@ -488,7 +488,7 @@
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-3" id="sdm-container">
             <?php if (!empty($sdm_list)):
                 $displayed_count = 0;
-                $max_display = 6;
+                $max_display = 4;
                 foreach ($sdm_list as $index => $sdm):
                     $is_hidden = $index >= $max_display;
                     $displayed_count++;
@@ -548,11 +548,7 @@
                                 </p>
                                 <!-- Action Buttons -->
                                 <div class="d-flex justify-content-center gap-2 flex-wrap">
-                                    <a href="<?php echo htmlspecialchars($sdm->email); ?>"
-                                        class="btn btn-sm btn-outline-primary"
-                                        title="Informasi Detail">
-                                        <i class="bi bi-info-circle-fill me-1"></i>Detail
-                                    </a>
+                                    <a href="<?php echo base_url('sdm/detail/' . $sdm->sdm_slug); ?>" class="btn btn-outline-primary btn-sm mt-2"><i class="bi bi-info-circle-fill me-1"></i> Lihat Profil</a>
                                 </div>
                             </div>
                         </div>

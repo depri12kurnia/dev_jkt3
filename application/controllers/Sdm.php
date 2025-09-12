@@ -20,6 +20,7 @@ class Sdm extends CI_Controller
 		$direktur	= $this->jabatansdm_model->direktur_aktif();
 		$wakil_direktur = $this->jabatansdm_model->wakil_direktur_aktif();
 		$sdm_list = $this->jabatansdm_model->all();
+		$sdm_data = $this->jabatansdm_model->sdm_data();
 
 		$data = array(
 			'title'      => 'SDM - ' . $site->namaweb,
@@ -28,6 +29,7 @@ class Sdm extends CI_Controller
 			'direktur'   => $direktur,
 			'wakil_direktur' => $wakil_direktur,
 			'sdm_list'   => $sdm_list,
+			'sdm_data'   => $sdm_data,
 			'site'       => $site,
 			'isi'        => 'sdm/list'
 		);
@@ -38,14 +40,14 @@ class Sdm extends CI_Controller
 	public function detail($slug)
 	{
 		$site = $this->konfigurasi_model->listing();
-		$sdm = $this->jabatansdm_model->detail($slug);
+		$sdm = $this->sdm_model->detail_by_slug($slug);
 
 		if (!$sdm) {
 			redirect(base_url('oops'), 'refresh');
 		}
 
 		$listing = $this->sdm_model->listing();
-		$kategori = $this->nav_model->nav_sdm();
+
 
 		$data = array(
 			'title'     => $sdm->nama,
@@ -53,7 +55,6 @@ class Sdm extends CI_Controller
 			'keywords'  => $sdm->nama,
 			'sdm'       => $sdm,
 			'listing'   => $listing,
-			'kategori'  => $kategori,
 			'site'      => $site,
 			'isi'       => 'sdm/detail'
 		);

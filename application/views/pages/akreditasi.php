@@ -22,7 +22,7 @@
                     <div class="col-md-12">
 
                         <div class="table-responsive mailbox-messages">
-                            <h5 class="contact-title">Akreditasi</h5>
+                            <!-- <h5 class="contact-title">Akreditasi</h5> -->
                             <!-- Custom Filter -->
                             <!-- End Custom Filter -->
                             <table id="dokumen" class="display table table-bordered table-hover" cellspacing="0" width="100%">

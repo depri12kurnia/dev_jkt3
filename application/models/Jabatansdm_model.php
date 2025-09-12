@@ -579,6 +579,19 @@ class Jabatansdm_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function sdm_data($year = null)
+    {
+        if ($year === null) {
+            $year = date('Y');
+        }
+        $this->db->select('jabatan_sdm.*, sdm.nama as nama_sdm, sdm.nip, sdm.email, sdm.no_hp, sdm.foto_url, sdm.slug, sdm.jenis_kelamin');
+        $this->db->from('jabatan_sdm');
+        $this->db->join('sdm', 'sdm.id = jabatan_sdm.sdm_id', 'LEFT');
+        $this->db->order_by('jabatan_sdm.periode_mulai', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
 
 /* End of file Jabatansdm_model.php */
