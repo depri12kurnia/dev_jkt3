@@ -5,6 +5,6 @@ include('news.php');
 include('isc.php');
 include('video.php');
 include('agenda.php');
-// include('testimonial.php');
+include('testimoni.php');
 include('partner.php');
 include('popup.php');

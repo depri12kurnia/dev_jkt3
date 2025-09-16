@@ -493,10 +493,17 @@
                     </li>
 
                     <li class="nav-header">Other</li>
+                    <!-- Testimoni -->
+                    <li class="nav-item has-treeview">
+                        <a href="<?php echo base_url('admin/testimoni') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'testimoni') ? 'active' : ''; ?>">
+                            <i class="nav-icon fa fa-group"></i>
+                            <p>Testimoni</p>
+                        </a>
+                    </li>
                     <!-- Kontributor -->
                     <li class="nav-item has-treeview">
                         <a href="<?php echo base_url('admin/kontributor') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'kontributor') ? 'active' : ''; ?>">
-                            <i class="nav-icon fa fa-group"></i>
+                            <i class="nav-icon fa fa-coffee"></i>
                             <p>Kontributor</p>
                         </a>
                     </li>

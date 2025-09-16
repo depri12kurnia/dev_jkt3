@@ -17,14 +17,6 @@ $nav_unit = $this->nav_model->nav_unit();
         <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" href="<?php echo base_url('/') ?>">Home</a></li>
-                <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="beritaDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Berita</a>
-                            <ul class="dropdown-menu" aria-labelledby="beritaDropdown">
-                                <li><a class="dropdown-item" href="<?php echo base_url('berita') ?>">Indeks Berita</a></li>
-                                <li><a class="dropdown-item" href="<?php echo base_url('capaian') ?>">Dashboard Capaian ZI</a></li>
-                                <li><a class="dropdown-item" href="<?php echo base_url('maturity') ?>">Maturity Rating BLU</a></li>
-                            </ul>
-                        </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="profilDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tentang</a>
                     <ul class="dropdown-menu dropdown-menu-3col p-0" aria-labelledby="profilDropdown">

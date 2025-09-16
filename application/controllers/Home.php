@@ -16,6 +16,7 @@ class Home extends CI_Controller
 		$this->load->model('mitra_model');
 		$this->load->model('jurusan_model');
 		$this->load->model('prodi_model');
+		$this->load->model('testimoni_model');
 
 		$this->load->library('ip_blocker');
 		$this->ip_blocker->check_ip();
@@ -40,6 +41,7 @@ class Home extends CI_Controller
 		$pengumuman 	= $this->nav_model->nav_pengumuman();
 		$jurusan 		= $this->nav_model->nav_jurusan();
 		$alumni 		= $this->nav_model->nav_alumni();
+		$testimoni	  	= $this->testimoni_model->get_testimoni_home();
 
 		// Berita dan paginasi
 		$this->load->library('pagination');
@@ -111,6 +113,7 @@ class Home extends CI_Controller
 			'prodi'				=> $prodi,
 			'pengumuman'		=> $pengumuman,
 			'alumni'			=> $alumni,
+			'testimoni'			=> $testimoni,
 			'isi'				=> 'home/list'
 
 		);
