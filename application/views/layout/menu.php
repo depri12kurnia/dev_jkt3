@@ -120,7 +120,6 @@ $nav_unit = $this->nav_model->nav_unit();
                                 </div>
                                 <div class="col-4">
                                     <div class="dropdown-header fw-bold text-default">Informasi Publik</div>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('unduhan/dokumen') ?>">Dokumen</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/akuntabilitas') ?>">Akuntabilitas</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/standardpelayanan') ?>">Standard Pelayanan</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('unduhan/prestasi') ?>">Prestasi & Penghargaan</a></li>

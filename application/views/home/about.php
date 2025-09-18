@@ -86,10 +86,10 @@
                                             <div class="col-12 col-md-8">
                                                 <h6 class="mb-2 small fw-bold animate-on-scroll" data-animation="fadeIn" data-delay="1600">Terakreditasi & Diakui:</h6>
                                                 <div class="d-flex flex-wrap gap-2 align-items-center">
-                                                    <img src="<?php echo base_url('assets/images/logos/ban-pt.png'); ?>"
+                                                    <img src="<?php echo base_url('assets/images/logos/ban-pt.webp'); ?>"
                                                         alt="BAN-PT" height="30" class="img-fluid animate-on-scroll floating-logo"
                                                         data-animation="rotateIn" data-delay="1700">
-                                                    <img src="<?php echo base_url('assets/images/logos/dikti-saintek.png'); ?>"
+                                                    <img src="<?php echo base_url('assets/images/logos/dikti-saintek.webp'); ?>"
                                                         alt="Dikti Saintek" height="30" class="img-fluid animate-on-scroll floating-logo"
                                                         data-animation="rotateIn" data-delay="1800">
                                                     <span class="badge bg-success animate-on-scroll" data-animation="pulse" data-delay="1900">Akreditasi A</span>

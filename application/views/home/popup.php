@@ -1,6 +1,6 @@
-<div class="modal fade animated-popup popup-modal-wrapper" id="iklanModal" tabindex="-1" aria-label="iklanModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-md">
-        <div class="modal-content text-center">
+<div class="modal fade animated-popup popup-modal-wrapper" id="iklanModal" tabindex="-1" aria-label="iklanModalLabel" aria-hidden="true" style="display: block;">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 700px; width: 95%;">
+        <div class="modal-content text-center" style="border-radius: 18px;">
             <div class="modal-header gradient-header">
                 <button type="button" class="btn-close btn-close-white animated-close" data-bs-dismiss="modal" aria-label="Tutup"><i class="fa fa-times"></i></button>
             </div>
@@ -18,7 +18,7 @@
                                     loading="eager"
                                     fetchpriority="high"
                                     alt="Pengumuman <?php echo htmlspecialchars($item->nama_popup ?? 'Poltekkes Jakarta III'); ?>"
-                                    style="object-fit: cover; max-height: 400px;">
+                                    style="object-fit: cover; max-height: 480px;">
                             <?php else: ?>
                                 <!-- Secondary images: Lazy load -->
                                 <img data-src="<?php echo base_url('assets/upload/image/' . $item->gambar); ?>"
@@ -28,7 +28,7 @@
                                     class="img-fluid popup-image popup-lazy"
                                     loading="lazy"
                                     alt="Pengumuman <?php echo htmlspecialchars($item->nama_popup ?? 'Poltekkes Jakarta III'); ?>"
-                                    style="object-fit: cover; max-height: 400px;">
+                                    style="object-fit: cover; max-height: 480px;">
 
                                 <!-- Loading overlay for secondary images -->
                                 <div class="popup-loading-overlay">
