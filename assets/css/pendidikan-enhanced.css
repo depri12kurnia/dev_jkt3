@@ -603,7 +603,11 @@
 }
 
 /* ===== NUMBERED/ORDERED LIST (ol) ===== */
-.blog-content ol {
+
+/* Selalu reset counter di setiap ol, abaikan value/start di HTML */
+.blog-content ol,
+.blog-content ol ol,
+.blog-content ol ol ol {
     counter-reset: list-counter;
 }
 
@@ -613,7 +617,13 @@
     margin-bottom: 12px;
     color: #555;
     line-height: 1.6;
-    counter-increment: list-counter;
+    counter-increment: list-counter 1;
+}
+
+/* Abaikan value/start di HTML agar counter CSS tetap urut */
+.blog-content ol li[value],
+.blog-content ol li[start] {
+    counter-increment: list-counter 1 !important;
 }
 
 .blog-content ol li::before {

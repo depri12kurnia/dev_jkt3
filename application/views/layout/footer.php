@@ -1,12 +1,62 @@
 <!-- Footer Bootstrap -->
 <!-- ============ -->
+<!-- cookies settings -->
+<?php
+$cookie_consent = isset($_COOKIE['cookie_consent']) ? $_COOKIE['cookie_consent'] : '';
+$hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
+?>
+<div id="cookie-banner" style="
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #2c3e50; color: white; padding: 15px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 9999; font-size: 14px; <?php echo $hide_cookie_banner; ?>">
+
+    <span>
+        Kami menghargai privasi Anda. Situs web ini menyimpan cookies di komputer Anda
+        untuk meningkatkan pengalaman, analitik, dan metrik.
+        Lihat <a href="/kebijakan-cookie" style="color: #f1c40f;">Kebijakan Cookie</a>.
+    </span>
+
+    <div>
+        <button onclick="acceptAllCookies()" style="background: #27ae60; color: white; border: none; padding: 8px 12px; border-radius: 5px; margin-left: 10px;">
+            Terima Semua Cookie
+        </button>
+        <button onclick="openCookieModal()" style="background: #c0392b; color: white; border: none; padding: 8px 12px; border-radius: 5px; margin-left: 10px;">
+            Kelola Cookie
+        </button>
+    </div>
+</div>
+<div id="cookie-modal" style="
+    display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center; <?php echo $hide_cookie_banner; ?>">
+
+    <div style="background: white; padding: 20px; border-radius: 10px; width: 400px; color: black;">
+        <h3>Pengaturan Cookie</h3>
+        <p>Pilih jenis cookie yang ingin Anda izinkan:</p>
+
+        <label>
+            <input type="checkbox" checked disabled> Essential (Wajib)
+        </label><br>
+        <label>
+            <input type="checkbox" id="cookie-analytics"> Analytics
+        </label><br>
+        <br>
+
+        <button onclick="saveCookiePreferences()" style="background:#27ae60; color:white; padding:8px 12px; border:none; border-radius:5px;">
+            Simpan Pilihan
+        </button>
+        <button onclick="closeCookieModal()" style="background:#c0392b; color:white; padding:8px 12px; border:none; border-radius:5px;">
+            Batal
+        </button>
+    </div>
+</div>
 <footer class="mt-5 footer-custom">
     <div class="container py-4">
         <div class="row g-4">
             <div class="col-md-4 col-sm-12">
                 <h4 class="mb-3 fw-bold text-primary-dark">Lokasi</h4>
-                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6530826872395!2d106.92392351056975!3d-6.3092254936536545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6992ba4f085f8d%3A0x4b820032d3ad33ae!2sPoltekkes%20Kemenkes%20Jakarta%20III!5e0!3m2!1sen!2sid!4v1753666860477!5m2!1sen!2sid" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-                <h5 class="mb-2 fw-semibold text-primary-dark">Social Media</h5>
+                <iframe title="Lokasi Poltekkes Kemenkes Jakarta III" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6530826872395!2d106.92392351056975!3d-6.3092254936536545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6992ba4f085f8d%3A0x4b820032d3ad33ae!2sPoltekkes%20Kemenkes%20Jakarta%20III!5e0!3m2!1sen!2sid!4v1753666860477!5m2!1sen!2sid" width="70%" height="50%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <h5 class="mb-2 fw-semibold text-primary-dark">Terhubung Dengan Kami</h5>
                 <ul class="list-inline mt-3 d-flex flex-wrap gap-2">
                     <li class="list-inline-item">
                         <a href="https://wa.me/<?php echo $site->whatsapp; ?>" target="_blank" class="footer-social rounded-circle d-flex align-items-center justify-content-center">
@@ -66,7 +116,7 @@
                 </ul>
             </div>
             <div class="col-md-4 col-sm-6">
-                <h4 class="mb-3 fw-bold text-primary-dark">Sistem Informasi</h4>
+                <h4 class="mb-3 fw-bold text-primary-dark">Link Cepat</h4>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a href="https://jakarta3.pusilkom.com/" target="_blank" class="footer-link"><i class="fa fa-university"></i> Sistem Informasi Akademik EUIS</a></li>
                     <li class="mb-2"><a href="https://alumnijkt3.pusilkom.com/" target="_blank" class="footer-link"><i class="fa fa-graduation-cap"></i> Sistem Informasi Portal Alumni</a></li>
@@ -95,56 +145,6 @@
 <!-- End Footer -->
 </div>
 
-<!-- cookies settings -->
-<?php
-$cookie_consent = isset($_COOKIE['cookie_consent']) ? $_COOKIE['cookie_consent'] : '';
-$hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
-?>
-<div id="cookie-banner" style="
-    position: fixed; bottom: 0; left: 0; right: 0;
-    background: #2c3e50; color: white; padding: 15px;
-    display: flex; justify-content: space-between; align-items: center;
-    z-index: 9999; font-size: 14px; <?php echo $hide_cookie_banner; ?>">
-
-    <span>
-        Kami menghargai privasi Anda. Situs web ini menyimpan cookies di komputer Anda
-        untuk meningkatkan pengalaman, analitik, dan metrik.
-        Lihat <a href="/kebijakan-cookie" style="color: #f1c40f;">Kebijakan Cookie</a>.
-    </span>
-
-    <div>
-        <button onclick="acceptAllCookies()" style="background: #27ae60; color: white; border: none; padding: 8px 12px; border-radius: 5px; margin-left: 10px;">
-            Terima Semua Cookie
-        </button>
-        <button onclick="openCookieModal()" style="background: #c0392b; color: white; border: none; padding: 8px 12px; border-radius: 5px; margin-left: 10px;">
-            Kelola Cookie
-        </button>
-    </div>
-</div>
-<div id="cookie-modal" style="
-    display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center; <?php echo $hide_cookie_banner; ?>">
-
-    <div style="background: white; padding: 20px; border-radius: 10px; width: 400px; color: black;">
-        <h3>Pengaturan Cookie</h3>
-        <p>Pilih jenis cookie yang ingin Anda izinkan:</p>
-
-        <label>
-            <input type="checkbox" checked disabled> Essential (Wajib)
-        </label><br>
-        <label>
-            <input type="checkbox" id="cookie-analytics"> Analytics
-        </label><br>
-        <br>
-
-        <button onclick="saveCookiePreferences()" style="background:#27ae60; color:white; padding:8px 12px; border:none; border-radius:5px;">
-            Simpan Pilihan
-        </button>
-        <button onclick="closeCookieModal()" style="background:#c0392b; color:white; padding:8px 12px; border:none; border-radius:5px;">
-            Batal
-        </button>
-    </div>
-</div>
 
 <!-- Accept Cookies -->
 <script>
@@ -220,7 +220,7 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
 
 
 <!-- Custom JS - Load BEFORE open-accessibility -->
-<script src="<?php echo base_url(); ?>assets/js/slider-enhanced.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/slider-enhanced.js"></script> -->
 <script src="<?php echo base_url(); ?>assets/js/pendidikan-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/staff-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/partners-enhanced.js"></script>

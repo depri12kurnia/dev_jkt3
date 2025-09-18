@@ -21,9 +21,32 @@
                             <a href="<?php echo base_url('berita/read/' . $berita->slug_berita); ?>"
                                 title="<?php echo htmlspecialchars(strip_tags($berita->judul_berita)); ?>"
                                 class="d-block image-link">
-                                <img src="<?php echo base_url('assets/upload/image/thumbs/' . $berita->gambar); ?>"
-                                    alt="<?php echo htmlspecialchars(strip_tags($berita->judul_berita)); ?>"
-                                    class="img-fluid news-image lazyload">
+
+                                <!-- Optimized Lazy Loading Image with WebP Support -->
+                                <picture>
+                                    <!-- WebP format untuk browser yang support -->
+                                    <source data-srcset="<?php echo base_url('assets/upload/image/thumbs/' . str_replace(['.jpg', '.jpeg', '.png'], '.webp', $berita->gambar)); ?>"
+                                        type="image/webp"
+                                        class="lazyload">
+
+                                    <!-- Fallback untuk browser yang tidak support WebP -->
+                                    <img data-src="<?php echo base_url('assets/upload/image/thumbs/' . $berita->gambar); ?>"
+                                        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23dee2e6' font-family='sans-serif' font-size='14'%3EMemuat...%3C/text%3E%3C/svg%3E"
+                                        alt="<?php echo htmlspecialchars(strip_tags($berita->judul_berita)); ?>"
+                                        class="img-fluid news-image lazyload"
+                                        loading="lazy"
+                                        width="400"
+                                        height="200"
+                                        style="object-fit: cover; background-color: #f8f9fa;">
+                                </picture>
+
+                                <!-- Loading Spinner -->
+                                <div class="image-loading-spinner position-absolute top-50 start-50 translate-middle">
+                                    <div class="spinner-border text-primary" role="status" style="width: 2rem; height: 2rem;">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+
                                 <div class="image-overlay">
                                     <i class="bi bi-eye text-white"></i>
                                 </div>
@@ -80,6 +103,106 @@
 
     .animate-on-scroll.animated {
         opacity: 1;
+    }
+
+    /* Tambahkan ke bagian <style> yang sudah ada di file news.php */
+
+    /* Lazy Loading Optimization */
+    .lazyload {
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+        background-color: #f8f9fa;
+    }
+
+    .lazyloaded {
+        opacity: 1;
+    }
+
+    .lazyload:not(.lazyloaded) {
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200"%3E%3Crect width="100%25" height="100%25" fill="%23f8f9fa"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23dee2e6" font-family="sans-serif" font-size="14"%3EMemuat...%3C/text%3E%3C/svg%3E');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    /* Loading Spinner */
+    .image-loading-spinner {
+        z-index: 10;
+        transition: opacity 0.3s ease;
+    }
+
+    .lazyloaded+.image-loading-spinner,
+    .lazyload.lazyloaded~.image-loading-spinner {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Image Container Optimization */
+    .post-images {
+        min-height: 200px;
+        /* Prevent layout shift */
+        background-color: #f8f9fa;
+        position: relative;
+    }
+
+    /* Skeleton Loading Animation */
+    .post-images:not(.image-loaded)::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading-shimmer 1.5s infinite;
+        z-index: 1;
+    }
+
+    @keyframes loading-shimmer {
+        0% {
+            background-position: -200% 0;
+        }
+
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    /* Error State */
+    .lazyload.lazyerror {
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200"%3E%3Crect width="100%25" height="100%25" fill="%23f8f9fa"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23dc3545" font-family="sans-serif" font-size="14"%3EGagal memuat gambar%3C/text%3E%3C/svg%3E');
+        opacity: 1;
+    }
+
+    /* Performance Optimizations */
+    .news-image {
+        will-change: transform, opacity;
+        transform: translateZ(0);
+        /* Hardware acceleration */
+    }
+
+    /* Responsive Optimizations */
+    @media (max-width: 768px) {
+        .post-images {
+            min-height: 160px;
+        }
+
+        .image-loading-spinner .spinner-border {
+            width: 1.5rem !important;
+            height: 1.5rem !important;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .post-images {
+            min-height: 140px;
+        }
+
+        .image-loading-spinner .spinner-border {
+            width: 1.2rem !important;
+            height: 1.2rem !important;
+        }
     }
 
     /* Animation Keyframes */
@@ -408,9 +531,10 @@
     }
 </style>
 
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Intersection Observer untuk scroll animations
+        // Enhanced Intersection Observer untuk scroll animations
         const observerOptions = {
             threshold: 0.2,
             rootMargin: '0px 0px -50px 0px'
@@ -427,44 +551,113 @@
                         element.classList.add('animated', animation);
                     }, delay);
 
-                    // Unobserve setelah animasi
                     observer.unobserve(element);
                 }
             });
         }, observerOptions);
 
-        // Observe semua elemen dengan animate-on-scroll
-        const animateElements = document.querySelectorAll('.animate-on-scroll');
-        animateElements.forEach(element => {
-            observer.observe(element);
-        });
-
-        // Lazy loading untuk gambar
+        // Enhanced Lazy Loading dengan error handling dan WebP support
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.classList.remove('lazyload');
+                        const container = img.closest('.post-images');
+                        const spinner = container?.querySelector('.image-loading-spinner');
+
+                        if (img.dataset.src || img.dataset.srcset) {
+                            loadImageWithFallback(img, container, spinner);
+                            imageObserver.unobserve(img);
                         }
-                        imageObserver.unobserve(img);
                     }
                 });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px 0px'
             });
 
-            // Observe gambar dengan class lazyload
-            document.querySelectorAll('img.lazyload').forEach(img => {
+            // Observe all lazy images
+            document.querySelectorAll('img.lazyload, source.lazyload').forEach(img => {
                 imageObserver.observe(img);
             });
+        } else {
+            // Fallback untuk browser tanpa IntersectionObserver
+            loadAllImages();
         }
+
+        // Enhanced image loading dengan error handling
+        function loadImageWithFallback(img, container, spinner) {
+            const loadPromise = new Promise((resolve, reject) => {
+                const tempImg = new Image();
+
+                tempImg.onload = () => {
+                    // Image loaded successfully
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                    }
+                    if (img.dataset.srcset) {
+                        img.srcset = img.dataset.srcset;
+                    }
+
+                    img.classList.remove('lazyload');
+                    img.classList.add('lazyloaded');
+
+                    if (container) {
+                        container.classList.add('image-loaded');
+                    }
+
+                    if (spinner) {
+                        spinner.style.display = 'none';
+                    }
+
+                    resolve();
+                };
+
+                tempImg.onerror = () => {
+                    // Image failed to load, try fallback
+                    if (img.dataset.src && img.dataset.src.includes('.webp')) {
+                        // Try original format if WebP fails
+                        const fallbackSrc = img.dataset.src.replace('.webp', '.jpg');
+                        tempImg.src = fallbackSrc;
+                    } else {
+                        // Show error state
+                        img.classList.remove('lazyload');
+                        img.classList.add('lazyerror');
+
+                        if (spinner) {
+                            spinner.style.display = 'none';
+                        }
+
+                        reject();
+                    }
+                };
+
+                // Start loading
+                tempImg.src = img.dataset.src || img.dataset.srcset;
+            });
+
+            return loadPromise;
+        }
+
+        function loadAllImages() {
+            document.querySelectorAll('img.lazyload').forEach(img => {
+                const container = img.closest('.post-images');
+                const spinner = container?.querySelector('.image-loading-spinner');
+                loadImageWithFallback(img, container, spinner);
+            });
+        }
+
+        // Observe animate elements
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
 
         // Performance optimization - throttle scroll events
         let ticking = false;
 
         function updateScrollEffects() {
-            // Add any additional scroll-based effects here
+            // Additional scroll-based effects
             ticking = false;
         }
 
@@ -475,6 +668,18 @@
             }
         }
 
-        window.addEventListener('scroll', requestScrollUpdate);
+        // Preload critical images (first 2 images)
+        const criticalImages = document.querySelectorAll('.news-item:nth-child(-n+2) img.lazyload');
+        criticalImages.forEach((img, index) => {
+            if (index < 2) {
+                const container = img.closest('.post-images');
+                const spinner = container?.querySelector('.image-loading-spinner');
+                loadImageWithFallback(img, container, spinner);
+            }
+        });
+
+        window.addEventListener('scroll', requestScrollUpdate, {
+            passive: true
+        });
     });
 </script>

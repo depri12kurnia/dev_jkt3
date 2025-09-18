@@ -7,10 +7,10 @@
 
         <div class="testimonial-slider-wrapper">
             <!-- Navigation Buttons -->
-            <button class="slider-nav prev-btn" id="prevBtn">
+            <button class="slider-nav prev-btn" id="prevBtn" aria-label="Testimoni Sebelumnya">
                 <i class="fa fa-chevron-left"></i>
             </button>
-            <button class="slider-nav next-btn" id="nextBtn">
+            <button class="slider-nav next-btn" id="nextBtn" aria-label="Testimoni Berikutnya">
                 <i class="fa fa-chevron-right"></i>
             </button>
 

@@ -37,7 +37,15 @@
                 <div class="row align-items-center">
                     <div class="col-md-3 d-flex align-items-center mb-2 mb-md-0">
                         <a href="<?php echo base_url() ?>">
-                            <img src="<?php echo $this->website->logo() ?>" alt="logo" class="img-fluid rounded" style="max-height:100px;">
+                            <img src="<?php echo $this->website->logo() ?>"
+                                alt="<?php echo $this->website->namaweb() ?> Logo"
+                                class="img-fluid rounded"
+                                style="max-height:100px;"
+                                width="auto"
+                                height="100"
+                                loading="eager"
+                                decoding="async"
+                                onerror="this.style.display='none';">
                         </a>
                     </div>
                     <div class="col-md-9">

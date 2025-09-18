@@ -96,13 +96,13 @@
             <div class="col-lg-6 animate-on-scroll" data-animation="slideInRight" data-delay="300">
                 <div class="video-player-wrapper">
                     <div class="video-thumbnail position-relative hover-lift-video">
-                        <img src="<?php echo base_url('assets/video/video-thumbnail.jpg'); ?>"
+                        <img src="<?php echo base_url('assets/video/video-thumbnail.webp'); ?>"
                             alt="Video Kampus PolkesJati"
                             class="img-fluid rounded-4 shadow-lg video-image">
 
                         <!-- Play Button dengan pulse effect -->
                         <div class="play-button-overlay position-absolute top-50 start-50 translate-middle">
-                            <button class="btn-play pulse-play" data-bs-toggle="modal" data-bs-target="#videoModal">
+                            <button class="btn-play pulse-play" data-bs-toggle="modal" data-bs-target="#videoModal" aria-label="Putar Video Profil Kampus">
                                 <i class="fa fa-play"></i>
                                 <div class="ripple-1"></div>
                                 <div class="ripple-2"></div>

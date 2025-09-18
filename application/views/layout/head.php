@@ -13,36 +13,18 @@ $site_info = $this->konfigurasi_model->listing();
     <meta name="author" content="<?php echo $site_info->namaweb ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Security Headers -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
-               https://code.jquery.com 
-               https://cdn.jsdelivr.net 
-               https://cdn.datatables.net 
-               https://fonts.googleapis.com;
-    style-src 'self' 'unsafe-inline' 
-              https://fonts.googleapis.com 
-              https://cdn.jsdelivr.net 
-              https://cdn.datatables.net;
-    font-src 'none' 
-             https://fonts.gstatic.com 
-             https://cdn.jsdelivr.net;
-    img-src 'self' data: blob: https:;
-    connect-src 'self' https:;
-    frame-src 'none';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-"> -->
+
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <!-- <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"> -->
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 
     <!-- icon -->
     <link rel="shortcut icon" href="<?php echo $this->website->icon(); ?>">
+
+    <!-- Preload critical logo for faster loading -->
+    <link rel="preload" as="image" href="<?php echo $this->website->logo(); ?>" importance="high">
+
     <!-- Prealoader -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" media="all" onload="this.media='all'">
@@ -94,12 +76,10 @@ $site_info = $this->konfigurasi_model->listing();
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/google-translate.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom-translate.css">
 
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/slider-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/pendidikan-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/staff-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/agenda-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/partners-enhanced.css">
-    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/video-enhanced.css"> -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/berita-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/backtotop-enhanced.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/popup-enhanced.css">

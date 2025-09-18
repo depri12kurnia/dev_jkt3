@@ -9,12 +9,26 @@
                         <div class="card shadow-lg border-0 rounded-4 overflow-hidden hover-lift">
                             <div class="row g-0 align-items-center">
                                 <div class="col-md-7 bg-light d-flex align-items-center justify-content-center animate-on-scroll" data-animation="slideInLeft" data-delay="400">
-                                    <div class="about-greenforest-img p-3">
-                                        <img src="<?php echo base_url('assets/upload/pages/' . $profil->gambar) ?>"
+                                    <div class="about-greenforest-img p-3 position-relative">
+                                        <!-- PERBAIKAN: Simplified Image Loading -->
+                                        <img data-src="<?php echo base_url('assets/upload/pages/' . $profil->gambar); ?>"
+                                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='320'%3E%3Crect width='100%25' height='100%25' fill='%23f8f9fa'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236c757d' font-family='Arial,sans-serif' font-size='16'%3EMemuat gambar...%3C/text%3E%3C/svg%3E"
                                             alt="about-greenforest-img"
-                                            class="img-fluid rounded-4 shadow lazyload zoom-on-hover animate-on-scroll"
-                                            data-animation="zoomIn" data-delay="600"
+                                            class="img-fluid rounded-4 shadow about-image-lazy zoom-on-hover animate-on-scroll"
+                                            data-animation="zoomIn"
+                                            data-delay="600"
+                                            loading="lazy"
+                                            width="400"
+                                            height="320"
                                             style="border-top-right-radius: 50px; border-bottom-left-radius: 50px; object-fit:cover; max-height:320px;" />
+
+                                        <!-- Loading overlay untuk feedback visual -->
+                                        <div class="about-image-loading-overlay">
+                                            <div class="about-loading-content">
+                                                <div class="about-loading-spinner"></div>
+                                                <span class="about-loading-text">Memuat gambar...</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-5 p-4 animate-on-scroll" data-animation="slideInRight" data-delay="500">
@@ -114,6 +128,78 @@
 
     .animate-on-scroll.animated {
         opacity: 1;
+    }
+
+    /* === SIMPLIFIED LAZY LOADING STYLES === */
+
+    /* About Image Lazy Loading - SIMPLIFIED */
+    .about-image-lazy {
+        opacity: 1;
+        /* PERBAIKAN: Tetap terlihat saat loading */
+        transition: opacity 0.6s ease-in-out, transform 0.3s ease;
+        will-change: opacity, transform;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+
+    .about-image-lazy.about-loaded {
+        opacity: 1;
+    }
+
+    .about-image-lazy.about-error {
+        background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+        opacity: 1;
+    }
+
+    /* Loading Overlay - SIMPLIFIED */
+    .about-image-loading-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        backdrop-filter: blur(2px);
+        transition: all 0.6s ease-in-out;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-image-loading-overlay.about-hidden {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    .about-loading-content {
+        text-align: center;
+        color: #6c757d;
+    }
+
+    .about-loading-spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid rgba(108, 117, 125, 0.2);
+        border-left-color: #00B9AD;
+        border-radius: 50%;
+        animation: about-spin 1s linear infinite;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-loading-text {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    @keyframes about-spin {
+        to {
+            transform: rotate(360deg);
+        }
     }
 
     /* Animation Keyframes */
@@ -302,7 +388,7 @@
     }
 
     .zoom-on-hover:hover {
-        transform: scale(1.05);
+        transform: scale(1.05) translateZ(0);
     }
 
     .hover-underline {
@@ -373,62 +459,7 @@
         overflow: hidden;
     }
 
-    .bg-about-greenforest::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23000" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-        animation: grain 20s linear infinite;
-    }
-
-    @keyframes grain {
-
-        0%,
-        100% {
-            transform: translate(0, 0);
-        }
-
-        10% {
-            transform: translate(-5%, -10%);
-        }
-
-        20% {
-            transform: translate(-15%, 5%);
-        }
-
-        30% {
-            transform: translate(7%, -25%);
-        }
-
-        40% {
-            transform: translate(-5%, 25%);
-        }
-
-        50% {
-            transform: translate(-15%, 10%);
-        }
-
-        60% {
-            transform: translate(15%, 0%);
-        }
-
-        70% {
-            transform: translate(0%, 15%);
-        }
-
-        80% {
-            transform: translate(3%, 35%);
-        }
-
-        90% {
-            transform: translate(-10%, 10%);
-        }
-    }
-
-    /* Staggered Animation for Feature Items */
+    /* Feature Items */
     .feature-item {
         transition: all 0.3s ease;
     }
@@ -458,7 +489,7 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
-    /* Responsive Animations */
+    /* Responsive */
     @media (max-width: 768px) {
         .animate-on-scroll {
             transition-duration: 0.6s;
@@ -472,9 +503,30 @@
         .hover-lift:hover {
             transform: translateY(-5px);
         }
+
+        .about-loading-spinner {
+            width: 28px;
+            height: 28px;
+            border-width: 2px;
+        }
+
+        .about-loading-text {
+            font-size: 0.8rem;
+        }
     }
 
-    /* Reduce motion for accessibility */
+    @media (max-width: 480px) {
+        .about-loading-spinner {
+            width: 24px;
+            height: 24px;
+        }
+
+        .about-loading-text {
+            font-size: 0.75rem;
+        }
+    }
+
+    /* Accessibility */
     @media (prefers-reduced-motion: reduce) {
 
         .animate-on-scroll,
@@ -484,18 +536,82 @@
         .pulse-button,
         .feature-item {
             animation: none !important;
-            transition: none !important;
+            transition: opacity 0.3s ease !important;
         }
 
-        .bg-about-greenforest::before {
-            animation: none !important;
+        .about-loading-spinner {
+            animation: none;
+            border-left-color: transparent;
+            border-top-color: #00B9AD;
         }
     }
 </style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Intersection Observer for scroll animations
+        // === SIMPLIFIED ABOUT IMAGE LAZY LOADER ===
+
+        function loadAboutImage() {
+            const aboutImage = document.querySelector('.about-image-lazy');
+            const loadingOverlay = document.querySelector('.about-image-loading-overlay');
+
+            if (!aboutImage || !aboutImage.dataset.src) return;
+
+            // Langsung load gambar tanpa kompleksitas berlebihan
+            const img = new Image();
+
+            img.onload = function() {
+                // Update src
+                aboutImage.src = aboutImage.dataset.src;
+                aboutImage.removeAttribute('data-src');
+                aboutImage.classList.add('about-loaded');
+
+                // Hide loading overlay
+                if (loadingOverlay) {
+                    loadingOverlay.classList.add('about-hidden');
+                    setTimeout(() => {
+                        loadingOverlay.style.display = 'none';
+                    }, 600);
+                }
+            };
+
+            img.onerror = function() {
+                aboutImage.classList.add('about-error');
+                if (loadingOverlay) {
+                    loadingOverlay.innerHTML = '<div class="about-loading-content"><span class="about-loading-text" style="color: #dc3545;">Gagal memuat gambar</span></div>';
+                }
+                console.warn('Failed to load about image');
+            };
+
+            // Start loading
+            img.src = aboutImage.dataset.src;
+        }
+
+        // Setup intersection observer untuk about image
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        loadAboutImage();
+                        imageObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px 0px'
+            });
+
+            const aboutImage = document.querySelector('.about-image-lazy');
+            if (aboutImage) {
+                imageObserver.observe(aboutImage);
+            }
+        } else {
+            // Fallback untuk browser tanpa IntersectionObserver
+            loadAboutImage();
+        }
+
+        // === ANIMATION INTERSECTION OBSERVER ===
+
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -505,8 +621,14 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const element = entry.target;
+
+                    if (element.classList.contains('animated') ||
+                        element.classList.contains('about-image-lazy')) {
+                        return;
+                    }
+
                     const animation = element.dataset.animation;
-                    const delay = element.dataset.delay || 0;
+                    const delay = parseInt(element.dataset.delay) || 0;
 
                     setTimeout(() => {
                         element.classList.add('animated', animation);
@@ -517,52 +639,20 @@
             });
         }, observerOptions);
 
-        // Observe all elements with animate-on-scroll class
+        // Observe all animate elements
         const animateElements = document.querySelectorAll('.animate-on-scroll');
         animateElements.forEach(element => {
             observer.observe(element);
         });
 
-        // Parallax effect for background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const aboutSection = document.getElementById('about-section');
+        // === FALLBACK LOADING (backup jika lazy loading gagal) ===
 
-            if (aboutSection) {
-                const rate = scrolled * -0.5;
-                const bgElement = aboutSection.querySelector('::before');
-                if (bgElement) {
-                    bgElement.style.transform = `translateY(${rate}px)`;
-                }
+        setTimeout(() => {
+            const aboutImage = document.querySelector('.about-image-lazy');
+            if (aboutImage && aboutImage.dataset.src && !aboutImage.classList.contains('about-loaded')) {
+                console.log('Fallback: Loading about image directly');
+                loadAboutImage();
             }
-        });
-
-        // Counter animation for numbers
-        const counterElements = document.querySelectorAll('[data-counter]');
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const element = entry.target;
-                    const target = parseInt(element.dataset.counter);
-                    let current = 0;
-                    const increment = target / 100;
-
-                    const counterInterval = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            element.textContent = target;
-                            clearInterval(counterInterval);
-                        } else {
-                            element.textContent = Math.floor(current);
-                        }
-                    }, 30);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all counter elements
-        counterElements.forEach(element => {
-            counterObserver.observe(element);
-        });
+        }, 2000);
     });
 </script>

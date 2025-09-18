@@ -2,3 +2,44 @@
     Order allow,deny
     Deny from all
 </FilesMatch>
+
+# WebP Image Optimization Rules
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Check if browser supports WebP
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    # Check if WebP version exists
+    RewriteCond %{REQUEST_FILENAME} \.(jpe?g|png)$
+    RewriteCond %{REQUEST_FILENAME}.webp -f
+    # Serve WebP version
+    RewriteRule (.+)\.(jpe?g|png)$ $1.$2.webp [T=image/webp,E=accept:1]
+</IfModule>
+
+# Set proper MIME type for WebP
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+</IfModule>
+
+# Add Vary header for WebP
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpe?g|png)$">
+        Header append Vary Accept
+    </FilesMatch>
+</IfModule>
+
+# Cache optimization for images
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+</IfModule>
+
+# Compression for WebP and other images
+<IfModule mod_deflate.c>
+    <FilesMatch "\.(webp|svg)$">
+        SetOutputFilter DEFLATE
+    </FilesMatch>
+</IfModule>
