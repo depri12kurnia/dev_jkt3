@@ -128,7 +128,7 @@
 
     .slider-fullwidth .carousel {
         width: 100%;
-        height: 70vh;
+        height: 80vh;
         min-height: 500px;
         margin: 0;
         padding: 0;

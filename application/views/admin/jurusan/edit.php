@@ -366,7 +366,7 @@
     // Store original values
     var originalData = {
       nama: '<?php echo addslashes($jurusan->nama) ?>',
-      deskripsi: '<?php echo addslashes($jurusan->deskripsi ?? '') ?>',
+      deskripsi: <?php echo json_encode($jurusan->deskripsi ?? ''); ?>,
       tagline: '<?php echo addslashes($jurusan->tagline ?? '') ?>',
       status: '<?php echo addslashes($jurusan->status ?? '') ?>',
       color: '<?php echo $jurusan->color ?>',

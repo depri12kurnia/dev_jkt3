@@ -27,9 +27,13 @@
                     </div>
 
                     <!-- Dynamic Description -->
-                    <p class="lead text-muted mb-4 lh-lg">
-                        <?php echo !empty($jurusan_data->deskripsi) ? $jurusan_data->deskripsi : 'Jurusan dengan standar pendidikan tinggi dan fokus pada pengembangan kompetensi mahasiswa.'; ?>
-                    </p>
+                    <div class="content-section">
+                        <div class="mb-4">
+                            <div class="text-content">
+                                <?php echo !empty($jurusan_data->deskripsi) ? $jurusan_data->deskripsi : 'Jurusan dengan standar pendidikan tinggi dan fokus pada pengembangan kompetensi mahasiswa.'; ?>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Mobile optimized features -->
                     <div class="d-block d-md-none feature-highlights-mobile">

@@ -127,7 +127,7 @@
                                                 </a>
                                                 <a href="<?php echo !empty($prodi->link_detail) ? $prodi->link_detail : '#'; ?>"
                                                     class="btn btn-outline-<?php echo !empty($prodi->color) ? $prodi->color : 'primary'; ?> flex-fill flex-sm-grow-0">
-                                                    <i class="bi bi-info-circle me-1"></i>Info Biaya UKT
+                                                    <i class="bi bi-info-circle me-1"></i>Rumusan Capaian Pembelajaran Lulusan
                                                 </a>
                                             </div>
                                         </div>
@@ -194,7 +194,7 @@
                                                     <div class="col-6 col-md-3">
                                                         <div class="info-item">
                                                             <i class="bi bi-clock text-info mb-2"></i>
-                                                            <h6 class="mb-1 small fw-bold">Mode</h6>
+                                                            <h6 class="mb-1 small fw-bold">Mode Kuliah</h6>
                                                             <small class="text-muted"><?php echo $prodi->mode_kuliah; ?></small>
                                                         </div>
                                                     </div>
@@ -221,8 +221,8 @@
                                                     <div class="col-12 col-md-8">
                                                         <h6 class="mb-2 small fw-bold">Terakreditasi & Diakui:</h6>
                                                         <div class="d-flex flex-wrap gap-2 align-items-center">
-                                                            <img src="<?php echo base_url('assets/images/logos/ban-pt.png'); ?>" alt="BAN-PT" height="30" class="img-fluid">
-                                                            <img src="<?php echo base_url('assets/images/logos/dikti-saintek.png'); ?>" alt="Dikti Saintek" height="30" class="img-fluid">
+                                                            <img src="<?php echo base_url('assets/images/logos/ban-pt.webp'); ?>" alt="BAN-PT" height="30" class="img-fluid">
+                                                            <img src="<?php echo base_url('assets/images/logos/dikti-saintek.webp'); ?>" alt="Dikti Saintek" height="30" class="img-fluid">
                                                             <span class="badge bg-success">Akreditasi <?php echo $prodi->akreditasi; ?></span>
                                                         </div>
                                                     </div>

@@ -68,7 +68,7 @@
                             </p>
                             <!-- Action Buttons -->
                             <div class="d-flex justify-content-center gap-2 flex-wrap">
-                                <a href="<?php echo htmlspecialchars($sdm->email); ?>"
+                                <a href="<?php echo base_url('sdm/detail/' . $sdm->sdm_slug); ?>"
                                     class="btn btn-sm btn-outline-primary"
                                     title="Informasi Detail">
                                     <i class="bi bi-info-circle-fill me-1"></i>Detail

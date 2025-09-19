@@ -155,6 +155,7 @@ $nav_unit = $this->nav_model->nav_unit();
                                     <li><a class="dropdown-item" href="https://sipadu.poltekkesjakarta3.ac.id/" target="_blank">Lapor Pengaduan</a></li>
                                     <li><a class="dropdown-item" href="https://sipadu.poltekkesjakarta3.ac.id/" target="_blank">Conflict Of Interest</a></li>
                                     <li><a class="dropdown-item" href="https://wbs.kemkes.go.id/" target="_blank">Whistle Blowing System</a></li>
+                                    <li><a class="dropdown-item" href="https://www.lapor.go.id/" target="_blank">SPAN Lapor</a></li>
                                 </div>
                                 <div class="col-4">
                                     <div class="dropdown-header fw-bold text-default">Aplikasi</div>

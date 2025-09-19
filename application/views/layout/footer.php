@@ -124,6 +124,7 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
                     <li class="mb-2"><a href="https://ruang.pusilkom.com/#/login" target="_blank" class="footer-link"><i class="fa fa-building"></i> Sistem Informasi Ruangan</a></li>
                     <li class="mb-2"><a href="https://rent.poltekkesjakarta3.ac.id/" target="_blank" class="footer-link"><i class="fa fa-car"></i> Sistem Informasi Rental Properti</a></li>
                     <li class="mb-2"><a href="https://sippn.menpan.go.id/instansi/184132/kementerian-kesehatan-republik-indonesia/politeknik-kesehatan-kemenkes-jakarta-iii" target="_blank" class="footer-link"><i class="fa fa-globe me-2"></i> SIPPN KemenpanRB</a></li>
+                    <li class="mb-2"><a href="https://www.lapor.go.id/" target="_blank" class="footer-link"><i class="fa fa-globe me-2"></i> SPAN Lapor</a></li>
                 </ul>
             </div>
 
