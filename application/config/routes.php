@@ -89,3 +89,6 @@ $route['pusat'] = 'pusat/listing';
 $route['pusat/search'] = 'pusat/search';
 $route['pusat/([a-zA-Z0-9-]+)/prodi/([a-zA-Z0-9-]+)'] = 'pusat/prodi/$1/$2';
 $route['pusat/([a-zA-Z0-9-]+)'] = 'pusat/index/$1';
+
+// route untuk cookies
+$route['kebijakan-cookies'] = 'cookies';

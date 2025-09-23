@@ -14,7 +14,7 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
     <span>
         Kami menghargai privasi Anda. Situs web ini menyimpan cookies di komputer Anda
         untuk meningkatkan pengalaman, analitik, dan metrik.
-        Lihat <a href="/kebijakan-cookie" style="color: #f1c40f;">Kebijakan Cookie</a>.
+        Lihat <a href="<?php echo site_url('kebijakan-cookies'); ?>" style="color: #f1c40f;">Kebijakan Cookie</a>.
     </span>
 
     <div>
