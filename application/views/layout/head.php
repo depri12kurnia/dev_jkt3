@@ -10,6 +10,22 @@ $site_info = $this->konfigurasi_model->listing();
     <title><?php echo $title; ?></title>
     <meta name="description" content="<?php echo strip_tags($site_info->tentang) . ', ' . $title ?>">
     <meta name="keywords" content="<?php echo $site_info->keywords . ', ' . $title  ?>">
+    <meta name="keywords" content="Poltekkes Terbaik, Poltekkes Kemenkes, Poltekkes, Politeknik Kesehatan, Politeknik Kesehatan Kemenkes, Politeknik Kesehatan Jakarta III, Poltekkes Jakarta III, Poltekkes Jakarta 3, Poltekkes Jakarta Timur, Poltekkes Jaktim, Poltekkes JKT3, Poltekkes Kemenkes Jakarta III, Poltekkes Kemenkes Jakarta 3, Poltekkes Kemenkes Jakarta Timur, Poltekkes Kemenkes Jaktim, Poltekkes Kemenkes JKT3">
+    <meta name="keywords" content="Politeknik Kesehatan Jakarta III, Politeknik Kesehatan Jakarta 3, Politeknik Kesehatan Jakarta Timur, Politeknik Kesehatan Jaktim, Politeknik Kesehatan JKT3">
+    <meta name="keywords" content="Politeknik Terbaik, Politeknik Kesehatan Terbaik, Politeknik Kesehatan Kemenkes Terbaik, Poltekkes Terbaik, Poltekkes Kemenkes Terbaik">
+    <meta name="keywords" content="Kampus Kesehatan, Kampus Kesehatan Terbaik, Kampus Kesehatan Kemenkes, Kampus Kesehatan Kemenkes Terbaik">
+    <meta name="keywords" content="Institut Kesehatan, Institut Kesehatan Terbaik, Institut Kesehatan Kemenkes, Institut Kesehatan Kemenkes Terbaik">
+    <meta name="keywords" content="BLU Kampus, BLU Kampus Kesehatan, BLU Kampus Kesehatan Kemenkes, BLU Poltekkes, BLU Poltekkes Kemenkes">
+    <meta name="keywords" content="Kelas Internasional, Kelas Internasional Poltekkes, Kelas Internasional Poltekkes Kemenkes">
+    <meta name="keywords" content="Kelas Alih Jenjang, Kelas Alih Jenjang Poltekkes, Kelas Alih Jenjang Poltekkes Kemenkes">
+    <meta name="keywords" content="Kelas Karyawan, Kelas Karyawan Poltekkes, Kelas Karyawan Poltekkes Kemenkes">
+    <meta name="keywords" content="Pendidikan Kesehatan, Pendidikan Kesehatan Terbaik, Pendidikan Kesehatan Kemenkes, Pendidikan Kesehatan Kemenkes Terbaik">
+    <meta name="keywords" content="Kesehatan, Kesehatan Terbaik, Kesehatan Kemenkes, Kesehatan Kemenkes Terbaik">
+    <meta name="keywords" content="Kampus Merdeka, Kampus Merdeka Poltekkes, Kampus Merdeka Poltekkes Kemenkes">
+    <meta name="keywords" content="spmb, spmb poltekkes, spmb poltekkes kemenkes, spmb poltekkes jakarta iii, spmb poltekkes jakarta 3, spmb poltekkes jakarta timur, spmb poltekkes jaktim, spmb poltekkes jkt3">
+    <meta name="keywords" content="jalur prestasi, jalur prestasi poltekkes, jalur prestasi poltekkes kemenkes, jalur prestasi poltekkes jakarta iii, jalur prestasi poltekkes jakarta 3, jalur prestasi poltekkes jakarta timur, jalur prestasi poltekkes jaktim, jalur prestasi poltekkes jkt3">
+    <meta name="keywords" content="jalur undangan, jalur undangan poltekkes, jalur undangan poltekkes kemenkes, jalur undangan poltekkes jakarta iii, jalur undangan poltekkes jakarta 3, jalur undangan poltekkes jakarta timur, jalur undangan poltekkes jaktim, jalur undangan poltekkes jkt3">
+    <meta name="keywords" content="kesehatan nomor satu, kesehatan nomor satu, kesehatan terbaik, kesehatan no 1, kesehatan no satu">
     <meta name="author" content="<?php echo $site_info->namaweb ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

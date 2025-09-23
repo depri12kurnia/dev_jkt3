@@ -234,7 +234,7 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
 <script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/open-accessibility.js?v=<?php echo time(); ?>"></script>
 
 <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-77QD9RNNKJ"></script> -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/ga4.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/ga4.js"></script> -->
 
 <script>
     const base_url = '<?php echo base_url(); ?>';
