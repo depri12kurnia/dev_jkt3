@@ -310,14 +310,6 @@
                             </td>
                             <td class="text-center">
                                 <div class="btn-group-vertical" role="group">
-                                    <!-- Detail Button -->
-                                    <a href="<?php echo base_url('admin/prodi/detail/' . $row->id) ?>"
-                                        class="btn btn-info btn-xs"
-                                        title="Detail Program Studi"
-                                        data-toggle="tooltip">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-
                                     <!-- Edit Button -->
                                     <a href="<?php echo base_url('admin/prodi/edit/' . $row->id) ?>"
                                         class="btn btn-warning btn-xs"
@@ -333,15 +325,6 @@
                                         data-toggle="tooltip"
                                         onclick="confirmStatusChange(event, '<?php echo ($row->status == 'active') ? 'menonaktifkan' : 'mengaktifkan' ?>')">
                                         <i class="fa <?php echo ($row->status == 'active') ? 'fa-pause' : 'fa-play' ?>"></i>
-                                    </a>
-
-                                    <!-- Preview Button -->
-                                    <a href="<?php echo base_url('admin/prodi/preview/' . $row->id) ?>"
-                                        target="_blank"
-                                        class="btn btn-primary btn-xs"
-                                        title="Preview Program Studi"
-                                        data-toggle="tooltip">
-                                        <i class="fa fa-external-link"></i>
                                     </a>
 
                                     <!-- Delete Button -->

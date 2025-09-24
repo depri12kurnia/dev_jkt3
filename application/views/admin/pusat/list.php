@@ -84,10 +84,8 @@
                             <td><?php echo date('d/m/Y H:i', strtotime($row->created_at)) ?></td>
                             <td class="text-center">
                                 <div class="btn-group-vertical" role="group">
-                                    <a href="<?php echo base_url('admin/pusat/detail/' . $row->id) ?>" class="btn btn-info btn-xs" title="Detail" data-toggle="tooltip"><i class="fa fa-eye"></i></a>
                                     <a href="<?php echo base_url('admin/pusat/edit/' . $row->id) ?>" class="btn btn-warning btn-xs" title="Edit" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
                                     <a href="<?php echo base_url('admin/pusat/delete/' . $row->id) ?>" class="btn btn-danger btn-xs" onclick="return confirmation(event)" title="Hapus" data-toggle="tooltip"><i class="fa fa-trash-o"></i></a>
-                                    <a href="<?php echo base_url('admin/pusat/preview/' . $row->id) ?>" target="_blank" class="btn btn-primary btn-xs" title="Preview" data-toggle="tooltip"><i class="fa fa-external-link"></i></a>
                                 </div>
                             </td>
                         </tr>

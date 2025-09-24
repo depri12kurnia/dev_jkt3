@@ -225,20 +225,6 @@
                 </td>
                 <td>
                   <div class="btn-group-vertical">
-                    <!-- Preview Button -->
-                    <a href="<?php echo base_url('admin/jurusan/preview/' . $row->id) ?>"
-                      class="btn btn-info btn-xs mb-1"
-                      title="Preview Frontend"
-                      target="_blank">
-                      <i class="fa fa-eye"></i>
-                    </a>
-
-                    <!-- Detail Button -->
-                    <a href="<?php echo base_url('admin/jurusan/detail/' . $row->id) ?>"
-                      class="btn btn-primary btn-xs mb-1"
-                      title="Detail">
-                      <i class="fa fa-list"></i>
-                    </a>
 
                     <!-- Edit Button -->
                     <a href="<?php echo base_url('admin/jurusan/edit/' . $row->id) ?>"
