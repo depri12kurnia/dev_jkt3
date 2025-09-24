@@ -8,12 +8,13 @@
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 py-3" id="sdm-container">
         <?php if (!empty($sdm_list)):
             $displayed_count = 0;
-            $max_display = 4;
+            $max_display = 6;
             foreach ($sdm_list as $index => $sdm):
                 $is_hidden = $index >= $max_display;
                 $displayed_count++;
         ?>
                 <div class="col sdm-item <?php echo $is_hidden ? 'sdm-hidden d-none' : ''; ?>">
+                    <!-- Card content tetap sama -->
                     <div class="card h-100 shadow-lg border-0 overflow-hidden hover-lift">
                         <div class="position-relative">
                             <!-- Dynamic Image from Database -->
@@ -146,6 +147,15 @@
         transform: translateY(0);
     }
 
+    /* Ensure proper display control */
+    .sdm-hidden.d-none {
+        display: none !important;
+    }
+
+    .sdm-item:not(.d-none) {
+        display: block !important;
+    }
+
     /* Statistics Animation */
     .stat-item {
         transition: all 0.3s ease;
@@ -154,7 +164,7 @@
 
     .stat-item:hover {
         transform: translateY(-5px);
-        background: rgba(13, 110, 253, 0.05);
+        background: rgba(0, 123, 255, 0.05);
         border-radius: 10px;
     }
 
@@ -196,7 +206,7 @@
         }
 
         .d-flex.gap-2 {
-            flex-direction: column;
+            /* flex-direction: column; */
             gap: 0.5rem !important;
         }
 
@@ -225,7 +235,7 @@
         }
 
         .d-flex.flex-wrap {
-            flex-direction: column;
+            /* flex-direction: column; */
             align-items: center;
         }
 
@@ -353,10 +363,15 @@
         // Show More SDM Functionality
         const btnShowMore = document.getElementById('btn-show-more-sdm');
         const hiddenItems = document.querySelectorAll('.sdm-hidden');
+        const maxDisplay = <?php echo $max_display; ?>; // Pindahkan variabel PHP ke JavaScript
+        const totalItems = <?php echo !empty($sdm_list) ? count($sdm_list) : 0; ?>;
+        const hiddenCount = totalItems - maxDisplay;
         let isExpanded = false;
 
         if (btnShowMore) {
             btnShowMore.addEventListener('click', function() {
+                console.log('Button clicked. IsExpanded:', isExpanded); // Debug log
+
                 if (!isExpanded) {
                     // Show hidden items with staggered animation
                     hiddenItems.forEach((item, index) => {
@@ -368,9 +383,9 @@
 
                     // Update button
                     this.innerHTML = `
-                    <i class="bi bi-chevron-up me-1"></i>
-                    <span class="btn-text">Tampilkan Lebih Sedikit</span>
-                `;
+                        <i class="bi bi-chevron-up me-1"></i>
+                        <span class="btn-text">Tampilkan Lebih Sedikit</span>
+                    `;
                     isExpanded = true;
                 } else {
                     // Hide items with staggered animation
@@ -385,10 +400,10 @@
 
                     // Update button
                     this.innerHTML = `
-                    <i class="bi bi-chevron-down me-1"></i>
-                    <span class="btn-text">Tampilkan Lebih</span>
-                    <span class="badge bg-primary ms-2"><?php echo !empty($sdm_list) ? count($sdm_list) - $max_display : 0; ?> lainnya</span>
-                `;
+                        <i class="bi bi-chevron-down me-1"></i>
+                        <span class="btn-text">Tampilkan Lebih</span>
+                        <span class="badge bg-primary ms-2">${hiddenCount} lainnya</span>
+                    `;
                     isExpanded = false;
 
                     // Scroll back to SDM section
@@ -398,7 +413,14 @@
                     });
                 }
             });
+        } else {
+            console.log('Button not found'); // Debug log
         }
+
+        // Debug: Check if elements exist
+        console.log('Hidden items found:', hiddenItems.length);
+        console.log('Max display:', maxDisplay);
+        console.log('Total items:', totalItems);
 
         // Counter Animation for Statistics
         function animateCounter(element, target) {

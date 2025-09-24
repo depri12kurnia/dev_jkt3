@@ -128,46 +128,111 @@
     document.addEventListener('DOMContentLoaded', function() {
         const btnShowMore = document.getElementById('btn-show-more-sdm');
         const hiddenItems = document.querySelectorAll('.hidden-item');
+        const maxDisplay = 6; // Items per batch
+        const totalItems = <?php echo !empty($sdm_list) ? count($sdm_list) : 0; ?>;
+        let currentlyShown = <?php echo $max_display; ?>; // Initially shown items
         let isExpanded = false;
 
-        if (btnShowMore) {
+        if (btnShowMore && hiddenItems.length > 0) {
+            // Update initial button text
+            updateButtonText();
+
             btnShowMore.addEventListener('click', function() {
+                console.log('Button clicked. Currently shown:', currentlyShown, 'Total:', totalItems);
+
                 if (!isExpanded) {
-                    // Show all hidden items
-                    hiddenItems.forEach(function(item) {
-                        item.style.display = 'block';
-                        setTimeout(function() {
-                            item.style.opacity = '1';
-                            item.style.transform = 'translateY(0)';
-                        }, 100);
+                    // Show next batch of items
+                    const itemsToShow = [];
+                    for (let i = 0; i < hiddenItems.length && itemsToShow.length < maxDisplay; i++) {
+                        const item = hiddenItems[i];
+                        if (item.style.display === 'none' || item.classList.contains('d-none')) {
+                            itemsToShow.push(item);
+                        }
+                    }
+
+                    // Show items with staggered animation
+                    itemsToShow.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.style.display = 'block';
+                            item.classList.remove('d-none');
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 50);
+                        }, index * 100);
                     });
 
-                    // Update button text
-                    btnShowMore.innerHTML = '<i class="bi bi-chevron-up me-1"></i><span class="btn-text">Tampilkan Lebih Sedikit</span>';
-                    isExpanded = true;
+                    currentlyShown += itemsToShow.length;
+
+                    // Check if all items are now shown
+                    if (currentlyShown >= totalItems) {
+                        isExpanded = true;
+                    }
+
+                    updateButtonText();
                 } else {
-                    // Hide items beyond max_display
-                    hiddenItems.forEach(function(item) {
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(20px)';
-                        setTimeout(function() {
-                            item.style.display = 'none';
-                        }, 300);
+                    // Hide all items beyond initial max_display
+                    const itemsToHide = [];
+                    hiddenItems.forEach((item) => {
+                        if (item.style.display !== 'none') {
+                            itemsToHide.push(item);
+                        }
                     });
 
-                    // Update button text
-                    const remainingCount = hiddenItems.length;
-                    btnShowMore.innerHTML = '<i class="bi bi-chevron-down me-1"></i><span class="btn-text">Tampilkan Lebih</span><span class="badge bg-primary ms-2">' + remainingCount + ' lainnya</span>';
+                    // Hide items with staggered animation
+                    itemsToHide.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                                item.classList.add('d-none');
+                            }, 300);
+                        }, index * 50);
+                    });
+
+                    currentlyShown = <?php echo $max_display; ?>;
                     isExpanded = false;
+                    updateButtonText();
 
                     // Scroll to container
-                    document.getElementById('sdm-container').scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    setTimeout(() => {
+                        document.getElementById('sdm-container').scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 800);
                 }
             });
+
+            function updateButtonText() {
+                const remainingItems = totalItems - currentlyShown;
+
+                if (!isExpanded && remainingItems > 0) {
+                    const nextBatch = Math.min(remainingItems, maxDisplay);
+                    btnShowMore.innerHTML = `
+                        <i class="bi bi-chevron-down me-1"></i>
+                        <span class="btn-text">Tampilkan ${nextBatch} Lagi</span>
+                        <span class="badge bg-primary ms-2">${remainingItems} tersisa</span>
+                    `;
+                } else if (isExpanded) {
+                    btnShowMore.innerHTML = `
+                        <i class="bi bi-chevron-up me-1"></i>
+                        <span class="btn-text">Tampilkan Lebih Sedikit</span>
+                    `;
+                } else {
+                    // All items shown, hide button
+                    btnShowMore.style.display = 'none';
+                }
+            }
+        } else {
+            console.log('Button not found or no hidden items');
         }
+
+        // Debug logs
+        console.log('Hidden items found:', hiddenItems.length);
+        console.log('Initially shown:', currentlyShown);
+        console.log('Total items:', totalItems);
     });
 </script>
 
@@ -175,20 +240,33 @@
     .hidden-item {
         opacity: 0;
         transform: translateY(20px);
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
     }
 
     .sdm-item {
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
     }
 
     #btn-show-more-sdm {
         transition: all 0.3s ease;
+        min-width: 200px;
+        /* Prevent button width jumping */
     }
 
     #btn-show-more-sdm:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Ensure smooth display transitions */
+    .hidden-item[style*="display: block"] {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hidden-item[style*="display: none"] {
+        opacity: 0;
+        transform: translateY(20px);
     }
 
     /* Statistics Section Styling */
@@ -626,7 +704,7 @@
     $total_non_asn = 0;
     $total_institusi = 0;
     $total_pusat = 0;
-    $total_prodi = 0;
+    $total_jurusan = 0;
     $total_laki = 0;
     $total_perempuan = 0;
 
@@ -654,8 +732,8 @@
                 case 'pusat':
                     $total_pusat++;
                     break;
-                case 'prodi':
-                    $total_prodi++;
+                case 'jurusan':
+                    $total_jurusan++;
                     break;
             }
         }
@@ -732,8 +810,8 @@
                     <i class="bi bi-mortarboard-fill"></i>
                 </div>
                 <div class="stats-content-mini">
-                    <h4 class="stats-number-mini counter-number" data-target="<?php echo $total_prodi; ?>">0</h4>
-                    <p class="stats-label-mini">Level Prodi</p>
+                    <h4 class="stats-number-mini counter-number" data-target="<?php echo $total_jurusan; ?>">0</h4>
+                    <p class="stats-label-mini">Level Jurusan</p>
                 </div>
             </div>
         </div>

@@ -435,16 +435,32 @@
             // Show appropriate fields
             if (level === 'jurusan') {
                 $('#jurusan_group').show();
+                $('#prodi_group').show(); // Tampilkan juga pilihan prodi
                 $('#jurusan_id').prop('required', true);
+                // Prodi tidak required untuk level jurusan
+                $('#prodi_id').prop('required', false);
+
+                // Update label untuk prodi agar tidak ada tanda *
+                $('#prodi_group label').html('Program Studi <span class="text-muted">(Opsional)</span>');
+                $('#prodi_group small').text('Opsional - kosongkan jika jabatan di level jurusan');
             } else if (level === 'prodi') {
                 $('#prodi_group').show();
                 $('#prodi_id').prop('required', true);
+
+                // Kembalikan label normal untuk prodi
+                $('#prodi_group label').html('Program Studi <span class="text-danger">*</span>');
+                $('#prodi_group small').text('Wajib diisi untuk level program studi');
             } else if (level === 'unit') {
                 $('#unit_group').show();
                 $('#unit_id').prop('required', true);
             } else if (level === 'pusat') {
                 $('#pusat_group').show();
                 $('#pusat_id').prop('required', true);
+            }
+
+            // Reset prodi filter ketika level berubah
+            if (level !== 'jurusan' && level !== 'prodi') {
+                $('#prodi_id option').show();
             }
 
             // Update jabatan suggestions
@@ -458,20 +474,38 @@
 
             const $prodiSelect = $('#prodi_id');
 
-            $prodiSelect.find('option').each(function() {
-                const $option = $(this);
-                const jurusanId = $option.data('jurusan');
+            if (selectedJurusan) {
+                // Filter prodi berdasarkan jurusan yang dipilih
+                $prodiSelect.find('option').each(function() {
+                    const $option = $(this);
+                    const jurusanId = $option.data('jurusan');
 
-                if ($option.val() === '') {
-                    $option.show(); // Keep "-- Pilih Program Studi --"
-                } else if (!selectedJurusan || jurusanId == selectedJurusan) {
-                    $option.show();
-                } else {
-                    $option.hide();
+                    if ($option.val() === '') {
+                        $option.show(); // Keep "-- Pilih Program Studi --"
+                    } else if (jurusanId == selectedJurusan) {
+                        $option.show();
+                    } else {
+                        $option.hide();
+                    }
+                });
+
+                // Reset selection dan tampilkan grup prodi jika belum tampil
+                $prodiSelect.val('');
+                if ($('#level').val() === 'jurusan') {
+                    $('#prodi_group').show();
                 }
-            });
-
-            $prodiSelect.val(''); // Reset selection
+            } else {
+                // Jika jurusan tidak dipilih, sembunyikan semua prodi kecuali option kosong
+                $prodiSelect.find('option').each(function() {
+                    const $option = $(this);
+                    if ($option.val() === '') {
+                        $option.show();
+                    } else {
+                        $option.hide();
+                    }
+                });
+                $prodiSelect.val('');
+            }
         });
 
         // Handle SDM change
@@ -636,7 +670,7 @@
                 isValid = false;
             }
 
-            // Validasi Unit/Pusat jika dipilih
+            // Validasi Unit/Pusat/Jurusan/Prodi berdasarkan level
             if (level === 'unit' && $('#unit_id').val() === '') {
                 $('#unit_id').closest('.form-group').addClass('has-error')
                     .append('<span class="error-message text-danger">Unit harus dipilih</span>');
@@ -652,6 +686,7 @@
                     .append('<span class="error-message text-danger">Jurusan harus dipilih</span>');
                 isValid = false;
             }
+            // Untuk level prodi, prodi wajib diisi
             if (level === 'prodi' && $('#prodi_id').val() === '') {
                 $('#prodi_id').closest('.form-group').addClass('has-error')
                     .append('<span class="error-message text-danger">Program Studi harus dipilih</span>');

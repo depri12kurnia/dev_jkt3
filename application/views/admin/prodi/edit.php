@@ -486,7 +486,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="link_detail">Link Detail</label>
+                            <label for="link_detail">Link Rumusan</label>
                             <input type="url"
                                 id="link_detail"
                                 name="link_detail"
@@ -494,7 +494,7 @@
                                 placeholder="https://example.com/detail-prodi"
                                 value="<?php echo set_value('link_detail', $prodi->link_detail) ?>"
                                 maxlength="255">
-                            <small class="form-text text-muted">URL untuk halaman detail program studi</small>
+                            <small class="form-text text-muted">URL untuk rumusan pembelajaran</small>
                         </div>
                     </div>
                 </div>

@@ -58,7 +58,7 @@
                     <div class="col-md-4">
                         <div class="sidebar">
                             <div class="widget">
-                                <h4 class="sidebar-widget-title">All Categores</h4>
+                                <h4 class="sidebar-widget-title">All Categories</h4>
                                 <div class="widget-content">
                                     <ul class="catagories">
                                         <?php foreach ($list_side as $kt) { ?>

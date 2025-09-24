@@ -114,6 +114,7 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
                         <span><?php echo $site->email ?></span>
                     </li>
                 </ul>
+
             </div>
             <div class="col-md-4 col-sm-6">
                 <h4 class="mb-3 fw-bold text-primary-dark">Link Cepat</h4>

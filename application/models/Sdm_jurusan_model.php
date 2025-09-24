@@ -154,16 +154,19 @@ class Sdm_jurusan_model extends CI_Model
                 js.periode_mulai,
                 js.periode_akhir,
                 js.jurusan_id,
-                j.nama AS nama_jurusan
+                js.prodi_id,
+                j.nama AS nama_jurusan,
+                p.nama AS nama_prodi
             ');
 
             $this->db->from('sdm s');
             $this->db->join('jabatan_sdm js', 's.id = js.sdm_id', 'inner');
             $this->db->join('jurusan j', 'js.jurusan_id = j.id', 'inner');
+            $this->db->join('prodi p', 'js.prodi_id = p.id', 'left'); // Ubah ke LEFT JOIN
 
-            // Filter berdasarkan level jurusan dan nama jurusan
-            $this->db->where('js.level', 'jurusan');
+            // Filter berdasarkan nama jurusan - tampilkan level jurusan DAN prodi
             $this->db->where('j.nama', $nama_jurusan);
+            $this->db->where_in('js.level', ['jurusan', 'prodi']); // Tambahkan level prodi
 
             // Filter jabatan yang masih aktif
             $current_year = date('Y');
@@ -172,8 +175,14 @@ class Sdm_jurusan_model extends CI_Model
             $this->db->or_where('js.periode_akhir >=', $current_year);
             $this->db->group_end();
 
-            // Urutkan berdasarkan nama
-            $this->db->order_by('s.nama', 'ASC');
+            // Urutkan berdasarkan level (jurusan dulu, kemudian prodi) lalu nama
+            $order_case = "CASE js.level 
+                WHEN 'jurusan' THEN 1 
+                WHEN 'prodi' THEN 2 
+                ELSE 3 
+            END";
+            $this->db->order_by($order_case, '', FALSE);
+            $this->db->order_by('js.periode_mulai', 'ASC'); // Urutkan berdasarkan periode mulai
 
             $query = $this->db->get();
 

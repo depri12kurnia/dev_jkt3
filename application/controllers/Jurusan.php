@@ -41,7 +41,6 @@ class Jurusan extends CI_Controller
         // Get SDM berdasarkan jurusan menggunakan model
         $sdm_list = $this->sdm_jurusan_model->get_sdm_by_jurusan_name($jurusan_data->nama);
 
-
         $data = array(
             'title'              => $site->namaweb . ' - ' . $jurusan_data->nama,
             'deskripsi'          => $site->deskripsi,

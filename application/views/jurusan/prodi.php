@@ -125,7 +125,7 @@
                                                     class="btn btn-<?php echo !empty($prodi->color) ? $prodi->color : 'primary'; ?> flex-fill flex-sm-grow-0">
                                                     <i class="bi bi-download me-1"></i>Download Brosur
                                                 </a>
-                                                <a href="<?php echo !empty($prodi->link_detail) ? $prodi->link_detail : '#'; ?>"
+                                                <a target="_blank" href="<?php echo !empty($prodi->link_detail) ? $prodi->link_detail : '#'; ?>"
                                                     class="btn btn-outline-<?php echo !empty($prodi->color) ? $prodi->color : 'primary'; ?> flex-fill flex-sm-grow-0">
                                                     <i class="bi bi-info-circle me-1"></i>Rumusan Capaian Pembelajaran Lulusan
                                                 </a>

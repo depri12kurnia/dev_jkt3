@@ -16,7 +16,7 @@ class Prodi_model extends CI_Model
 		$this->db->select('prodi.*, jurusan.nama as nama_jurusan');
 		$this->db->from('prodi');
 		$this->db->join('jurusan', 'jurusan.id = prodi.jurusan_id', 'LEFT');
-		$this->db->order_by('prodi.id', 'ASC');
+		$this->db->order_by('prodi.id', 'DESC');
 		$query = $this->db->get();
 		return $query->result();
 	}
