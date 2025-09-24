@@ -68,6 +68,23 @@
       font-size: 16px;
     }
 
+    .form-group .fa-eye,
+    .form-group .fa-eye-slash {
+      position: absolute;
+      right: 14px;
+      top: 12px;
+      color: #aaa;
+      font-size: 16px;
+      cursor: pointer;
+      transition: color 0.2s;
+      left: auto;
+    }
+
+    .form-group .fa-eye:hover,
+    .form-group .fa-eye-slash:hover {
+      color: #1e3c72;
+    }
+
     .form-control {
       padding-left: 38px;
       height: 44px;
@@ -75,6 +92,11 @@
       font-size: 15px;
       border: 1px solid #d1d5db;
       transition: border-color 0.2s;
+    }
+
+    .password-input {
+      padding-right: 38px !important;
+      padding-left: 38px !important;
     }
 
     .form-control:focus {
@@ -134,7 +156,8 @@
         </div>
         <div class="form-group">
           <span class="fa fa-lock"></span>
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" id="password" class="form-control password-input" placeholder="Password">
+          <span class="fa fa-eye-slash" id="togglePassword" title="Tampilkan password"></span>
         </div>
         <div class="row">
           <div class="col-12">
@@ -160,11 +183,22 @@
   <script src="https://cdn.jsdelivr.net/gh/depri12kurnia/assetsadminlte3.2.0@c4cd9975aa7ae3113ef356aed8e37f56b126d3d6/plugins/iCheck/icheck.min.js"></script>
   <script>
     $(function() {
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%' // optional
-      })
+      // Initialize iCheck only for non-password inputs
+      // Toggle password visibility
+      $('#togglePassword').on('click', function() {
+        const password = $('#password');
+        const type = password.attr('type') === 'password' ? 'text' : 'password';
+        password.attr('type', type);
+
+        // Toggle icon
+        if (type === 'password') {
+          $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+          $(this).attr('title', 'Tampilkan password');
+        } else {
+          $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+          $(this).attr('title', 'Sembunyikan password');
+        }
+      });
     })
   </script>
 </body>

@@ -54,7 +54,7 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
     <div class="container py-4">
         <div class="row g-4">
             <div class="col-md-4 col-sm-12">
-                <h4 class="mb-3 fw-bold text-primary-dark">Lokasi</h4>
+                <h4 class="mb-3 fw-bold text-primary-dark">Lokasi Kami</h4>
                 <iframe title="Lokasi Poltekkes Kemenkes Jakarta III" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6530826872395!2d106.92392351056975!3d-6.3092254936536545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6992ba4f085f8d%3A0x4b820032d3ad33ae!2sPoltekkes%20Kemenkes%20Jakarta%20III!5e0!3m2!1sen!2sid!4v1753666860477!5m2!1sen!2sid" width="70%" height="50%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <h5 class="mb-2 fw-semibold text-primary-dark">Terhubung Dengan Kami</h5>
                 <ul class="list-inline mt-3 d-flex flex-wrap gap-2">
@@ -91,7 +91,7 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
                 </ul>
             </div>
             <div class="col-md-4 col-sm-6">
-                <h4 class="mb-3 fw-bold text-primary-dark">PolkesJati</h4>
+                <h4 class="mb-3 fw-bold text-primary-dark">Hubungi Kami</h4>
                 <ul class="list-unstyled mb-3">
                     <li class="mb-2 d-flex align-items-center">
                         <i class="fa fa-map-marker text-primary-dark" style="font-size:1.3em; min-width:28px; text-align:center;"></i>
