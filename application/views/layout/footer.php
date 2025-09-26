@@ -128,6 +128,23 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
                     <li class="mb-2"><a href="https://www.lapor.go.id/" target="_blank" class="footer-link"><i class="fa fa-globe me-2"></i> SPAN Lapor</a></li>
                 </ul>
             </div>
+            <!-- Histats.com  (div with counter) -->
+            <!-- <div id="histats_counter"></div>
+            <script type="text/javascript">
+                var _Hasync = _Hasync || [];
+                _Hasync.push(['Histats.start', '1,4926569,4,408,270,55,00011111']);
+                _Hasync.push(['Histats.fasi', '1']);
+                _Hasync.push(['Histats.track_hits', '']);
+                (function() {
+                    var hs = document.createElement('script');
+                    hs.type = 'text/javascript';
+                    hs.async = true;
+                    hs.src = ('//s10.histats.com/js15_as.js');
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+                })();
+            </script>
+            <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4926569&101" alt="free hit counters" border="0"></a></noscript> -->
+            <!-- Histats.com  END  -->
 
         </div>
         <div class="row">
@@ -211,22 +228,11 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
 <!-- Custom JS From jsDeliver Load BEFORE open-accessibility -->
-<!-- <script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/slider-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/pendidikan-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/staff-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/partners-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/video-enhanced.js?v=<?php echo time(); ?>"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/backtotop-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/faq-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/popup-enhanced.js"></script> -->
-
 
 <!-- Custom JS - Load BEFORE open-accessibility -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/slider-enhanced.js"></script> -->
 <script src="<?php echo base_url(); ?>assets/js/pendidikan-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/staff-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/partners-enhanced.js"></script>
-<!-- <script src="<?php echo base_url(); ?>assets/js/video-enhanced.js?v=<?php echo time(); ?>"></script> -->
 <script src="<?php echo base_url(); ?>assets/js/backtotop-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/faq-enhanced.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/popup-enhanced.js"></script>
