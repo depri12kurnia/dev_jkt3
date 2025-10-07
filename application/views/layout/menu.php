@@ -178,7 +178,6 @@ $nav_unit = $this->nav_model->nav_unit();
                             <div class="row">
                                 <div class="col-6">
                                     <div class="dropdown-header fw-bold text-default">Dashboard</div>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('dashboard/mahasiswa') ?>">Mahasiswa</a></li>
                                     <li><a class="dropdown-item" href="<?php echo base_url('maturity') ?>">Maturity Rating BLU</a></li>
                                     <li><a class="dropdown-item" href="#" target="_blank">Bios Feeder BLU</a></li>
                                 </div>
