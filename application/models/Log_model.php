@@ -1,11 +1,14 @@
 <?php
-class Log_model extends CI_Model {
+class Log_model extends CI_Model
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->load->database();
     }
 
-    public function log_access($data) {
+    public function log_access($data)
+    {
         $this->db->insert('access_logs', $data);
     }
     // Listing data
@@ -80,5 +83,11 @@ class Log_model extends CI_Model {
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
+
+    // Automatic Delete Log Akses
+    public function delete_all_logs()
+    {
+        $this->db->truncate('access_logs');
+        return $this->db->affected_rows();
+    }
 }
-?>

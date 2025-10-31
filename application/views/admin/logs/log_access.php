@@ -49,25 +49,25 @@
     var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
     $(document).ready(function() {
-        
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-Token': csrfHash
             }
         });
-        
+
         //datatables
         $('#data_logs').DataTable({
-            
-             processing: true,
-             serverSide: true,
-             searching: true,
-             pages: 10,
-             ajax: {
+
+            processing: true,
+            serverSide: true,
+            searching: true,
+            pages: 10,
+            ajax: {
                 url: '<?= base_url() ?>admin/logs/getDataAll',
                 type: 'POST',
-                data: function (d) {
-                    d[csrfName] = csrfHash;  // Add CSRF token to request data
+                data: function(d) {
+                    d[csrfName] = csrfHash; // Add CSRF token to request data
                 }
             }
 
@@ -87,7 +87,51 @@
 
         });
     });
-    
+
+    function delete_logs() {
+        if (confirm('Are you sure delete this data?')) {
+            $.ajax({
+                url: "<?php echo site_url('admin/logs/delete_all_logs') ?>",
+                type: "POST",
+                data: {
+                    csrf_token_jkt3: getCsrfToken()
+                },
+                success: function(data, textStatus, jqXHR) {
+                    try {
+                        // Try to parse as JSON first
+                        let jsonData = typeof data === 'string' ? JSON.parse(data) : data;
+                        if (jsonData && jsonData.status) {
+                            reload_table();
+                            alert('Logs deleted successfully!');
+                            // Update CSRF token if provided
+                            if (jsonData.csrf_token) {
+                                document.cookie = "csrf_cookie_jkt3=" + jsonData.csrf_token + "; path=/";
+                            }
+                        } else {
+                            alert('Failed to delete logs: ' + (jsonData && jsonData.message ? jsonData.message : 'Unknown error'));
+                        }
+                    } catch (e) {
+                        // If JSON parsing fails, treat as plain text response
+                        if (typeof data === 'string' && data.includes('Deleted')) {
+                            reload_table();
+                            alert(data); // Show the server message
+                        } else {
+                            alert('Logs operation completed, but response format was unexpected.');
+                            reload_table(); // Still reload the table
+                        }
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    let msg = 'Error deleting data';
+                    if (jqXHR.responseText) {
+                        msg += ':\n' + jqXHR.responseText;
+                    }
+                    alert(msg);
+                }
+            });
+        }
+    }
+
     function getCSRFToken() {
         return {
             [csrfName]: csrfHash

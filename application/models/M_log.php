@@ -84,4 +84,11 @@ class M_log extends CI_Model
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
+
+    // Automatic Delete Log Akses
+    public function delete_all_logs()
+    {
+        $this->db->truncate('access_logs');
+        return $this->db->affected_rows();
+    }
 }
