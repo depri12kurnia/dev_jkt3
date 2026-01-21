@@ -241,7 +241,7 @@
       </div>
       <div class="col-md-6">
         <div class="form-group">
-          <label for="link_virtual_tour">Link Virtual Tour</label>
+          <label for="link_pendaftaran">Link Pendaftaran</label>
           <input type="url"
             id="link_virtual_tour"
             name="link_virtual_tour"

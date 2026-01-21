@@ -60,6 +60,10 @@ $nav_unit = $this->nav_model->nav_unit();
                                         <li><a class="dropdown-item" href="<?php echo base_url('jurusan/' . $nav->slug) ?>"><?php echo $nav->nama ?></a>
                                         </li>
                                     <?php } ?>
+                                    <!-- <li><a class="dropdown-item" href="https://keperawatan.poltekkesjakarta3.ac.id" target="_blank">Keperawatan</a></li>
+                                    <li><a class="dropdown-item" href="https://kebidanan.poltekkesjakarta3.ac.id" target="_blank">Kebidanan</a></li>
+                                    <li><a class="dropdown-item" href="https://fisioterapi.poltekkesjakarta3.ac.id" target="_blank">Fisioterapi</a></li>
+                                    <li><a class="dropdown-item" href="https://tlm.poltekkesjakarta3.ac.id" target="_blank">Teknologi Laboratorium Medis</a></li> -->
                                 </div>
                                 <div class="col-4">
                                     <div class="dropdown-header fw-bold text-default">Akademik</div>

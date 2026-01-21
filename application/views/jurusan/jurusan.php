@@ -85,8 +85,8 @@
                         </a>
                         <a href="<?php echo !empty($jurusan_data->link_virtual_tour) ? $jurusan_data->link_virtual_tour : '#'; ?>"
                             class="btn btn-outline-<?php echo !empty($jurusan_data->color) ? $jurusan_data->color : 'primary'; ?> btn-lg">
-                            <i class="bi bi-play-circle me-2"></i>
-                            Virtual Tour
+                            <i class="bi bi-pencil-square me-circle me-2"></i>
+                            Pendaftaran
                         </a>
                     </div>
                 </div>

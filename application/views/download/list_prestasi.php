@@ -19,7 +19,7 @@
                             color: #000 !important;
                         }
                     </style>
-                    
+
                     <div class="col-md-12">
                         <div class="table-responsive mailbox-messages">
                             <h5 class="contact-title">Institusi</h5>
@@ -30,7 +30,7 @@
                                         <th width="35%">Institusi</th>
                                         <th width="35%">Penghargaan</th>
                                         <th width="20%">Type</th>
-                                        <th width="5%"></th>
+                                        <th width="15%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +63,7 @@
                                         <th width="35%">Nama Peserta</th>
                                         <th width="35%">Penghargaan</th>
                                         <th width="20%">Type</th>
-                                        <th width="5%"></th>
+                                        <th width="15%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,7 +96,7 @@
                                         <th width="35%">Nama Peserta</th>
                                         <th width="35%">Penghargaan</th>
                                         <th width="20%">Type</th>
-                                        <th width="5%"></th>
+                                        <th width="15%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -129,7 +129,7 @@
                                         <th width="35%">Nama Peserta</th>
                                         <th width="35%">Penghargaan</th>
                                         <th width="20%">Type</th>
-                                        <th width="5%"></th>
+                                        <th width="15%">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>

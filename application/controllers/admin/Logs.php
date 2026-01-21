@@ -7,12 +7,12 @@ class Logs extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_log');
-        if (!$this->ion_auth->logged_in()) {
-            redirect('auth/login');
-        }
-        if (!$this->ion_auth->in_group('admin')) {
-            show_error('You do not have permission to access this page.');
-        }
+        $this->log_user->add_log();
+        // Tambahkan proteksi halaman
+        $url_pengalihan = str_replace('index.php/', '', current_url());
+        $pengalihan     = $this->session->set_userdata('pengalihan', $url_pengalihan);
+        // Ambil check login dari simple_login
+        $this->simple_login->check_login($pengalihan);
     }
 
     public function index()
