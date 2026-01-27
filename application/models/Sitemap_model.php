@@ -44,8 +44,8 @@ class Sitemap_model extends CI_Model
 
     function prodi()
     {
-        $this->db->select('slug_prodi,tanggal');
-        $this->db->where('status_prodi', 'Publish');
-        return $this->db->order_by('tanggal', 'desc')->get('prodi')->result_array();
+        $this->db->select('slug, created_at');
+        $this->db->where('status', 'active');
+        return $this->db->order_by('created_at', 'desc')->get('prodi')->result_array();
     }
 }

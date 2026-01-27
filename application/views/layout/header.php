@@ -96,8 +96,7 @@
                         </ul>
                         <ul class="list-inline mt-2 d-flex flex-wrap gap-2 justify-content-end d-none d-lg-flex">
                             <li class="nav-item"><a href="https://ppid.poltekkesjakarta3.ac.id/" target="_blank" title="PPID">PPID</a></li> |
-                            <li class="nav-item"><a href="https://spmb-poltekkes.kemkes.go.id/" target="_blank" title="Penerimaan Mahasiswa Baru">SPMB Bersama</a></li> |
-                            <li class="nav-item"><a href="https://sipenmaru.poltekkesjakarta3.ac.id/" target="_blank" title="Penerimaan Mahasiswa Baru">SPMB Mandiri</a></li> |
+                            <li class="nav-item"><a href="https://sipenmaru.poltekkesjakarta3.ac.id/" target="_blank" title="Penerimaan Mahasiswa Baru">SPMB Poltekkes</a></li> |
                             <li class="nav-item"><a href="<?php echo base_url('helpdesk') ?>" target="_blank" title="Hubungi Kami via Helpdesk">Faq&Helpdesk</a></li>
                         </ul>
                     </div>

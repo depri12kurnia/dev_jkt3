@@ -600,23 +600,23 @@
                             <p>Sitemap <i class="right fa fa-angle-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item"><a href="<?php echo base_url('admin/sitemap/alumni') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'alumni') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
+                            <li class="nav-item"><a href="<?php echo base_url('sitemap/alumni') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'alumni') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
                                     <p>Sitemap Alumni</p>
                                 </a>
                             </li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/sitemap/berita') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'berita') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
+                            <li class="nav-item"><a href="<?php echo base_url('sitemap/berita') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'berita') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
                                     <p>Sitemap Berita</p>
                                 </a>
                             </li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/sitemap/pendidikan') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'pendidikan') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
+                            <li class="nav-item"><a href="<?php echo base_url('sitemap/pendidikan') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'pendidikan') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
                                     <p>Sitemap Pendidikan</p>
                                 </a>
                             </li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/sitemap/prodi') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'prodi') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
+                            <li class="nav-item"><a href="<?php echo base_url('sitemap/prodi') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'prodi') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
                                     <p>Sitemap Program Studi</p>
                                 </a>
                             </li>
-                            <li class="nav-item"><a href="<?php echo base_url('admin/sitemap/tentang') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'tentang') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
+                            <li class="nav-item"><a href="<?php echo base_url('sitemap/tentang') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'sitemap' && $this->uri->segment(3) == 'tentang') ? 'active' : ''; ?>" target="_blank"><i class="fa fa-sitemap nav-icon"></i>
                                     <p>Sitemap Tentang</p>
                                 </a>
                             </li>

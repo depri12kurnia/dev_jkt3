@@ -40,11 +40,11 @@
                                             <td><?php echo $intruksikerja->judul_download ?></td>
                                             <td><?php echo $intruksikerja->nama_jenis_download ?></td>
                                             <td>
-                                                <button class="btn btn-secondary btn-xs" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $intruksikerja->id_download) ?>','<?php echo htmlspecialchars($intruksikerja->judul_download, ENT_QUOTES, 'UTF-8') ?>')" title="Lihat <?php echo htmlspecialchars($intruksikerja->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-eye"></i> Lihat
+                                                <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $intruksikerja->id_download) ?>','<?php echo htmlspecialchars($intruksikerja->judul_download, ENT_QUOTES, 'UTF-8') ?>')">
+                                                    <i class="fa fa-eye"></i>
                                                 </button>
                                                 <a href="<?php echo base_url('unduhan/unduh/' . $intruksikerja->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($intruksikerja->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-download"></i> Unduh</a>
+                                                    <i class="fa fa-download"></i></a>
                                             </td>
                                         </tr>
                                     <?php $i++;
@@ -74,11 +74,11 @@
                                             <td><?php echo $prosedur->judul_download ?></td>
                                             <td><?php echo $prosedur->nama_jenis_download ?></td>
                                             <td>
-                                                <button class="btn btn-secondary btn-xs" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $prosedur->id_download) ?>','<?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>')" title="Lihat <?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-eye"></i> Lihat
+                                                <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $prosedur->id_download) ?>','<?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>')" title="Lihat <?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>">
+                                                    <i class="fa fa-eye"></i>
                                                 </button>
                                                 <a href="<?php echo base_url('unduhan/unduh/' . $prosedur->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-download"></i> Unduh</a>
+                                                    <i class="fa fa-download"></i></a>
                                             </td>
                                         </tr>
                                     <?php $i++;

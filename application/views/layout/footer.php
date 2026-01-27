@@ -129,7 +129,8 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
                 </ul>
             </div>
             <!-- Histats.com  (div with counter) -->
-            <!-- <div id="histats_counter"></div>
+            <div id="histats_counter"></div>
+            <!-- Histats.com  START  (aync)-->
             <script type="text/javascript">
                 var _Hasync = _Hasync || [];
                 _Hasync.push(['Histats.start', '1,4926569,4,408,270,55,00011111']);
@@ -143,7 +144,7 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
                     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
                 })();
             </script>
-            <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4926569&101" alt="free hit counters" border="0"></a></noscript> -->
+            <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4926569&101" alt="free hit counters" border="0"></a></noscript>
             <!-- Histats.com  END  -->
 
         </div>

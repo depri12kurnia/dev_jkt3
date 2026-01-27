@@ -1,5 +1,5 @@
 <?php
-header('Content-type: application/xml; charset="ISO-8859-1"', true);
+header('Content-Type: application/xml; charset=UTF-8', true);
 $datetime1 = new DateTime(date('Y-m-d H:i:s'));
 ?>
 
@@ -10,8 +10,8 @@ $datetime1 = new DateTime(date('Y-m-d H:i:s'));
     </url>
     <?php foreach ($post as $item) { ?>
         <url>
-            <loc><?= base_url('prodi/read/' . $item['slug_prodi']) ?></loc>
-            <lastmod><?= date('Y-m-d', strtotime($item['tanggal'])) ?></lastmod>
+            <loc><?= base_url('jurusan/' . $item['slug']) ?></loc>
+            <lastmod><?= date('Y-m-d', strtotime($item['created_at'])) ?></lastmod>
         </url>
     <?php } ?>
 </urlset>

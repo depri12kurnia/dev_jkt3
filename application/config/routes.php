@@ -58,6 +58,7 @@ $route['default_controller'] = 'home';
 $route['404_override'] = 'home/oops';
 $route['translate_uri_dashes'] = FALSE;
 // ROuting Sitemap
+$route['sitemap\.xml'] = 'sitemap/index';
 $route['sitemap/alumni\.xml'] = 'sitemap/alumni';
 $route['sitemap/berita\.xml'] = 'sitemap/berita';
 $route['sitemap/pendidikan\.xml'] = 'sitemap/pendidikan';
