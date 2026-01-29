@@ -76,9 +76,15 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '127.0.0.1',
+	// Dev Database
 	'username' => 'root',
 	'password' => '',
 	'database' => 'dev_jkt3',
+	// Prod Database
+	// 'username' => 'poltekj3_web_new2026',
+	// 'password' => 'Jatiwarna@17415',
+	// 'database' => 'poltekj3_web_new2026',
+	// 'UAT' Database
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

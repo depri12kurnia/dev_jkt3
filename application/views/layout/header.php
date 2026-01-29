@@ -27,7 +27,7 @@
                     <i class="bi bi-box-arrow-up-right"></i> Cariyanlink
                 </a>
                 <a href="https://sipadu.poltekkesjakarta3.ac.id" target="_blank" class="widget-item app2">
-                    <i class="bi bi-exclamation-triangle"></i> Sipadu
+                    <i class="bi bi-exclamation-triangle"></i> Pengaduan
                 </a>
             </div>
         </div>

@@ -59,6 +59,31 @@ class Log extends CI_Controller
         //output to json format
         echo json_encode($output);
     }
+
+    public function delete_all_logs()
+    {
+        try {
+            $deleted_rows = $this->log_model->delete_all_logs();
+
+            if ($deleted_rows !== false) {
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => "Deleted $deleted_rows old log(s) successfully",
+                    'csrf_token' => $this->security->get_csrf_hash()
+                ]);
+            } else {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Failed to delete logs'
+                ]);
+            }
+        } catch (Exception $e) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Database error: ' . $e->getMessage()
+            ]);
+        }
+    }
 }
 
 /* End of file prodi.php */

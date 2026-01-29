@@ -732,12 +732,12 @@ ol {
 }
 
 .widget-item.app2 {
-  background: linear-gradient(135deg, #686969, #495057);
-  border-left: 4px solid #343a40;
+  background: linear-gradient(135deg, #e22d2d, #f13434);
+  border-left: 4px solid #ac0303;
 }
 
 .widget-item.app2:hover {
-  background: linear-gradient(135deg, #495057, #686969);
+  background: linear-gradient(135deg, #574949, #686969);
   transform: translateX(15px) scale(1.08);
 }
 

@@ -99,7 +99,7 @@
                 btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Deleting...';
             }
             $.ajax({
-                url: "<?php echo site_url('admin/logs/delete_all_logs') ?>",
+                url: "<?php echo site_url('admin/log/delete_all_logs') ?>",
                 type: "POST",
                 data: {
                     csrf_token_jkt3: getCsrfToken()

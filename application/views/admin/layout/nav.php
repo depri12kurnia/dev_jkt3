@@ -624,7 +624,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?php echo base_url('admin/activity') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'log') ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url('admin/activity') ?>" class="nav-link <?php echo ($this->uri->segment(2) == 'activity') ? 'active' : ''; ?>">
                             <i class="nav-icon fa fa-history"></i>
                             <p>
                                 Activity Logs
