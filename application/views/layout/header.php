@@ -9,7 +9,7 @@
         <div class="floating-widget">
             <input type="checkbox" id="toggle-widget">
             <label for="toggle-widget" class="widget-button">
-                <i class="bi bi-wechat"></i>
+                <i class="bi bi-wechat" title="Tanya Poltekkes"></i>
             </label>
 
             <div class="widget-menu">

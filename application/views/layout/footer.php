@@ -106,6 +106,10 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
                         <span><?php echo $site->fax ?></span>
                     </li>
                     <li class="mb-2 d-flex align-items-center">
+                        <i class="fa fa-whatsapp text-primary-dark" style="font-size:1.3em; min-width:28px; text-align:center;"></i>
+                        <span><?php echo $site->whatsapp ?></span>
+                    </li>
+                    <li class="mb-2 d-flex align-items-center">
                         <i class="fa fa-mobile text-primary-dark" style="font-size:1.3em; min-width:28px; text-align:center;"></i>
                         <span><?php echo $site->hp ?></span>
                     </li>
