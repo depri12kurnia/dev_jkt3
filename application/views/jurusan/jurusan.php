@@ -78,15 +78,10 @@
 
                     <!-- Dynamic Action Buttons -->
                     <div class="hero-actions">
-                        <a href="<?php echo !empty($jurusan_data->link_brosur) ? $jurusan_data->link_brosur : '#'; ?>"
-                            class="btn btn-<?php echo !empty($jurusan_data->color) ? $jurusan_data->color : 'primary'; ?> btn-lg me-3">
-                            <i class="bi bi-download me-2"></i>
-                            Download Brosur
-                        </a>
                         <a href="<?php echo !empty($jurusan_data->link_virtual_tour) ? $jurusan_data->link_virtual_tour : '#'; ?>"
                             class="btn btn-outline-<?php echo !empty($jurusan_data->color) ? $jurusan_data->color : 'primary'; ?> btn-lg">
                             <i class="bi bi-pencil-square me-circle me-2"></i>
-                            Pendaftaran
+                            Pendaftaran & Brosur
                         </a>
                     </div>
                 </div>

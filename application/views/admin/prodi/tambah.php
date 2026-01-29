@@ -414,7 +414,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="link_brosur">Link Brosur</label>
+                                    <label for="link_brosur">Link Pendaftaran & Brosur</label>
                                     <input type="url"
                                         id="link_brosur"
                                         name="link_brosur"
@@ -427,7 +427,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="link_detail">Link Rumusan</label>
+                                    <label for="link_detail">Link Rumusan CPL</label>
                                     <input type="url"
                                         id="link_detail"
                                         name="link_detail"

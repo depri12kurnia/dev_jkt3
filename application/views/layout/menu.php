@@ -29,7 +29,7 @@ $nav_unit = $this->nav_model->nav_unit();
                                         </li>
                                     <?php } ?>
                                     <li><a class="dropdown-item" href="<?php echo base_url('akreditasi'); ?>">Akreditasi</a></li>
-                                    <li><a class="dropdown-item" href="<?php echo base_url('sdm'); ?>">SDM</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo base_url('sdm'); ?>">Sumber Daya Manusia</a></li>
                                 </div>
                                 <div class="col-4">
                                     <div class="dropdown-header fw-bold text-default">Pusat</div>

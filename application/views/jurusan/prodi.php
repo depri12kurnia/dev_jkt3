@@ -123,7 +123,7 @@
                                             <div class="d-flex flex-column flex-sm-row gap-2">
                                                 <a href="<?php echo !empty($prodi->link_brosur) ? $prodi->link_brosur : '#'; ?>"
                                                     class="btn btn-<?php echo !empty($prodi->color) ? $prodi->color : 'primary'; ?> flex-fill flex-sm-grow-0">
-                                                    <i class="bi bi-download me-1"></i>Download Brosur
+                                                    <i class="bi bi-pencil-square me-1"></i>Pendaftaran & Brosur
                                                 </a>
                                                 <a target="_blank" href="<?php echo !empty($prodi->link_detail) ? $prodi->link_detail : '#'; ?>"
                                                     class="btn btn-outline-<?php echo !empty($prodi->color) ? $prodi->color : 'primary'; ?> flex-fill flex-sm-grow-0">

@@ -41,7 +41,39 @@ class CompactPopupManager {
     }
 
     initLazyLoading() {
+        // Collect lazy images (those intended to load via data-src)
         this.lazyImages = this.modalElement.querySelectorAll('.popup-lazy');
+
+        // If no lazy images exist, hide the loading overlay when the primary image is ready
+        if (!this.lazyImages || this.lazyImages.length === 0) {
+            const primaryImg = this.modalElement.querySelector('.popup-image.popup-primary');
+            const overlay = primaryImg?.closest('.popup-image-container')?.querySelector('.popup-loading-overlay');
+
+            const hideOverlay = () => {
+                if (overlay) {
+                    overlay.classList.add('popup-hidden');
+                    setTimeout(() => {
+                        overlay.style.display = 'none';
+                    }, 400);
+                }
+            };
+
+            // If primary image is already cached/loaded, hide immediately
+            if (primaryImg && primaryImg.complete && primaryImg.naturalWidth > 0) {
+                hideOverlay();
+            } else if (primaryImg) {
+                // Hide overlay once primary image finishes loading
+                primaryImg.addEventListener('load', hideOverlay, { once: true });
+                primaryImg.addEventListener('error', () => {
+                    this.handleImageError(primaryImg, overlay);
+                }, { once: true });
+            } else {
+                // No image found; hide overlay to avoid blocking UI
+                hideOverlay();
+            }
+
+            return; // No lazy-loading setup needed
+        }
 
         if ('IntersectionObserver' in window) {
             this.setupIntersectionObserver();
@@ -70,7 +102,10 @@ class CompactPopupManager {
     }
 
     loadImage(img) {
-        if (!img.dataset.src || img.classList.contains('popup-lazyloaded')) return;
+        // Support both data-src and existing src as a fallback
+        const source = img?.dataset?.src || img.getAttribute('src');
+        if (img.classList.contains('popup-lazyloaded')) return;
+        if (!source) return;
 
         const overlay = img.closest('.popup-image-container')?.querySelector('.popup-loading-overlay');
 
@@ -79,8 +114,10 @@ class CompactPopupManager {
 
         tempImg.onload = () => {
             // Update src
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
+            if (img.dataset && img.dataset.src) {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+            }
 
             // Update classes
             img.classList.remove('popup-lazy');
@@ -103,7 +140,7 @@ class CompactPopupManager {
         };
 
         // Start loading with shorter timeout for compact experience
-        tempImg.src = img.dataset.src;
+        tempImg.src = source;
 
         // Timeout fallback - shorter for compact
         setTimeout(() => {
@@ -245,11 +282,14 @@ class CompactPopupManager {
 
     isElementVisible(element) {
         const rect = element.getBoundingClientRect();
+        const vw = window.innerWidth || document.documentElement.clientWidth;
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        // Consider visible if any part intersects the viewport
         return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            rect.bottom >= 0 &&
+            rect.right >= 0 &&
+            rect.top <= vh &&
+            rect.left <= vw
         );
     }
 

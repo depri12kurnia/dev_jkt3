@@ -231,12 +231,12 @@ $hide_cookie_banner = !empty($cookie_consent) ? 'display:none;' : '';
 <!-- Custom JS From jsDeliver Load BEFORE open-accessibility -->
 
 <!-- Custom JS - Load BEFORE open-accessibility -->
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/js/pendidikan-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/js/staff-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/js/partners-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/js/backtotop-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/js/faq-enhanced.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/js/popup-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/js/pendidikan-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/js/staff-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/js/partners-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/js/backtotop-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/js/faq-enhanced.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/js/popup-enhanced.js"></script>
 
 <!-- Open-Accessibility - Load AFTER jQuery and Bootstrap -->
 <script src="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@c98ecc060c3d5a377efcafa07a64e43faf20970f/assets/js/open-accessibility.js?v=<?php echo time(); ?>"></script>

@@ -1,4 +1,4 @@
-/* ===== POPUP MODAL WRAPPER - COMPACT SIZE ===== */
+/* ===== POPUP MODAL WRAPPER - COMPACT & RESPONSIVE ===== */
 .popup-modal-wrapper {
     --popup-primary-color: #00B9AD;
     --popup-secondary-color: #008B82;
@@ -9,45 +9,158 @@
     z-index: 1055;
 }
 
-/* ===== MODAL STRUCTURE OPTIMIZATION - COMPACT ===== */
-
+/* ===== MODAL STRUCTURE OPTIMIZATION ===== */
 .popup-modal-wrapper .modal-dialog {
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    max-width: 700px;
-    width: 95%;
-    margin: 2.5vh auto;
-    min-height: 40vh;
-    max-height: 90vh;
     display: flex;
     align-items: center;
+    min-height: calc(100% - 1rem);
+    /* Center secara vertikal */
+    max-width: 600px;
+    /* Ukuran desktop yang lebih compact */
+    width: 92%;
+    margin: auto;
+    will-change: transform;
 }
 
 .popup-modal-wrapper .modal-content {
     border: none;
-    border-radius: 18px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(8px);
-    background: rgba(255, 255, 255, 0.98);
-    min-height: 40vh;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    background: #ffffff;
+    width: 100%;
     max-height: 90vh;
+    /* Agar tidak melebihi tinggi layar */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    position: relative;
 }
 
-/* ===== COMPACT GRADIENT HEADER ===== */
+/* ===== HEADER OPTIMIZATION ===== */
 .popup-modal-wrapper .gradient-header {
     background: linear-gradient(135deg, var(--popup-primary-color) 0%, var(--popup-secondary-color) 100%);
     border: none;
-    padding: 0.65rem 1rem;
-    /* Further reduced padding */
+    padding: 12px 16px;
     position: relative;
+    z-index: 2;
+}
+
+/* ===== IMAGE CONTAINER (RESPONSIVE RATIO) ===== */
+.popup-modal-wrapper .popup-image-container {
+    position: relative;
+    width: 100%;
+    background: #f8f9fa;
+    /* Menjaga proporsi gambar agar tidak gepeng */
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
+.popup-modal-wrapper .popup-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* PENTING: Gambar tidak akan terpotong di HP */
+    transition: transform 0.5s ease;
+}
+
+/* ===== BUTTON & FOOTER OPTIMIZATION ===== */
+.popup-modal-wrapper .modal-footer {
+    padding: 12px 16px !important;
+    border-top: 1px solid #eee;
+    background: #fff;
+}
+
+.popup-modal-wrapper .popup-btn {
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    /* Standar Apple/Google untuk sentuhan jari */
+}
+
+/* ===== CLOSE BUTTON ===== */
+.popup-modal-wrapper .animated-close {
+    width: 34px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+}
+
+/* ===================================================
+   MEDIA QUERIES (PERBAIKAN KHUSUS HP)
+   =================================================== */
+
+/* Perangkat Mobile (Portrait) */
+@media (max-width: 576px) {
+    .popup-modal-wrapper .modal-dialog {
+        width: 95%;
+        margin: auto;
+        /* Memastikan benar-benar di tengah */
+    }
+
+    .popup-modal-wrapper .popup-image-container {
+        aspect-ratio: 100%;
+        /* Lebih kotak di HP agar konten lebih besar */
+    }
+
+    .popup-modal-wrapper .modal-footer {
+        flex-direction: column;
+        /* Tombol jadi bertumpuk jika layar sangat sempit */
+        gap: 8px;
+    }
+
+    .popup-modal-wrapper .popup-btn {
+        width: 100%;
+        /* Tombol lebar penuh di HP agar mudah ditekan */
+        font-size: 0.9rem;
+    }
+
+    .popup-modal-wrapper .gradient-header h5 {
+        font-size: 1rem;
+    }
+}
+
+/* Perangkat Mobile (Landscape) - Penting agar modal tidak hilang */
+@media (max-height: 480px) and (orientation: landscape) {
+    .popup-modal-wrapper .modal-dialog {
+        max-width: 85vw;
+        align-items: flex-start;
+        /* Mulai dari atas agar tidak terpotong bawahnya */
+    }
+
+    .popup-modal-wrapper .popup-image-container {
+        display: none;
+        /* Sembunyikan gambar di landscape HP agar teks/tombol muncul */
+    }
+
+    .popup-modal-wrapper .modal-content {
+        max-height: 95vh;
+    }
+}
+
+/* Tablet (iPad/Android Tablet) */
+@media (min-width: 577px) and (max-width: 992px) {
+    .popup-modal-wrapper .modal-dialog {
+        max-width: 80%;
+    }
+}
+
+/* Efek Shimmer (Tetap dipertahankan) */
 .popup-modal-wrapper .gradient-header::before {
     content: '';
     position: absolute;
@@ -55,9 +168,8 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     animation: popup-shimmer-header 3s infinite;
-    will-change: transform;
 }
 
 @keyframes popup-shimmer-header {
@@ -70,473 +182,14 @@
     }
 }
 
-/* ===== COMPACT IMAGE CONTAINER ===== */
-.popup-modal-wrapper .popup-image-container {
-    position: relative;
-    overflow: hidden;
-    background: #f8f9fa;
-    min-height: 25vh;
-    max-height: 55vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ===== OPTIMIZED POPUP IMAGES - COMPACT ===== */
-.popup-modal-wrapper .popup-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: opacity, transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    max-height: 55vh;
-    min-height: 25vh;
-}
-
-/* Primary Image (First/Critical) */
-.popup-modal-wrapper .popup-image.popup-primary {
-    opacity: 1;
-    animation: popup-fadeInScale 0.8s ease-out;
-}
-
-/* Lazy Loading Images */
-.popup-modal-wrapper .popup-image.popup-lazy {
-    opacity: 0.8;
-    filter: blur(1px);
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
-    background-size: 400% 400%;
-    animation: popup-shimmer-image 2s ease-in-out infinite;
-}
-
-.popup-modal-wrapper .popup-image.popup-lazyloaded {
-    opacity: 1;
-    filter: none;
-    background: none;
-    animation: popup-fadeInScale 0.6s ease-out;
-}
-
-.popup-modal-wrapper .popup-image.popup-error {
-    opacity: 1;
-    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
-    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="480" height="320"%3E%3Crect width="100%25" height="100%25" fill="%23f8d7da"/%3E%3Ctext x="50%25" y="50%25" text-anchor="middle" dy=".3em" fill="%23721c24" font-family="Arial,sans-serif" font-size="14"%3EGagal memuat pengumuman%3C/text%3E%3C/svg%3E');
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: none;
-    animation: none;
-}
-
-/* ===== COMPACT LOADING OVERLAY ===== */
-.popup-modal-wrapper .popup-loading-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(248, 249, 250, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    backdrop-filter: blur(4px);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.popup-modal-wrapper .popup-loading-overlay.popup-hidden {
-    opacity: 0;
-    pointer-events: none;
-    visibility: hidden;
-    transform: scale(0.9);
-}
-
-.popup-modal-wrapper .popup-loading-content {
-    text-align: center;
-    color: #6c757d;
-    padding: 1.25rem;
-    /* Further reduced padding */
-}
-
-.popup-modal-wrapper .popup-loading-spinner {
-    width: 36px;
-    /* Further reduced */
-    height: 36px;
-    border: 3px solid rgba(108, 117, 125, 0.2);
-    border-left-color: var(--popup-primary-color);
-    border-radius: 50%;
-    animation: popup-spin 1s linear infinite;
-    margin: 0 auto 0.6rem;
-    /* Reduced margin */
-}
-
-.popup-modal-wrapper .popup-loading-text {
-    font-size: 0.85rem;
-    /* Smaller text */
-    font-weight: 500;
-    display: block;
-}
-
-/* ===== COMPACT POPUP BUTTONS ===== */
-.popup-modal-wrapper .popup-btn {
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: 18px;
-    font-weight: 500;
-    font-size: 0.75rem;
-    padding: 0.4rem 0.8rem;
-    position: relative;
-    overflow: hidden;
-    will-change: transform;
-    transform: translateZ(0);
-    text-decoration: none !important;
-    min-width: auto;
-    white-space: nowrap;
-}
-
-/* Force text visibility on all screen sizes */
-.popup-modal-wrapper .popup-btn span {
-    display: inline !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-/* Override Bootstrap display classes specifically for popup buttons */
-.popup-modal-wrapper .popup-btn .d-none,
-.popup-modal-wrapper .popup-btn .d-md-none,
-.popup-modal-wrapper .popup-btn .d-lg-none {
-    display: inline !important;
-}
-
-.popup-modal-wrapper .popup-btn .d-inline,
-.popup-modal-wrapper .popup-btn .d-md-inline,
-.popup-modal-wrapper .popup-btn .d-lg-inline {
-    display: inline !important;
-}
-
-/* ===== COMPACT CLOSE BUTTON ===== */
-.popup-modal-wrapper .animated-close {
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    border-radius: 50%;
-    width: 32px;
-    /* Further reduced */
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.popup-modal-wrapper .animated-close:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: rotate(90deg) scale(1.05) translateZ(0);
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
-/* ===== MODAL ANIMATIONS ===== */
-.popup-modal-wrapper.show {
-    animation: popup-modalFadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.popup-modal-wrapper.show .modal-dialog {
-    animation: popup-modalSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* ===== KEYFRAME ANIMATIONS ===== */
-@keyframes popup-fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.95) translateZ(0);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateZ(0);
-    }
-}
-
-@keyframes popup-shimmer-image {
-    0% {
-        background-position: -400% 0;
-    }
-
-    100% {
-        background-position: 400% 0;
-    }
-}
-
-@keyframes popup-spin {
-    to {
-        transform: rotate(360deg) translateZ(0);
-    }
-}
-
-@keyframes popup-modalFadeIn {
-    from {
-        opacity: 0;
-        backdrop-filter: blur(0px);
-    }
-
-    to {
-        opacity: 1;
-        backdrop-filter: blur(8px);
-    }
-}
-
 @keyframes popup-modalSlideIn {
     from {
         opacity: 0;
-        transform: scale(0.9) translateY(-25px) translateZ(0);
+        transform: translateY(20px);
     }
 
     to {
         opacity: 1;
-        transform: scale(1) translateY(0) translateZ(0);
-    }
-}
-
-/* ===== RESPONSIVE OPTIMIZATIONS - MOBILE FIRST ===== */
-
-/* Extra Small Devices (phones, less than 576px) */
-@media (max-width: 575.98px) {
-    .popup-modal-wrapper .modal-dialog {
-        max-width: 98vw;
-        width: 98vw;
-        margin: 0.5rem auto;
-        min-height: 30vh;
-        max-height: 98vh;
-    }
-
-    .popup-modal-wrapper .popup-image-container {
-        min-height: 18vh;
-        max-height: 30vh;
-    }
-
-    .popup-modal-wrapper .popup-image {
-        max-height: 30vh;
-        min-height: 18vh;
-    }
-
-    .popup-modal-wrapper .popup-btn {
-        font-size: 0.65rem;
-        padding: 0.3rem 0.6rem;
-        flex: 1;
-        min-width: 0;
-    }
-
-    /* Show short text on mobile */
-    .popup-modal-wrapper .popup-btn .d-none.d-md-inline {
-        display: none !important;
-    }
-
-    .popup-modal-wrapper .popup-btn .d-inline.d-md-none {
-        display: inline !important;
-    }
-
-    .popup-modal-wrapper .modal-footer {
-        padding: 0.5rem !important;
-    }
-
-    .popup-modal-wrapper .modal-footer .d-flex {
-        gap: 0.2rem !important;
-    }
-
-    .popup-modal-wrapper .gradient-header {
-        padding: 0.5rem;
-    }
-
-    .popup-modal-wrapper .animated-close {
-        width: 28px;
-        height: 28px;
-    }
-
-    .popup-modal-wrapper .popup-loading-spinner {
-        width: 28px;
-        height: 28px;
-        border-width: 2px;
-    }
-
-    .popup-modal-wrapper .popup-loading-text {
-        font-size: 0.75rem;
-    }
-
-    .popup-modal-wrapper .popup-loading-content {
-        padding: 0.75rem;
-    }
-}
-
-/* Small Devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-    .popup-modal-wrapper .modal-dialog {
-        max-width: 95vw;
-        width: 95vw;
-        margin: 0.75rem auto;
-        min-height: 32vh;
-        max-height: 95vh;
-    }
-
-    .popup-modal-wrapper .popup-image-container {
-        min-height: 20vh;
-        max-height: 35vh;
-    }
-
-    .popup-modal-wrapper .popup-image {
-        max-height: 35vh;
-        min-height: 20vh;
-    }
-
-    .popup-modal-wrapper .popup-btn {
-        font-size: 0.7rem;
-        padding: 0.35rem 0.7rem;
-    }
-
-    /* Show short text on small devices */
-    .popup-modal-wrapper .popup-btn .d-none.d-md-inline {
-        display: none !important;
-    }
-
-    .popup-modal-wrapper .popup-btn .d-inline.d-md-none {
-        display: inline !important;
-    }
-
-    .popup-modal-wrapper .modal-footer {
-        padding: 0.65rem !important;
-    }
-
-    .popup-modal-wrapper .popup-loading-spinner {
-        width: 32px;
-        height: 32px;
-    }
-
-    .popup-modal-wrapper .popup-loading-text {
-        font-size: 0.8rem;
-    }
-}
-
-/* Medium Devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-    .popup-modal-wrapper .modal-dialog {
-        max-width: 90vw;
-        width: 90vw;
-        margin: 1rem auto;
-        min-height: 35vh;
-        max-height: 90vh;
-    }
-
-    .popup-modal-wrapper .popup-image-container {
-        min-height: 22vh;
-        max-height: 40vh;
-    }
-
-    .popup-modal-wrapper .popup-image {
-        max-height: 40vh;
-        min-height: 22vh;
-    }
-
-    .popup-modal-wrapper .popup-btn {
-        font-size: 0.72rem;
-        padding: 0.38rem 0.75rem;
-    }
-
-    /* Show full text on medium devices */
-    .popup-modal-wrapper .popup-btn .d-none.d-md-inline {
-        display: inline !important;
-    }
-
-    .popup-modal-wrapper .popup-btn .d-inline.d-md-none {
-        display: none !important;
-    }
-
-    .popup-modal-wrapper .modal-footer {
-        padding: 0.75rem !important;
-    }
-
-    .popup-modal-wrapper .popup-loading-spinner {
-        width: 34px;
-        height: 34px;
-    }
-}
-
-/* Large Devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-    .popup-modal-wrapper .modal-dialog {
-        max-width: 700px;
-        width: 90vw;
-        margin: 2vh auto;
-        min-height: 40vh;
-        max-height: 80vh;
-    }
-
-    .popup-modal-wrapper .popup-image-container {
-        min-height: 25vh;
-        max-height: 55vh;
-    }
-
-    .popup-modal-wrapper .popup-image {
-        max-height: 55vh;
-        min-height: 25vh;
-    }
-
-    .popup-modal-wrapper .popup-btn {
-        font-size: 0.75rem;
-        padding: 0.4rem 0.8rem;
-    }
-
-    /* Show full text on large devices */
-    .popup-modal-wrapper .popup-btn .d-none.d-md-inline {
-        display: inline !important;
-    }
-
-    .popup-modal-wrapper .popup-btn .d-inline.d-md-none {
-        display: none !important;
-    }
-
-    .popup-modal-wrapper .modal-footer {
-        padding: 0.75rem !important;
-    }
-
-    .popup-modal-wrapper .popup-loading-spinner {
-        width: 36px;
-        height: 36px;
-    }
-}
-
-/* ===== ACCESSIBILITY & PERFORMANCE ===== */
-@media (prefers-reduced-motion: reduce) {
-
-    .popup-modal-wrapper .popup-image,
-    .popup-modal-wrapper .popup-btn,
-    .popup-modal-wrapper .animated-close {
-        animation: none !important;
-        transition: opacity 0.3s ease !important;
-    }
-
-    .popup-modal-wrapper .popup-loading-spinner {
-        animation: none;
-        border-left-color: transparent;
-        border-top-color: var(--popup-primary-color);
-    }
-
-    .popup-modal-wrapper .gradient-header::before {
-        animation: none;
-    }
-}
-
-/* ===== HIGH CONTRAST MODE ===== */
-@media (prefers-contrast: high) {
-    .popup-modal-wrapper .modal-content {
-        background: #ffffff;
-        border: 2px solid #000000;
-    }
-
-    .popup-modal-wrapper .popup-btn {
-        border: 2px solid currentColor;
-    }
-}
-
-/* ===== PRINT STYLES ===== */
-@media print {
-    .popup-modal-wrapper {
-        display: none !important;
+        transform: translateY(0);
     }
 }

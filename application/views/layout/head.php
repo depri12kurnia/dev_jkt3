@@ -69,22 +69,22 @@ $site_info = $this->konfigurasi_model->listing();
 
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/responsive.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/google-translate.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/custom-translate.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/google-translate.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/custom-translate.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/pendidikan-enhanced.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/staff-enhanced.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/agenda-enhanced.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/partners-enhanced.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/berita-enhanced.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/backtotop-enhanced.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/popup-enhanced.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/blog-enhanced.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/open-accessibility.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@b430c48ae9244957d9382655c86ee700be72735e/assets/css/faq-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/pendidikan-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/staff-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/agenda-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/partners-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/berita-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/backtotop-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/popup-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/blog-enhanced.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/open-accessibility.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/depri12kurnia/dev_jkt3@3178cde6c9571ff79bdbe0f6fe3b5ee77280ecf5/assets/css/faq-enhanced.css">
 
     <!-- jQuery (WAJIB untuk DataTables) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
