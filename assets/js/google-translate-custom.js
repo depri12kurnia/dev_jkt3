@@ -2,18 +2,18 @@
 class CustomGoogleTranslate {
     constructor() {
         this.currentLang = 'id';
-        this.baseUrl = this.getBaseUrl();
+        this.baseUrl = this.getBaseUrl(); // Hasilnya: https://poltekkesjakarta3.ac.id/
         this.isMobile = window.innerWidth <= 768;
         this.init();
     }
 
     getBaseUrl() {
-        // Get base URL from current location
-        const protocol = window.location.protocol;
-        const host = window.location.host;
-        const pathArray = window.location.pathname.split('/');
-        const basePath = pathArray[1] ? '/' + pathArray[1] + '/' : '/';
-        return protocol + '//' + host + basePath;
+        // window.location.origin akan mengambil protocol + host secara otomatis
+        // Hasil: "https://poltekkesjakarta3.ac.id"
+        const origin = window.location.origin;
+
+        // Tambahkan slash di akhir agar konsisten saat pemanggilan API/asset
+        return `${origin}/`;
     }
 
     init() {
