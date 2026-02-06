@@ -8,119 +8,136 @@
                     <p>Dokumen Intruksi Kerja, Standard Pelayanan dll</p>
                 </div>
                 <!-- .section-header -->
-                <div class="row">
 
-                    <style type="text/css" media="screen">
-                        th,
-                        td {
-                            text-align: left !important;
-                            vertical-align: top !important;
-                            padding: 6px 12px !important;
-                            color: #000 !important;
-                        }
-                    </style>
 
-                    <div class="col-md-12">
-                        <div class="table-responsive mailbox-messages">
-                            <h5 class="contact-title">Intruksi Kerja</h5>
-                            <table id="example1" class="display table table-bordered table-hover" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th width="5%">No</th>
-                                        <th>Dokumen</th>
-                                        <th>Jenis</th>
-                                        <th width="15%">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1;
-                                    foreach ($intruksikerja as $intruksikerja) { ?>
-                                        <tr>
-                                            <td><?php echo $i ?></td>
-                                            <td><?php echo $intruksikerja->judul_download ?></td>
-                                            <td><?php echo $intruksikerja->nama_jenis_download ?></td>
-                                            <td>
-                                                <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $intruksikerja->id_download) ?>','<?php echo htmlspecialchars($intruksikerja->judul_download, ENT_QUOTES, 'UTF-8') ?>')">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                                <a href="<?php echo base_url('unduhan/unduh/' . $intruksikerja->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($intruksikerja->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-download"></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php $i++;
-                                    } ?>
-                                </tbody>
-                            </table>
+                <style type="text/css" media="screen">
+                    th,
+                    td {
+                        text-align: left !important;
+                        vertical-align: top !important;
+                        padding: 6px 12px !important;
+                        color: #000 !important;
+                    }
+                </style>
+                <div class="row g-3 g-lg-4 mb-4">
+                    <div class="col-12 col-xl-12">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="col-md-12">
+                                <div class="table-responsive mailbox-messages">
+                                    <h2 class="contact-title">Intruksi Kerja</h2>
+                                    <table id="example1" class="display table table-bordered table-hover" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th>Dokumen</th>
+                                                <th>Jenis</th>
+                                                <th width="15%">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1;
+                                            foreach ($intruksikerja as $intruksikerja) { ?>
+                                                <tr>
+                                                    <td><?php echo $i ?></td>
+                                                    <td><?php echo $intruksikerja->judul_download ?></td>
+                                                    <td><?php echo $intruksikerja->nama_jenis_download ?></td>
+                                                    <td>
+                                                        <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $intruksikerja->id_download) ?>','<?php echo htmlspecialchars($intruksikerja->judul_download, ENT_QUOTES, 'UTF-8') ?>')">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        <a href="<?php echo base_url('unduhan/unduh/' . $intruksikerja->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($intruksikerja->judul_download, ENT_QUOTES, 'UTF-8') ?>">
+                                                            <i class="fa fa-download"></i></a>
+                                                    </td>
+                                                </tr>
+                                            <?php $i++;
+                                            } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                    </div><!-- End .row -->
+                    </div>
+                </div>
 
-                    <div class="col-md-12">
-                        <div class="table-responsive mailbox-messages">
-                            <h5 class="contact-title">Prosedur</h5>
-                            <table id="example2" class="display table table-bordered table-hover" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th width="5%">No</th>
-                                        <th>Dokumen</th>
-                                        <th>Jenis</th>
-                                        <th width="15%">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1;
-                                    foreach ($prosedur as $prosedur) { ?>
-                                        <tr>
-                                            <td><?php echo $i ?></td>
-                                            <td><?php echo $prosedur->judul_download ?></td>
-                                            <td><?php echo $prosedur->nama_jenis_download ?></td>
-                                            <td>
-                                                <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $prosedur->id_download) ?>','<?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>')" title="Lihat <?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                                <a href="<?php echo base_url('unduhan/unduh/' . $prosedur->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-download"></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php $i++;
-                                    } ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div><!-- End .row -->
 
-                    <div class="col-md-12">
-                        <div class="table-responsive mailbox-messages">
-                            <h5 class="contact-title">Standard</h5>
-                            <table id="example3" class="display table table-bordered table-hover" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th width="5%">No</th>
-                                        <th>Dokumen</th>
-                                        <th>Jenis</th>
-                                        <th width="15%">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1;
-                                    foreach ($standard as $standard) { ?>
-                                        <tr>
-                                            <td><?php echo $i ?></td>
-                                            <td><?php echo $standard->judul_download ?></td>
-                                            <td><?php echo $standard->nama_jenis_download ?></td>
-                                            <td>
-                                                <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $standard->id_download) ?>','<?php echo htmlspecialchars($standard->judul_download, ENT_QUOTES, 'UTF-8') ?>')" title="Lihat <?php echo htmlspecialchars($standard->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                                <a href="<?php echo base_url('unduhan/unduh/' . $standard->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($standard->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-download"></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php $i++;
-                                    } ?>
-                                </tbody>
-                            </table>
+                <div class="row g-3 g-lg-4 mb-4">
+                    <div class="col-12 col-xl-12">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="col-md-12">
+                                <div class="table-responsive mailbox-messages">
+                                    <h2 class="contact-title">Prosedur</h2>
+                                    <table id="example2" class="display table table-bordered table-hover" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th>Dokumen</th>
+                                                <th>Jenis</th>
+                                                <th width="15%">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1;
+                                            foreach ($prosedur as $prosedur) { ?>
+                                                <tr>
+                                                    <td><?php echo $i ?></td>
+                                                    <td><?php echo $prosedur->judul_download ?></td>
+                                                    <td><?php echo $prosedur->nama_jenis_download ?></td>
+                                                    <td>
+                                                        <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $prosedur->id_download) ?>','<?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>')" title="Lihat <?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        <a href="<?php echo base_url('unduhan/unduh/' . $prosedur->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($prosedur->judul_download, ENT_QUOTES, 'UTF-8') ?>">
+                                                            <i class="fa fa-download"></i></a>
+                                                    </td>
+                                                </tr>
+                                            <?php $i++;
+                                            } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                    </div><!-- End .row -->
+                    </div>
+                </div>
+
+                <div class="row g-3 g-lg-4 mb-4">
+                    <div class="col-12 col-xl-12">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="col-md-12">
+                                <div class="table-responsive mailbox-messages">
+                                    <h2 class="contact-title">Standard</h2>
+                                    <table id="example3" class="display table table-bordered table-hover" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th>Dokumen</th>
+                                                <th>Jenis</th>
+                                                <th width="15%">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1;
+                                            foreach ($standard as $standard) { ?>
+                                                <tr>
+                                                    <td><?php echo $i ?></td>
+                                                    <td><?php echo $standard->judul_download ?></td>
+                                                    <td><?php echo $standard->nama_jenis_download ?></td>
+                                                    <td>
+                                                        <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $standard->id_download) ?>','<?php echo htmlspecialchars($standard->judul_download, ENT_QUOTES, 'UTF-8') ?>')" title="Lihat <?php echo htmlspecialchars($standard->judul_download, ENT_QUOTES, 'UTF-8') ?>">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        <a href="<?php echo base_url('unduhan/unduh/' . $standard->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($standard->judul_download, ENT_QUOTES, 'UTF-8') ?>">
+                                                            <i class="fa fa-download"></i></a>
+                                                    </td>
+                                                </tr>
+                                            <?php $i++;
+                                            } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -133,7 +150,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="previewModalLabel">Pratinjau Dokumen</h5>
                 <button type="button" class="close btn-close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
             <div class="modal-body" style="height:80vh; overflow:auto;">

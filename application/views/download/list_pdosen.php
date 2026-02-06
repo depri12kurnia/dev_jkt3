@@ -8,54 +8,55 @@
                     <p>Peraturan-Peraturan Dosen </p>
                 </div>
                 <!-- .section-header -->
-                <div class="row">
-
-                    <style type="text/css" media="screen">
-                        th,
-                        td {
-                            text-align: left !important;
-                            vertical-align: top !important;
-                            padding: 6px 12px !important;
-                            color: #000 !important;
-                        }
-                    </style>
-
-                    <div class="col-md-12">
-
-                        <div class="table-responsive mailbox-messages">
-                            <h5 class="contact-title">Peraturan Dosen</h5>
-                            <!-- Custom Filter -->
-                            <!-- End Custom Filter -->
-                            <table id="dokumen" class="display table table-bordered table-hover" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th width="5%">No</th>
-                                        <th>Dokumen</th>
-                                        <th>Jenis</th>
-                                        <th width="15%"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $i = 1;
-                                    foreach ($dokumen as $dokumen) { ?>
-                                        <tr>
-                                            <td><?php echo $i ?></td>
-                                            <td><?php echo $dokumen->judul_download ?></td>
-                                            <td><?php echo $dokumen->nama_jenis_download ?></td>
-                                            <td>
-                                                <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $dokumen->id_download) ?>','<?php echo htmlspecialchars($dokumen->judul_download, ENT_QUOTES, 'UTF-8') ?>')" title="Lihat <?php echo htmlspecialchars($dokumen->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                                <a href="<?php echo base_url('unduhan/unduh/' . $dokumen->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($dokumen->judul_download, ENT_QUOTES, 'UTF-8') ?>">
-                                                    <i class="fa fa-download"></i></a>
-                                            </td>
-                                        </tr>
-                                    <?php $i++;
-                                    } ?>
-                                </tbody>
-                            </table>
+                <style type="text/css" media="screen">
+                    th,
+                    td {
+                        text-align: left !important;
+                        vertical-align: top !important;
+                        padding: 6px 12px !important;
+                        color: #000 !important;
+                    }
+                </style>
+                <div class="row g-3 g-lg-4 mb-4">
+                    <div class="col-12 col-xl-12">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="col-md-12">
+                                <div class="table-responsive mailbox-messages">
+                                    <h2 class="contact-title">Peraturan Dosen</h2>
+                                    <!-- Custom Filter -->
+                                    <!-- End Custom Filter -->
+                                    <table id="dokumen" class="display table table-bordered table-hover" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th width="5%">No</th>
+                                                <th>Dokumen</th>
+                                                <th>Jenis</th>
+                                                <th width="15%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $i = 1;
+                                            foreach ($dokumen as $dokumen) { ?>
+                                                <tr>
+                                                    <td><?php echo $i ?></td>
+                                                    <td><?php echo $dokumen->judul_download ?></td>
+                                                    <td><?php echo $dokumen->nama_jenis_download ?></td>
+                                                    <td>
+                                                        <button class="btn btn-secondary btn-xs" title="Preview" onclick="openPreview('<?php echo base_url('unduhan/unduh/' . $dokumen->id_download) ?>','<?php echo htmlspecialchars($dokumen->judul_download, ENT_QUOTES, 'UTF-8') ?>')" title="Lihat <?php echo htmlspecialchars($dokumen->judul_download, ENT_QUOTES, 'UTF-8') ?>">
+                                                            <i class="fa fa-eye"></i>
+                                                        </button>
+                                                        <a href="<?php echo base_url('unduhan/unduh/' . $dokumen->id_download) ?>" class="btn btn-primary btn-xs" target="_blank" title="Unduh <?php echo htmlspecialchars($dokumen->judul_download, ENT_QUOTES, 'UTF-8') ?>">
+                                                            <i class="fa fa-download"></i></a>
+                                                    </td>
+                                                </tr>
+                                            <?php $i++;
+                                            } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                    </div><!-- End .row -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,7 +69,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="previewModalLabel">Pratinjau Dokumen</h5>
                 <button type="button" class="close btn-close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
             <div class="modal-body" style="height:80vh; overflow:auto;">
